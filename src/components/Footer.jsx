@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 
+import logo from '../assets/logo1.jpeg'
+
 const navigation = [
   { label: 'Home', path: '/' },
   { label: 'About Us', path: '/about' },
-  { label: 'Coaching', path: '/coaching'},
+  { label: 'Coaching', path: '/coaching' },
   { label: 'Admission', path: '/admission' },
   { label: 'Result', path: '/result' },
   { label: 'Gallery', path: '/gallery' },
@@ -22,11 +24,8 @@ export default function Footer() {
     <footer className="site-footer">
 
       {/* CTA */}
-
       <section className="footer-cta">
-
         <div className="container footer-cta-inner">
-
           <div>
             <span className="section-label">
               VIDYAPROBODHINI
@@ -46,30 +45,22 @@ export default function Footer() {
             Enquire about admission
             <ArrowUpRight size={16} />
           </Link>
-
         </div>
-
       </section>
 
-
       {/* MAIN FOOTER */}
-
       <div className="footer-main">
-
         <div className="container">
-
           <div className="footer-grid">
 
             {/* BRAND */}
-
             <div className="footer-brand">
-
               <Link
                 to="/"
                 className="footer-logo"
               >
                 <img
-                  src="src/assets/logo1.jpeg"
+                  src={logo}
                   alt="Vidyaprabodhini Academy"
                 />
               </Link>
@@ -83,11 +74,8 @@ export default function Footer() {
                 Banking and Saralseva competitive examinations.
               </p>
 
-
               {/* SOCIAL */}
-
               <div className="footer-socials">
-
                 <a
                   href="#"
                   aria-label="Instagram"
@@ -111,22 +99,16 @@ export default function Footer() {
                 >
                   YT
                 </a>
-
               </div>
-
             </div>
 
-
             {/* NAVIGATION */}
-
             <div className="footer-column">
-
               <span className="footer-column-title">
                 NAVIGATION
               </span>
 
               <nav className="footer-links">
-
                 {navigation.map((item) => (
                   <Link
                     key={item.path}
@@ -135,22 +117,16 @@ export default function Footer() {
                     {item.label}
                   </Link>
                 ))}
-
               </nav>
-
             </div>
 
-
             {/* COURSES */}
-
             <div className="footer-column">
-
               <span className="footer-column-title">
                 PREPARATION
               </span>
 
               <div className="footer-links">
-
                 {courses.map((course) => (
                   <Link
                     key={course}
@@ -159,22 +135,16 @@ export default function Footer() {
                     {course}
                   </Link>
                 ))}
-
               </div>
-
             </div>
 
-
             {/* CONTACT */}
-
             <div className="footer-column">
-
               <span className="footer-column-title">
                 CONTACT
               </span>
 
               <div className="footer-contact">
-
                 <p>
                   Vidyaprabodhini
                 </p>
@@ -186,36 +156,25 @@ export default function Footer() {
                 <a href="mailto:info@vidyaprabodhini.in">
                   info@vidyaprabodhini.in
                 </a>
-
               </div>
-
             </div>
 
           </div>
-
         </div>
-
       </div>
 
-
       {/* BOTTOM BAR */}
-
       <div className="footer-bottom">
-
         <div className="container footer-bottom-inner">
-
           <p>
             © {new Date().getFullYear()} Vidyaprabodhini.
             All rights reserved.
           </p>
 
-
           <p className="footer-credit">
             Designed by SkewX Technologies
           </p>
-
         </div>
-
       </div>
 
     </footer>
