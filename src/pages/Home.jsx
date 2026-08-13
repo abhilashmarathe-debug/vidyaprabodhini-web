@@ -379,7 +379,7 @@ export default function Home() {
             <div className="home-hero-actions">
 
               <Link
-                to="/batches"
+                to="/coaching"
                 className="button button-primary"
               >
                 Explore batches
@@ -464,7 +464,7 @@ export default function Home() {
             {programs.map((program) => (
 
               <Link
-                to="/batches"
+                to="/coaching"
                 className="program-card"
                 key={program.title}
               >
@@ -1012,7 +1012,7 @@ export default function Home() {
           <div className="home-cta-actions">
 
             <Link
-              to="/batches"
+              to="/coaching"
               className="button button-primary"
             >
               Explore batches
