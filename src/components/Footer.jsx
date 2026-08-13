@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
-
 import logo from '../assets/logo1.jpeg'
 
 const navigation = [
@@ -55,6 +54,7 @@ export default function Footer() {
 
             {/* BRAND */}
             <div className="footer-brand">
+
               <Link
                 to="/"
                 className="footer-logo"
@@ -62,6 +62,7 @@ export default function Footer() {
                 <img
                   src={logo}
                   alt="Vidyaprabodhini Academy"
+                  loading="eager"
                 />
               </Link>
 
@@ -76,6 +77,7 @@ export default function Footer() {
 
               {/* SOCIAL */}
               <div className="footer-socials">
+
                 <a
                   href="#"
                   aria-label="Instagram"
@@ -99,11 +101,13 @@ export default function Footer() {
                 >
                   YT
                 </a>
+
               </div>
             </div>
 
             {/* NAVIGATION */}
             <div className="footer-column">
+
               <span className="footer-column-title">
                 NAVIGATION
               </span>
@@ -118,10 +122,12 @@ export default function Footer() {
                   </Link>
                 ))}
               </nav>
+
             </div>
 
             {/* COURSES */}
             <div className="footer-column">
+
               <span className="footer-column-title">
                 PREPARATION
               </span>
@@ -130,21 +136,24 @@ export default function Footer() {
                 {courses.map((course) => (
                   <Link
                     key={course}
-                    to="/batches"
+                    to="/coaching"
                   >
                     {course}
                   </Link>
                 ))}
               </div>
+
             </div>
 
             {/* CONTACT */}
             <div className="footer-column">
+
               <span className="footer-column-title">
                 CONTACT
               </span>
 
               <div className="footer-contact">
+
                 <p>
                   Vidyaprabodhini
                 </p>
@@ -156,7 +165,9 @@ export default function Footer() {
                 <a href="mailto:info@vidyaprabodhini.in">
                   info@vidyaprabodhini.in
                 </a>
+
               </div>
+
             </div>
 
           </div>
@@ -166,6 +177,7 @@ export default function Footer() {
       {/* BOTTOM BAR */}
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
+
           <p>
             © {new Date().getFullYear()} Vidyaprabodhini.
             All rights reserved.
@@ -174,6 +186,7 @@ export default function Footer() {
           <p className="footer-credit">
             Designed by SkewX Technologies
           </p>
+
         </div>
       </div>
 
