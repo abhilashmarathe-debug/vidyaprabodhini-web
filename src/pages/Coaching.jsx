@@ -215,29 +215,12 @@ export default function Coaching() {
 
             <p>
               Complete preparation for UPSC, MPSC,
-              Banking and Saralseva — combining
+              Banking and Saralseva  combining
               structured coaching, flexible learning
               modes and focused test practice.
             </p>
 
-            <div className="coaching-hero-actions">
-
-              <a
-                href="#batches"
-                className="button button-primary"
-              >
-                Explore batches
-                <ArrowUpRight size={16} />
-              </a>
-
-              <a
-                href="#test-series"
-                className="button button-secondary"
-              >
-                Explore test series
-              </a>
-
-            </div>
+          
 
           </div>
 
@@ -246,110 +229,6 @@ export default function Coaching() {
       </section>
 
 
-      {/* =====================================================
-          COACHING OVERVIEW
-      ===================================================== */}
-
-      <section className="coaching-overview">
-
-        <div className="container">
-
-          <div className="section-heading">
-
-            <div>
-
-              <span className="section-label">
-                COACHING
-              </span>
-
-              <h2>
-                Everything you need
-                <br />
-                to prepare better.
-              </h2>
-
-            </div>
-
-            <p>
-              Choose your examination, select the
-              learning mode that suits you and
-              strengthen your preparation with
-              regular test practice.
-            </p>
-
-          </div>
-
-
-          <div className="coaching-overview-grid">
-
-            <a
-              href="#batches"
-              className="coaching-overview-card"
-            >
-
-              <div className="coaching-card-number">
-                01
-              </div>
-
-              <div>
-
-                <span>
-                  CLASSROOM + ONLINE
-                </span>
-
-                <h3>
-                  Coaching Batches
-                </h3>
-
-                <p>
-                  Explore UPSC, MPSC, Banking and
-                  Saralseva preparation across
-                  offline and online modes.
-                </p>
-
-              </div>
-
-              <ArrowUpRight size={18} />
-
-            </a>
-
-
-            <a
-              href="#test-series"
-              className="coaching-overview-card dark"
-            >
-
-              <div className="coaching-card-number">
-                02
-              </div>
-
-              <div>
-
-                <span>
-                  PRACTICE + ANALYSIS
-                </span>
-
-                <h3>
-                  Test Series
-                </h3>
-
-                <p>
-                  Access free and exclusive tests
-                  through the Vidyaprabodhini
-                  mobile application.
-                </p>
-
-              </div>
-
-              <ArrowUpRight size={18} />
-
-            </a>
-
-          </div>
-
-        </div>
-
-      </section>
 
 
       {/* =====================================================

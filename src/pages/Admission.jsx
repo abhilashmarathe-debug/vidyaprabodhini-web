@@ -155,7 +155,7 @@ export default function Admission() {
 
 
           {/* =================================================
-              LEFT — COURSE + MODE
+              LEFT  COURSE + MODE
           ================================================= */}
 
           <div className="admission-selection">
@@ -352,7 +352,7 @@ export default function Admission() {
 
                   <strong>
                     {selectedCourse
-                      ? `${selectedCourse.title} — ${selectedCourse.subtitle}`
+                      ? `${selectedCourse.title}  ${selectedCourse.subtitle}`
                       : 'Not selected'}
                   </strong>
 
@@ -401,7 +401,7 @@ export default function Admission() {
 
 
           {/* =================================================
-              RIGHT — ENQUIRY FORM
+              RIGHT  ENQUIRY FORM
           ================================================= */}
 
           <aside className="admission-form-card">
@@ -480,7 +480,7 @@ export default function Admission() {
                         key={item.id}
                         value={item.id}
                       >
-                        {item.title} — {item.subtitle}
+                        {item.title}  {item.subtitle}
                       </option>
 
                     ))}

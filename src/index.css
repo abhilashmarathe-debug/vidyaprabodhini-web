@@ -873,6 +873,479 @@ a {
   }
 }
 
+/* =========================================================
+   FOOTER ADMISSION ENQUIRY MODAL
+========================================================= */
+
+.admission-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(10, 10, 10, 0.72);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  animation: admissionModalOverlayIn 0.2s ease-out;
+}
+
+
+@keyframes admissionModalOverlayIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.admission-modal {
+  width: min(620px, 100%);
+
+  max-height: calc(100vh - 48px);
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 34px;
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.28);
+
+  animation: admissionModalIn 0.25s ease-out;
+}
+
+
+@keyframes admissionModalIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.admission-modal-header {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 28px;
+}
+
+
+.admission-modal-header h2 {
+  margin: 9px 0 0;
+
+  font-size: clamp(32px, 5vw, 46px);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.04em;
+
+  color: #111111;
+}
+
+
+.admission-modal-close {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #dedede;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.admission-modal-close:hover {
+  background: #f4f4f4;
+
+  border-color: #cfcfcf;
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.footer-admission-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 17px;
+}
+
+
+.footer-form-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+}
+
+
+.footer-form-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.footer-form-field label {
+  font-size: 12px;
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: #555555;
+}
+
+
+.footer-form-field input,
+.footer-form-field select {
+  width: 100%;
+
+  min-height: 48px;
+
+  box-sizing: border-box;
+
+  padding: 12px 14px;
+
+  border: 1px solid #dcdcdc;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.footer-form-field input::placeholder {
+  color: #999999;
+}
+
+
+.footer-form-field input:focus,
+.footer-form-field select:focus {
+  border-color: #111111;
+
+  box-shadow:
+    0 0 0 3px rgba(0, 0, 0, 0.055);
+}
+
+
+.footer-form-field select {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   SELECTION WARNING
+========================================================= */
+
+.form-selection-warning,
+.form-selection-ready {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-height: 42px;
+
+  box-sizing: border-box;
+
+  padding: 10px 12px;
+
+  border-radius: 7px;
+
+  font-size: 12px;
+}
+
+
+.form-selection-warning {
+  background: #faf7ef;
+
+  border: 1px solid #eee4cc;
+
+  color: #765d2a;
+}
+
+
+.form-selection-warning > span {
+  width: 20px;
+  height: 20px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #765d2a;
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.form-selection-warning p {
+  margin: 0;
+}
+
+
+.form-selection-ready {
+  background: #f1f7f3;
+
+  border: 1px solid #d7e9dc;
+
+  color: #356143;
+}
+
+
+.form-selection-ready svg {
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.footer-admission-submit {
+  width: 100%;
+
+  min-height: 50px;
+
+  justify-content: center;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+
+.footer-admission-submit:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   DISCLAIMER
+========================================================= */
+
+.footer-admission-form .form-disclaimer {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+
+  color: #888888;
+}
+
+
+/* =========================================================
+   SUCCESS STATE
+========================================================= */
+
+.admission-success {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 18px 10px 8px;
+}
+
+
+.admission-success-icon {
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 50%;
+
+  background: #eef7f1;
+
+  color: #3c754e;
+}
+
+
+.admission-success h3 {
+  margin: 10px 0 8px;
+
+  font-size: 28px;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.02em;
+
+  color: #111111;
+}
+
+
+.admission-success p {
+  max-width: 430px;
+
+  margin: 0 0 24px;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  color: #666666;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .admission-modal-overlay {
+    padding: 12px;
+  }
+
+
+  .admission-modal {
+    width: 100%;
+
+    max-height: calc(100vh - 24px);
+
+    padding: 24px 20px;
+
+    border-radius: 14px;
+  }
+
+
+  .admission-modal-header {
+    margin-bottom: 24px;
+  }
+
+
+  .admission-modal-header h2 {
+    font-size: 32px;
+  }
+
+
+  .admission-modal-close {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  .footer-form-row {
+    grid-template-columns: 1fr;
+
+    gap: 17px;
+  }
+
+
+  .footer-admission-form {
+    gap: 16px;
+  }
+
+
+  .footer-form-field input,
+  .footer-form-field select {
+    min-height: 46px;
+  }
+
+}
+
 /* =====================================
    RESPONSIVE
 ===================================== */
@@ -1024,7 +1497,7 @@ a {
 }
 
 /* =========================================================
-   HOME HERO — SAAS STYLE
+   HOME HERO  SAAS STYLE
 ========================================================= */
 
 .home-hero {
@@ -9749,7 +10222,7 @@ a {
 }
 
 /* =====================================================
-   IMPORTANT ANNOUNCEMENT — BRAND COLORS
+   IMPORTANT ANNOUNCEMENT  BRAND COLORS
 ===================================================== */
 
 .announcement-bar {
@@ -9769,7 +10242,7 @@ a {
 }
 
 /* =====================================================
-   NEW BADGE — RED
+   NEW BADGE  RED
 ===================================================== */
 
 .announcement-badge {
@@ -12986,7 +13459,7 @@ a {
 }
 
 /* =========================================================
-   RESPONSIVE — TABLET
+   RESPONSIVE  TABLET
 ========================================================= */
 
 @media (max-width: 1100px) {
@@ -13013,7 +13486,7 @@ a {
 }
 
 /* =========================================================
-   RESPONSIVE — MOBILE
+   RESPONSIVE  MOBILE
 ========================================================= */
 
 @media (max-width: 768px) {

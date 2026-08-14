@@ -116,13 +116,12 @@ export default function About() {
       ===================================================== */}
 
       <section className="about-hero">
-
         <div className="container about-hero-grid">
 
           <div className="about-hero-heading">
 
             <div className="eyebrow">
-              <span className="" />
+              <span />
               VIDYAPROBODHINI ACADEMY
             </div>
 
@@ -144,212 +143,20 @@ export default function About() {
             </p>
 
             <div className="about-hero-meta">
-
               <span>ESTABLISHED</span>
-
               <strong>2010</strong>
-
               <span>·</span>
-
               <span>KOLHAPUR</span>
-
             </div>
 
           </div>
 
         </div>
-
       </section>
 
 
       {/* =====================================================
-          STORY
-      ===================================================== */}
-
-      <section className="about-story">
-
-        <div className="container">
-
-          <div className="about-story-header">
-
-            <div>
-
-              <span className="section-label">
-                OUR STORY
-              </span>
-
-              <h2>
-                An initiative built
-                <br />
-                around opportunity.
-              </h2>
-
-            </div>
-
-            <div className="about-story-intro">
-
-              <p>
-                Since 2010, Vidya Prabodhini has worked
-                towards making quality competitive
-                examination guidance more accessible
-                to aspiring students.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          {/* STORY CONTENT */}
-
-          <div className="about-story-layout">
-
-            <aside className="about-story-sidebar">
-
-              <div className="about-story-index">
-
-                <span>01</span>
-
-                <span>
-                  INSTITUTION
-                </span>
-
-              </div>
-
-              <div className="about-story-line" />
-
-              <span className="about-story-year">
-                SINCE 2010
-              </span>
-
-            </aside>
-
-
-            <article className="about-story-content">
-
-              {/* STORY TOP */}
-
-              <div className="about-story-top">
-
-                <div className="about-founder">
-
-                  <div className="about-founder-image">
-
-                    <img
-                      src={chandrakantDada}
-                      alt="Hon. Chandrakant Dada Patil"
-                    />
-
-                  </div>
-
-                  <div className="about-founder-caption">
-
-                    <strong>
-                      Hon. Chandrakant Dada Patil
-                    </strong>
-
-                    <span>
-                      Founder initiative
-                    </span>
-
-                  </div>
-
-                </div>
-
-
-                <div className="about-story-heading">
-
-                  <span>
-                    VIDYA PRABODHINI
-                  </span>
-
-                  <h3>
-                    Our journey.
-                  </h3>
-
-                  <p>
-                    A long-term educational initiative
-                    focused on career guidance and
-                    competitive examination preparation.
-                  </p>
-
-                </div>
-
-              </div>
-
-
-              {/* LANGUAGE */}
-
-              <div className="about-language-bar">
-
-                <span>
-                  STORY LANGUAGE
-                </span>
-
-                <div className="language-toggle">
-
-                  <button
-                    type="button"
-                    className={
-                      storyLanguage === 'en'
-                        ? 'active'
-                        : ''
-                    }
-                    onClick={() =>
-                      setStoryLanguage('en')
-                    }
-                  >
-                    English
-                  </button>
-
-                  <button
-                    type="button"
-                    className={
-                      storyLanguage === 'mr'
-                        ? 'active'
-                        : ''
-                    }
-                    onClick={() =>
-                      setStoryLanguage('mr')
-                    }
-                  >
-                    मराठी
-                  </button>
-
-                </div>
-
-              </div>
-
-
-              {/* STORY TEXT */}
-
-              <div className="about-story-text">
-
-                <p className="about-story-lead">
-                  {currentStory[0]}
-                </p>
-
-                {currentStory
-                  .slice(1)
-                  .map((paragraph, index) => (
-                    <p key={index}>
-                      {paragraph}
-                    </p>
-                  ))}
-
-              </div>
-
-            </article>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          APPROACH
+          APPROACH  MOVED ABOVE STORY
       ===================================================== */}
 
       <section className="about-approach">
@@ -419,6 +226,184 @@ export default function About() {
                 </article>
               )
             })}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          STORY  MOVED BELOW APPROACH
+      ===================================================== */}
+
+      <section className="about-story">
+
+        <div className="container">
+
+          <div className="about-story-header">
+
+            <div>
+
+              <span className="section-label">
+                OUR STORY
+              </span>
+
+              <h2>
+                An initiative built
+                <br />
+                around opportunity.
+              </h2>
+
+            </div>
+
+            <div className="about-story-intro">
+
+              <p>
+                Since 2010, Vidya Prabodhini has worked
+                towards making quality competitive
+                examination guidance more accessible
+                to aspiring students.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div className="about-story-layout">
+
+            <aside className="about-story-sidebar">
+
+              <div className="about-story-index">
+
+                <span>01</span>
+
+                <span>
+                  INSTITUTION
+                </span>
+
+              </div>
+
+              <div className="about-story-line" />
+
+              <span className="about-story-year">
+                SINCE 2010
+              </span>
+
+            </aside>
+
+
+            <article className="about-story-content">
+
+              <div className="about-story-top">
+
+                <div className="about-founder">
+
+                  <div className="about-founder-image">
+
+                    <img
+                      src={chandrakantDada}
+                      alt="Hon. Chandrakant Dada Patil"
+                    />
+
+                  </div>
+
+                  <div className="about-founder-caption">
+
+                    <strong>
+                      Hon. Chandrakant Dada Patil
+                    </strong>
+
+                    <span>
+                      Founder initiative
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <div className="about-story-heading">
+
+                  <span>
+                    VIDYA PRABODHINI
+                  </span>
+
+                  <h3>
+                    Our journey.
+                  </h3>
+
+                  <p>
+                    A long-term educational initiative
+                    focused on career guidance and
+                    competitive examination preparation.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div className="about-language-bar">
+
+                <span>
+                  STORY LANGUAGE
+                </span>
+
+                <div className="language-toggle">
+
+                  <button
+                    type="button"
+                    className={
+                      storyLanguage === 'en'
+                        ? 'active'
+                        : ''
+                    }
+                    onClick={() =>
+                      setStoryLanguage('en')
+                    }
+                  >
+                    English
+                  </button>
+
+                  <button
+                    type="button"
+                    className={
+                      storyLanguage === 'mr'
+                        ? 'active'
+                        : ''
+                    }
+                    onClick={() =>
+                      setStoryLanguage('mr')
+                    }
+                  >
+                    मराठी
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <div className="about-story-text">
+
+                <p className="about-story-lead">
+                  {currentStory[0]}
+                </p>
+
+                {currentStory
+                  .slice(1)
+                  .map((paragraph, index) => (
+                    <p key={index}>
+                      {paragraph}
+                    </p>
+                  ))}
+
+              </div>
+
+            </article>
 
           </div>
 
