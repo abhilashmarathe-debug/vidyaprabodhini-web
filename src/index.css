@@ -89,8 +89,9 @@ a {
 ===================================== */
 
 .site-nav {
-  position: relative;
-  z-index: 50;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 
   height: 76px;
 
@@ -99,6 +100,7 @@ a {
   -webkit-backdrop-filter: blur(12px);
 
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
 }
 
 .nav-inner {
@@ -567,11 +569,12 @@ a {
   right: 24px;
   bottom: 24px;
 
-  z-index: 100;
+  /* Layer above sticky navbar (999) */
+  z-index: 1000;
 
-  height: 50px;
+  height: 48px;
 
-  padding: 0 20px;
+  padding: 0 18px;
 
   display: flex;
   align-items: center;
@@ -607,10 +610,15 @@ a {
   right: 24px;
   bottom: 24px;
 
-  z-index: 100;
+  /* Layer above sticky navbar (999) & launcher (1000) */
+  z-index: 1001;
 
-  width: 380px;
-  height: 580px;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+
+  /* Compact height so the header & close button never clip behind navbar */
+  height: 520px;
+  max-height: calc(100vh - 110px);
 
   display: flex;
   flex-direction: column;
@@ -620,14 +628,15 @@ a {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
 
-  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.22);
+  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.25);
   overflow: hidden;
 }
 
 .vidya-header {
-  height: 72px;
+  height: 64px;
+  flex-shrink: 0;
 
-  padding: 0 20px;
+  padding: 0 18px;
 
   display: flex;
   align-items: center;
@@ -641,12 +650,12 @@ a {
 .vidya-identity {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .vidya-icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
 
   display: grid;
   place-items: center;
@@ -660,43 +669,46 @@ a {
 .vidya-identity strong {
   display: block;
 
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
 }
 
 .vidya-identity span {
   display: block;
 
-  margin-top: 2px;
+  margin-top: 1px;
 
   color: #94a3b8;
 
-  font-size: 11px;
+  font-size: 10.5px;
 }
 
 .vidya-close {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
 
   display: grid;
   place-items: center;
 
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.1);
 
   color: white;
-  transition: background 150ms ease;
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease;
 }
 
 .vidya-close:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
 }
 
 .vidya-body {
   flex: 1;
+  min-height: 0;
 
-  padding: 24px 20px;
+  padding: 20px 16px;
 
   overflow-y: auto;
   background: var(--background);
@@ -712,39 +724,39 @@ a {
 }
 
 .vidya-intro h3 {
-  margin-top: 10px;
+  margin-top: 8px;
 
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
 
-  letter-spacing: -0.8px;
+  letter-spacing: -0.6px;
 }
 
 .vidya-intro p {
-  max-width: 310px;
+  max-width: 290px;
 
-  margin-top: 9px;
+  margin-top: 8px;
 
   color: var(--muted);
 
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 12.5px;
+  line-height: 1.55;
 }
 
 .vidya-options {
-  margin-top: 28px;
+  margin-top: 20px;
 
   border-top: 1px solid var(--line);
 }
 
 .vidya-options button {
   width: 100%;
-  min-height: 52px;
+  min-height: 46px;
 
   padding: 0 8px;
 
   display: grid;
-  grid-template-columns: 32px 1fr 18px;
+  grid-template-columns: 28px 1fr 16px;
 
   align-items: center;
 
@@ -757,7 +769,7 @@ a {
 
   text-align: left;
 
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
   transition: background 150ms ease;
 }
@@ -770,7 +782,7 @@ a {
 .vidya-options button span {
   color: var(--subtle);
 
-  font-size: 10px;
+  font-size: 9.5px;
 }
 
 .vidya-options button svg {
@@ -786,9 +798,10 @@ a {
 }
 
 .vidya-input {
-  height: 64px;
+  height: 56px;
+  flex-shrink: 0;
 
-  padding: 10px 14px;
+  padding: 8px 12px;
 
   display: flex;
   gap: 8px;
@@ -802,7 +815,7 @@ a {
 
   min-width: 0;
 
-  padding: 0 14px;
+  padding: 0 12px;
 
   outline: none;
 
@@ -813,7 +826,7 @@ a {
 
   color: var(--ink);
 
-  font-size: 13px;
+  font-size: 12.5px;
   transition: border-color 150ms ease;
 }
 
@@ -823,8 +836,8 @@ a {
 }
 
 .vidya-input button {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
 
   border: 0;
   border-radius: var(--radius-md);
@@ -842,6 +855,25 @@ a {
 }
 
 /* =====================================
+   MOBILE WIDGET OVERRIDES
+===================================== */
+@media (max-width: 600px) {
+  .vidya-widget {
+    right: 12px;
+    bottom: 12px;
+
+    width: calc(100vw - 24px);
+    height: 480px;
+    max-height: calc(100vh - 90px);
+  }
+
+  .vidya-launcher {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+/* =====================================
    RESPONSIVE
 ===================================== */
 
@@ -856,7 +888,7 @@ a {
   }
 
   .desktop-nav.is-open {
-    position: absolute;
+    position: fixed;
 
     top: 76px;
     left: 0;
@@ -873,6 +905,8 @@ a {
     box-shadow: var(--shadow-lg);
 
     border-bottom: 1px solid var(--line);
+    max-height: calc(100vh - 76px);
+    overflow-y: auto;
   }
 
   .desktop-nav.is-open > a {
@@ -1947,7 +1981,7 @@ a {
 .about-story-sidebar {
   position: sticky;
 
-  top: 120px;
+  top: 96px;
 }
 
 .about-story-index {
@@ -3467,7 +3501,7 @@ a {
     min-height: auto;
 
     padding-top: 60px;
-    padding-bottom: 60px;
+    padding-bottom: 65px;
   }
 
   .batches-intro h1 {
@@ -5878,11 +5912,13 @@ a {
 ========================================== */
 
 .site-header {
-  position: relative;
-  z-index: 100;
+  position: sticky;
+  top: 0;
+  z-index: 999;
   width: 100%;
   background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.05);
 }
 
 .navbar {
@@ -6086,7 +6122,7 @@ a {
   }
 
   .desktop-nav.is-open {
-    position: absolute;
+    position: fixed;
 
     top: 82px;
     left: 0;
@@ -6103,6 +6139,8 @@ a {
     border-bottom: 1px solid #e5e7eb;
 
     box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    max-height: calc(100vh - 82px);
+    overflow-y: auto;
   }
 
   .nav-link {
@@ -11569,7 +11607,6 @@ a {
   overflow: hidden;
 }
 
-
 /* =========================================================
    ANNOUNCEMENT BAR
 ========================================================= */
@@ -11684,7 +11721,6 @@ a {
     opacity: 0.35;
   }
 }
-
 
 /* =========================================================
    HERO
@@ -11805,7 +11841,6 @@ a {
   margin-top: 34px;
 }
 
-
 /* =========================================================
    COMMON BUTTONS
 ========================================================= */
@@ -11851,7 +11886,6 @@ a {
 .home-page .button-secondary:hover {
   background: rgba(255, 255, 255, 0.15);
 }
-
 
 /* =========================================================
    SECTION COMMON
@@ -11900,7 +11934,6 @@ a {
   font-size: 15px;
   line-height: 1.8;
 }
-
 
 /* =========================================================
    PROGRAMS
@@ -12011,7 +12044,6 @@ a {
   color: #ffffff;
 }
 
-
 /* =========================================================
    WHY US
 ========================================================= */
@@ -12061,7 +12093,6 @@ a {
   font-size: 17px;
   letter-spacing: -0.02em;
 }
-
 
 /* =========================================================
    APPROACH
@@ -12156,7 +12187,6 @@ a {
   color: #09244a;
   font-size: 13px;
 }
-
 
 /* =========================================================
    YOUTUBE
@@ -12259,7 +12289,6 @@ a {
 .text-link:hover {
   color: #e5232f;
 }
-
 
 /* =========================================================
    TESTIMONIALS
@@ -12446,7 +12475,6 @@ a {
   background: #e5232f;
 }
 
-
 /* =========================================================
    FINAL CTA
 ========================================================= */
@@ -12491,7 +12519,6 @@ a {
   background: transparent;
 }
 
-
 /* =========================================================
    RESPONSIVE
 ========================================================= */
@@ -12518,7 +12545,6 @@ a {
     padding: 45px;
   }
 }
-
 
 @media (max-width: 800px) {
 
@@ -12626,7 +12652,6 @@ a {
     align-items: flex-start;
   }
 }
-
 
 @media (max-width: 560px) {
 
@@ -12738,7 +12763,6 @@ a {
   }
 }
 
-
 /* =========================================================
    ACCESSIBILITY / MOTION
 ========================================================= */
@@ -12832,12 +12856,6 @@ a {
 
   width: 100%;
 
-  /*
-    Important:
-    Do NOT use min-height here.
-    The video should control its own height.
-  */
-
   aspect-ratio: 16 / 9;
 
   min-height: 0;
@@ -12872,7 +12890,6 @@ a {
 
 /* =========================================================
    REMOVE CUSTOM PLAY BADGE
-   YouTube already provides its own play button.
 ========================================================= */
 
 .youtube-play-badge {
@@ -13108,7 +13125,6 @@ a {
   font-size: 9px;
 }
 
-
 /* =====================================
    SELECT FIELD
 ===================================== */
@@ -13190,7 +13206,6 @@ a {
   color: #94a3b8;
 }
 
-
 /* =====================================
    CURRENT SELECTION
 ===================================== */
@@ -13257,7 +13272,6 @@ a {
   font-weight: 700;
 }
 
-
 /* =====================================
    FORM FIELDS
 ===================================== */
@@ -13314,7 +13328,6 @@ a {
   border-color: var(--brand);
 }
 
-
 /* =====================================
    SELECTION WARNING
 ===================================== */
@@ -13365,7 +13378,6 @@ a {
   line-height: 1.5;
 }
 
-
 /* =====================================
    SELECTION READY
 ===================================== */
@@ -13394,7 +13406,6 @@ a {
   flex-shrink: 0;
 }
 
-
 /* =====================================
    SUBMIT
 ===================================== */
@@ -13422,7 +13433,6 @@ a {
   box-shadow: none;
 }
 
-
 /* =====================================
    SELECTION STATUS
 ===================================== */
@@ -13430,7 +13440,6 @@ a {
 .selection-step.ready {
   color: #16a34a;
 }
-
 
 /* =====================================
    MOBILE
@@ -13472,7 +13481,6 @@ a {
   gap: 20px;
 }
 
-
 /* =====================================
    FLIP CARD
 ===================================== */
@@ -13497,7 +13505,6 @@ a {
   transform: rotateY(180deg);
 }
 
-
 /* =====================================
    FRONT + BACK
 ===================================== */
@@ -13519,7 +13526,6 @@ a {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
-
 
 /* =====================================
    FRONT
@@ -13581,7 +13587,6 @@ a {
   text-transform: uppercase;
 }
 
-
 /* =====================================
    BACK
 ===================================== */
@@ -13640,7 +13645,6 @@ a {
 
   line-height: 1.7;
 }
-
 
 /* =====================================
    WHY US RESPONSIVE
