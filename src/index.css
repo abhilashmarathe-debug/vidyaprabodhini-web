@@ -1346,6 +1346,96 @@ a {
 
 }
 
+/* =========================================================
+   SCROLL TO TOP
+========================================================= */
+
+.scroll-to-top {
+  position: fixed;
+
+  left: 24px;
+  bottom: 24px;
+
+  z-index: 9000;
+
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  color: #111;
+
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(12px);
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.scroll-to-top-visible {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+
+.scroll-to-top:hover {
+  background: #111;
+
+  color: #fff;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+.scroll-to-top:active {
+  transform: translateY(0) scale(0.94);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .scroll-to-top {
+    left: 16px;
+    bottom: 18px;
+
+    width: 42px;
+    height: 42px;
+  }
+
+}
+
 /* =====================================
    RESPONSIVE
 ===================================== */

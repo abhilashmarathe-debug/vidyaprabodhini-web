@@ -1,16 +1,43 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { ArrowUp } from 'lucide-react'
 
 export default function ScrollToTop() {
-  const { pathname } = useLocation();
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY > 400)
+    }
+
+    window.addEventListener('scroll', handleScroll, {
+      passive: true,
+    })
+
+    handleScroll()
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      left: 0,
-      behavior: "instant" // Use "instant" to prevent disorienting smooth scrolling across pages
-    });
-  }, [pathname]);
+      behavior: 'smooth',
+    })
+  }
 
-  return null;
+  return (
+    <button
+      type="button"
+      className={`scroll-to-top ${
+        visible ? 'scroll-to-top-visible' : ''
+      }`}
+      onClick={scrollToTop}
+      aria-label="Scroll to top"
+      title="Back to top"
+    >
+      <ArrowUp size={18} strokeWidth={1.8} />
+    </button>
+  )
 }
