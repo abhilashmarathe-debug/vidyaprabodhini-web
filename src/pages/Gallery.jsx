@@ -1,75 +1,84 @@
 import { ArrowUpRight, X } from 'lucide-react'
 import { useState } from 'react'
 
+import mg3307 from '../assets/gallery/_MG_3307.jpg'
+import mg3366 from '../assets/gallery/_MG_3366.jpg'
+import mg3379 from '../assets/gallery/_MG_3379.jpg'
+import mg3381 from '../assets/gallery/_MG_3381.jpg'
+import mg3412 from '../assets/gallery/_MG_3412.jpg'
+import img6178 from '../assets/gallery/20170609230050_IMG_6178.jpg'
+import img6189 from '../assets/gallery/20170609231218_IMG_6189.jpg'
+import img6245 from '../assets/gallery/20170610011803_IMG_6245.jpg'
+import dsc0001 from '../assets/gallery/DSC_0001.jpg'
+import dsc0468 from '../assets/gallery/DSC_0468.jpg'
+import dsc0473 from '../assets/gallery/DSC_0473.jpg'
+import img1088 from '../assets/gallery/IMG_1088.jpg'
+import img1131 from '../assets/gallery/IMG_1131.jpg'
+
 const galleryImages = [
   {
     id: 1,
-    image: 'src/assets/gallery/_MG_3307.jpg',
+    image: mg3307,
     title: 'Vidyaprabodhini',
   },
   {
     id: 2,
-    image: 'src/assets/gallery/_MG_3366.jpg',
+    image: mg3366,
     title: 'Vidyaprabodhini',
   },
   {
     id: 3,
-    image: 'src/assets/gallery/_MG_3379.jpg',
+    image: mg3379,
     title: 'Vidyaprabodhini',
   },
   {
     id: 4,
-    image: 'src/assets/gallery/_MG_3381.jpg',
+    image: mg3381,
     title: 'Vidyaprabodhini',
   },
   {
     id: 5,
-    image: 'src/assets/gallery/_MG_3412.jpg',
+    image: mg3412,
     title: 'Vidyaprabodhini',
   },
   {
     id: 6,
-    image: 'src/assets/gallery/20170609230050_IMG_6178.jpg',
+    image: img6178,
     title: 'Vidyaprabodhini',
   },
   {
     id: 7,
-    image: 'src/assets/gallery/20170609231218_IMG_6189.jpg',
+    image: img6189,
     title: 'Vidyaprabodhini',
   },
   {
     id: 8,
-    image: 'src/assets/gallery/20170610011803_IMG_6245.jpg',
+    image: img6245,
     title: 'Vidyaprabodhini',
   },
   {
     id: 9,
-    image: 'src/assets/gallery/DSC_0001.jpg',
+    image: dsc0001,
     title: 'Vidyaprabodhini',
   },
   {
     id: 10,
-    image: 'src/assets/gallery/DSC_0468.jpg',
+    image: dsc0468,
     title: 'Vidyaprabodhini',
   },
   {
     id: 11,
-    image: 'src/assets/gallery/DSC_0473.jpg',
+    image: dsc0473,
     title: 'Vidyaprabodhini',
   },
   {
     id: 12,
-    image: 'src/assets/gallery/IMG_1088.jpg',
+    image: img1088,
     title: 'Vidyaprabodhini',
   },
   {
     id: 13,
-    image: 'src/assets/gallery/IMG_1131.jpg',
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 14,
-    image: 'src/assets/gallery/IMG_3302 (1).jpg',
+    image: img1131,
     title: 'Vidyaprabodhini',
   },
 ]
@@ -89,7 +98,7 @@ export default function Gallery() {
           <div>
 
             <div className="eyebrow">
-              <span className="" />
+              <span />
               Photo Gallery
             </div>
 
@@ -278,4 +287,3 @@ export default function Gallery() {
     </main>
   )
 }
-
