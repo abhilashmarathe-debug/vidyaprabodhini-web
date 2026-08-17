@@ -10,6 +10,7 @@ import {
   Smartphone,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../components/LanguageContext.jsx'
 
 /* =========================================================
    APP
@@ -19,166 +20,355 @@ const APP_URL =
   'https://play.google.com/store/apps/details?id=co.alexis.xgvti'
 
 /* =========================================================
-   BATCHES
-========================================================= */
-
-const batches = [
-  {
-    id: 1,
-    course: 'UPSC',
-    title: 'UPSC Civil Services',
-    mode: 'Offline',
-    location: 'Kolhapur',
-    schedule: 'Weekday & Weekend',
-    status: 'Admissions open',
-  },
-  {
-    id: 2,
-    course: 'UPSC',
-    title: 'UPSC Civil Services',
-    mode: 'Online',
-    location: 'Online',
-    schedule: 'Flexible schedule',
-    status: 'Admissions open',
-  },
-  {
-    id: 3,
-    course: 'MPSC',
-    title: 'MPSC Rajyaseva',
-    mode: 'Offline',
-    location: 'Kolhapur',
-    schedule: 'Weekday & Weekend',
-    status: 'Admissions open',
-  },
-  {
-    id: 4,
-    course: 'MPSC',
-    title: 'MPSC Rajyaseva',
-    mode: 'Online',
-    location: 'Online',
-    schedule: 'Flexible schedule',
-    status: 'Admissions open',
-  },
-  {
-    id: 5,
-    course: 'Banking',
-    title: 'Banking Examination',
-    mode: 'Offline',
-    location: 'Kolhapur',
-    schedule: 'Weekday & Weekend',
-    status: 'Admissions open',
-  },
-  {
-    id: 6,
-    course: 'Banking',
-    title: 'Banking Examination',
-    mode: 'Online',
-    location: 'Online',
-    schedule: 'Flexible schedule',
-    status: 'Admissions open',
-  },
-  {
-    id: 7,
-    course: 'Saralseva',
-    title: 'Saralseva Preparation',
-    mode: 'Offline',
-    location: 'Kolhapur',
-    schedule: 'Weekday & Weekend',
-    status: 'Admissions open',
-  },
-  {
-    id: 8,
-    course: 'Saralseva',
-    title: 'Saralseva Preparation',
-    mode: 'Online',
-    location: 'Online',
-    schedule: 'Flexible schedule',
-    status: 'Admissions open',
-  },
-]
-
-const courses = [
-  'All',
-  'UPSC',
-  'MPSC',
-  'Banking',
-  'Saralseva',
-]
-
-const modes = [
-  'All',
-  'Offline',
-  'Online',
-]
-
-/* =========================================================
-   TEST SERIES PROCESS
-========================================================= */
-
-const steps = [
-  {
-    number: '01',
-    icon: Download,
-    title: 'Download the app',
-    text:
-      'Download the official Vidyaprabodhini mobile application and sign in to access the test section.',
-  },
-  {
-    number: '02',
-    icon: Smartphone,
-    title: 'Choose your test',
-    text:
-      'For free tests, open the Free Test section directly from the home screen of the application.',
-  },
-  {
-    number: '03',
-    icon: KeyRound,
-    title: 'Enter your batch code',
-    text:
-      'For exclusive tests, contact your counsellor to receive the batch code and enter it through the Batches section.',
-  },
-  {
-    number: '04',
-    icon: CheckCircle2,
-    title: 'Start your test',
-    text:
-      'Select the available test and begin your examination-focused practice.',
-  },
-]
-
-/* =========================================================
-   COUNSELLORS
-========================================================= */
-
-const counsellors = [
-  {
-    exam: 'MPSC Test',
-    name: 'Amit Sir',
-    phone: '9545387161',
-  },
-  {
-    exam: 'Banking Test',
-    name: 'Vrunda Mam',
-    phone: '8805209898',
-  },
-]
-
-/* =========================================================
    COACHING
 ========================================================= */
 
 export default function Coaching() {
+  const { language } = useLanguage()
+  const isMarathi = language === 'mr'
+
   const [courseFilter, setCourseFilter] = useState('All')
   const [modeFilter, setModeFilter] = useState('All')
 
+  /* =========================================================
+     TRANSLATIONS
+  ========================================================= */
+
+  const text = isMarathi
+    ? {
+        hero: {
+          eyebrow: 'विद्याप्रबोधिनी कोचिंग',
+          title1: 'तयारी.',
+          title2: 'सराव.',
+          title3: 'यश.',
+          description:
+            'UPSC, MPSC, Banking आणि Saralseva परीक्षांची परिपूर्ण तयारी — संरचित कोचिंग, लवचिक अध्ययन पद्धती आणि केंद्रित सराव परीक्षांचा संगम.',
+        },
+        batches: {
+          label: 'कोचिंग बॅचेस',
+          title1: 'तुमची योग्य',
+          title2: 'बॅच निवडा.',
+          description:
+            'UPSC, MPSC, Banking आणि Saralseva परीक्षांसाठी ऑफलाइन आणि ऑनलाइन उपलब्ध बॅचेस पहा.',
+          examFilter: 'परीक्षा',
+          modeFilter: 'पद्धत',
+          all: 'सर्व',
+          offline: 'ऑफलाइन',
+          online: 'ऑनलाइन',
+          availableSingle: 'बॅच उपलब्ध',
+          availableMulti: 'बॅचेस उपलब्ध',
+          modeLabel: 'पद्धत',
+          enquire: 'चौकशी करा',
+          empty: 'कोणतीही बॅच सापडली नाही. कृपया तुमचे फिल्टर्स बदलून पहा.',
+        },
+        testSeries: {
+          label: 'टेस्ट सिरीज',
+          title1: 'सराव.',
+          title2: 'विश्लेषण.',
+          title3: 'प्रगती.',
+          description:
+            'विद्याप्रबोधिनीच्या अधिकृत मोबाइल ॲप्लिकेशनद्वारे नियमित टेस्ट सिरीजचा सराव करा.',
+          downloadButton: 'अँड्रॉइड ॲप डाउनलोड करा',
+          appNote: 'Google Play वर उपलब्ध',
+        },
+        howItWorks: {
+          label: 'प्रक्रिया कशी चालते?',
+          title1: 'चार सोप्या टप्प्यांत',
+          title2: 'सराव सुरू करा.',
+          description:
+            'विद्याप्रबोधिनी मोबाइल ॲप्लिकेशनद्वारे टेस्ट सिरीज उपलब्ध केल्या जातात.',
+          steps: [
+            {
+              number: '01',
+              title: 'ॲप डाउनलोड करा',
+              text: 'विद्याप्रबोधिनीचे अधिकृत मोबाइल ॲप डाउनलोड करा आणि टेस्ट सेक्शनसाठी साइन इन करा.',
+            },
+            {
+              number: '02',
+              title: 'तुमची टेस्ट निवडा',
+              text: 'मोफत चाचण्यांसाठी ॲप्लिकेशनच्या मुख्य पृष्ठावरील मोफत टेस्ट सेक्शन उघडा.',
+            },
+            {
+              number: '03',
+              title: 'बॅच कोड प्रविष्ट करा',
+              text: 'खास टेस्टसाठी तुमच्या समुपदेशकांशी संपर्क साधून बॅच कोड मिळवा आणि तो बॅचेस विभागात टाका.',
+            },
+            {
+              number: '04',
+              title: 'सराव सुरू करा',
+              text: 'उपलब्ध चाचणी निवडा आणि परीक्षेच्या दृष्टिकोनातून नियमित सराव सुरू करा.',
+            },
+          ],
+        },
+        access: {
+          free: {
+            label: 'मोफत टेस्ट',
+            title1: 'बॅच कोडशिवाय',
+            title2: 'सराव सुरू करा.',
+            description:
+              'विद्याप्रबोधिनी ॲप्लिकेशनच्या होम मेनूमधून **Free Test** सेक्शन उघडा आणि त्वरित सराव सुरू करा.',
+            tag: 'ॲपद्वारे थेट उपलब्ध',
+          },
+          exclusive: {
+            label: 'खास टेस्ट सिरीज',
+            title1: 'तुमच्याकडे बॅच कोड',
+            title2: 'आहे का?',
+            description:
+              'तुमचा बॅच कोड मिळवण्यासाठी समुपदेशकांशी संपर्क साधा. ॲपमध्ये **Batches** उघडा आणि विशेष टेस्टसाठी कोड टाका.',
+            tag: 'बॅच कोड आवश्यक',
+          },
+        },
+        support: {
+          label: 'मदत हवी आहे?',
+          title1: 'समुपदेशकांशी',
+          title2: 'संपर्क साधा.',
+          description:
+            'बॅच कोड मिळवण्यासाठी किंवा चाचणी सुरू करताना काही अडचण असल्यास संबंधित समुपदेशकांशी संपर्क साधा.',
+          call: 'कॉल करा',
+          counsellors: [
+            {
+              exam: 'MPSC टेस्ट',
+              name: 'अमित सर',
+              phone: '9545387161',
+            },
+            {
+              exam: 'Banking टेस्ट',
+              name: 'वृंदा मॅम',
+              phone: '8805209898',
+            },
+          ],
+        },
+        appCta: {
+          label: 'विद्याप्रबोधिनी ॲप',
+          title1: 'तुमची तयारी,',
+          title2: 'तुम्ही असाल तिथे.',
+          description:
+            'टेस्ट सिरीजमध्ये सहभागी व्हा आणि वर्गाबाहेरही सातत्यपूर्ण सराव सुरू ठेवा.',
+          download: 'अँड्रॉइड ॲप डाउनलोड करा',
+        },
+      }
+    : {
+        hero: {
+          eyebrow: 'VIDYAPROBODHINI COACHING',
+          title1: 'Prepare.',
+          title2: 'Practice.',
+          title3: 'Perform.',
+          description:
+            'Complete preparation for UPSC, MPSC, Banking and Saralseva combining structured coaching, flexible learning modes and focused test practice.',
+        },
+        batches: {
+          label: 'COACHING BATCHES',
+          title1: 'Find your',
+          title2: 'batch.',
+          description:
+            'Explore preparation batches for UPSC, MPSC, Banking and Saralseva across offline and online learning modes.',
+          examFilter: 'EXAMINATION',
+          modeFilter: 'MODE',
+          all: 'All',
+          offline: 'Offline',
+          online: 'Online',
+          availableSingle: 'Batch available',
+          availableMulti: 'Batches available',
+          modeLabel: 'MODE',
+          enquire: 'Enquire',
+          empty: 'No batches found. Try changing your filters.',
+        },
+        testSeries: {
+          label: 'TEST SERIES',
+          title1: 'Practice.',
+          title2: 'Analyse.',
+          title3: 'Improve.',
+          description:
+            "Access Vidyaprabodhini's test series through the official mobile application.",
+          downloadButton: 'Download Android App',
+          appNote: 'Available on Google Play',
+        },
+        howItWorks: {
+          label: 'HOW IT WORKS',
+          title1: 'Start testing',
+          title2: 'in four steps.',
+          description:
+            'Test series are accessed through the Vidyaprabodhini mobile application.',
+          steps: [
+            {
+              number: '01',
+              title: 'Download the app',
+              text: 'Download the official Vidyaprabodhini mobile application and sign in to access the test section.',
+            },
+            {
+              number: '02',
+              title: 'Choose your test',
+              text: 'For free tests, open the Free Test section directly from the home screen of the application.',
+            },
+            {
+              number: '03',
+              title: 'Enter your batch code',
+              text: 'For exclusive tests, contact your counsellor to receive the batch code and enter it through the Batches section.',
+            },
+            {
+              number: '04',
+              title: 'Start your test',
+              text: 'Select the available test and begin your examination-focused practice.',
+            },
+          ],
+        },
+        access: {
+          free: {
+            label: 'FREE TEST',
+            title1: 'Start without',
+            title2: 'a batch code.',
+            description:
+              'Open the **Free Test** section from the home menu of the Vidyaprabodhini application and start practicing.',
+            tag: 'Available directly through the app',
+          },
+          exclusive: {
+            label: 'EXCLUSIVE TEST',
+            title1: 'Have a batch',
+            title2: 'code?',
+            description:
+              'Contact your counsellor to receive your batch code. Open **Batches** in the application and enter the code to access your exclusive test.',
+            tag: 'Batch code required',
+          },
+        },
+        support: {
+          label: 'NEED HELP?',
+          title1: 'Talk to a',
+          title2: 'counsellor.',
+          description:
+            'If you need a batch code or assistance accessing a test, contact the relevant counsellor.',
+          call: 'Call',
+          counsellors: [
+            {
+              exam: 'MPSC Test',
+              name: 'Amit Sir',
+              phone: '9545387161',
+            },
+            {
+              exam: 'Banking Test',
+              name: 'Vrunda Mam',
+              phone: '8805209898',
+            },
+          ],
+        },
+        appCta: {
+          label: 'VIDYAPROBODHINI APP',
+          title1: 'Your preparation,',
+          title2: 'wherever you are.',
+          description:
+            'Access your test series and continue practicing beyond the classroom.',
+          download: 'Download Android App',
+        },
+      }
+
+  /* =========================================================
+     BATCHES DATA
+  ========================================================= */
+
+  const batches = [
+    {
+      id: 1,
+      course: 'UPSC',
+      title: isMarathi ? 'UPSC नागरी सेवा' : 'UPSC Civil Services',
+      mode: 'Offline',
+      displayMode: isMarathi ? 'ऑफलाइन' : 'Offline',
+      location: isMarathi ? 'कोल्हापूर' : 'Kolhapur',
+      schedule: isMarathi ? 'सोमवार ते शनिवार' : 'Weekday & Weekend',
+      status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
+    },
+    {
+      id: 2,
+      course: 'UPSC',
+      title: isMarathi ? 'UPSC नागरी सेवा' : 'UPSC Civil Services',
+      mode: 'Online',
+      displayMode: isMarathi ? 'ऑनलाइन' : 'Online',
+      location: isMarathi ? 'ऑनलाइन' : 'Online',
+      schedule: isMarathi ? 'लवचिक वेळ' : 'Flexible schedule',
+      status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
+    },
+    {
+      id: 3,
+      course: 'MPSC',
+      title: isMarathi ? 'MPSC राज्यसेवा' : 'MPSC Rajyaseva',
+      mode: 'Offline',
+      displayMode: isMarathi ? 'ऑफलाइन' : 'Offline',
+      location: isMarathi ? 'कोल्हापूर' : 'Kolhapur',
+      schedule: isMarathi ? 'सोमवार ते शनिवार' : 'Weekday & Weekend',
+      status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
+    },
+    {
+      id: 4,
+      course: 'MPSC',
+      title: isMarathi ? 'MPSC राज्यसेवा' : 'MPSC Rajyaseva',
+      mode: 'Online',
+      displayMode: isMarathi ? 'ऑनलाइन' : 'Online',
+      location: isMarathi ? 'ऑनलाइन' : 'Online',
+      schedule: isMarathi ? 'लवचिक वेळ' : 'Flexible schedule',
+      status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
+    },
+    {
+      id: 5,
+      course: 'Banking',
+      title: isMarathi ? 'बँकिंग परीक्षा' : 'Banking Examination',
+      mode: 'Offline',
+      displayMode: isMarathi ? 'ऑफलाइन' : 'Offline',
+      location: isMarathi ? 'कोल्हापूर' : 'Kolhapur',
+      schedule: isMarathi ? 'सोमवार ते शनिवार' : 'Weekday & Weekend',
+      status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
+    },
+    {
+      id: 6,
+      course: 'Banking',
+      title: isMarathi ? 'बँकिंग परीक्षा' : 'Banking Examination',
+      mode: 'Online',
+      displayMode: isMarathi ? 'ऑनलाइन' : 'Online',
+      location: isMarathi ? 'ऑनलाइन' : 'Online',
+      schedule: isMarathi ? 'लवचिक वेळ' : 'Flexible schedule',
+      status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
+    },
+    {
+      id: 7,
+      course: 'Saralseva',
+      title: isMarathi ? 'सरळसेवा भरती तयारी' : 'Saralseva Preparation',
+      mode: 'Offline',
+      displayMode: isMarathi ? 'ऑफलाइन' : 'Offline',
+      location: isMarathi ? 'कोल्हापूर' : 'Kolhapur',
+      schedule: isMarathi ? 'सोमवार ते शनिवार' : 'Weekday & Weekend',
+      status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
+    },
+    {
+      id: 8,
+      course: 'Saralseva',
+      title: isMarathi ? 'सरळसेवा भरती तयारी' : 'Saralseva Preparation',
+      mode: 'Online',
+      displayMode: isMarathi ? 'ऑनलाइन' : 'Online',
+      location: isMarathi ? 'ऑनलाइन' : 'Online',
+      schedule: isMarathi ? 'लवचिक वेळ' : 'Flexible schedule',
+      status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
+    },
+  ]
+
+  const courses = [
+    { key: 'All', label: text.batches.all },
+    { key: 'UPSC', label: 'UPSC' },
+    { key: 'MPSC', label: 'MPSC' },
+    { key: 'Banking', label: isMarathi ? 'Banking' : 'Banking' },
+    { key: 'Saralseva', label: isMarathi ? 'Saralseva' : 'Saralseva' },
+  ]
+
+  const modes = [
+    { key: 'All', label: text.batches.all },
+    { key: 'Offline', label: text.batches.offline },
+    { key: 'Online', label: text.batches.online },
+  ]
+
+  const stepIcons = [Download, Smartphone, KeyRound, CheckCircle2]
+
   const filteredBatches = batches.filter((batch) => {
     const courseMatch =
-      courseFilter === 'All' ||
-      batch.course === courseFilter
+      courseFilter === 'All' || batch.course === courseFilter
 
     const modeMatch =
-      modeFilter === 'All' ||
-      batch.mode === modeFilter
+      modeFilter === 'All' || batch.mode === modeFilter
 
     return courseMatch && modeMatch
   })
@@ -198,15 +388,15 @@ export default function Coaching() {
 
             <div className="eyebrow">
               <span className="" />
-              VIDYAPROBODHINI COACHING
+              {text.hero.eyebrow}
             </div>
 
             <h1>
-              Prepare.
+              {text.hero.title1}
               <br />
-              Practice.
+              {text.hero.title2}
               <br />
-              Perform.
+              {text.hero.title3}
             </h1>
 
           </div>
@@ -214,22 +404,14 @@ export default function Coaching() {
           <div className="coaching-hero-copy">
 
             <p>
-              Complete preparation for UPSC, MPSC,
-              Banking and Saralseva  combining
-              structured coaching, flexible learning
-              modes and focused test practice.
+              {text.hero.description}
             </p>
-
-          
 
           </div>
 
         </div>
 
       </section>
-
-
-
 
       {/* =====================================================
           BATCHES
@@ -247,25 +429,22 @@ export default function Coaching() {
             <div>
 
               <span className="section-label">
-                COACHING BATCHES
+                {text.batches.label}
               </span>
 
               <h2>
-                Find your
+                {text.batches.title1}
                 <br />
-                batch.
+                {text.batches.title2}
               </h2>
 
             </div>
 
             <p>
-              Explore preparation batches for UPSC,
-              MPSC, Banking and Saralseva across
-              offline and online learning modes.
+              {text.batches.description}
             </p>
 
           </div>
-
 
           {/* FILTERS */}
 
@@ -274,7 +453,7 @@ export default function Coaching() {
             <div className="batch-filter-group">
 
               <span className="filter-label">
-                EXAMINATION
+                {text.batches.examFilter}
               </span>
 
               <div className="filter-buttons">
@@ -282,18 +461,18 @@ export default function Coaching() {
                 {courses.map((course) => (
 
                   <button
-                    key={course}
+                    key={course.key}
                     type="button"
                     className={
-                      courseFilter === course
+                      courseFilter === course.key
                         ? 'active'
                         : ''
                     }
                     onClick={() =>
-                      setCourseFilter(course)
+                      setCourseFilter(course.key)
                     }
                   >
-                    {course}
+                    {course.label}
                   </button>
 
                 ))}
@@ -302,11 +481,10 @@ export default function Coaching() {
 
             </div>
 
-
             <div className="batch-filter-group">
 
               <span className="filter-label">
-                MODE
+                {text.batches.modeFilter}
               </span>
 
               <div className="filter-buttons">
@@ -314,18 +492,18 @@ export default function Coaching() {
                 {modes.map((mode) => (
 
                   <button
-                    key={mode}
+                    key={mode.key}
                     type="button"
                     className={
-                      modeFilter === mode
+                      modeFilter === mode.key
                         ? 'active'
                         : ''
                     }
                     onClick={() =>
-                      setModeFilter(mode)
+                      setModeFilter(mode.key)
                     }
                   >
-                    {mode}
+                    {mode.label}
                   </button>
 
                 ))}
@@ -335,7 +513,6 @@ export default function Coaching() {
             </div>
 
           </div>
-
 
           {/* RESULT COUNT */}
 
@@ -349,12 +526,11 @@ export default function Coaching() {
 
             <span>
               {filteredBatches.length === 1
-                ? 'Batch available'
-                : 'Batches available'}
+                ? text.batches.availableSingle
+                : text.batches.availableMulti}
             </span>
 
           </div>
-
 
           {/* BATCH LIST */}
 
@@ -370,7 +546,6 @@ export default function Coaching() {
                 <div className="batch-row-number">
                   {String(batch.id).padStart(2, '0')}
                 </div>
-
 
                 <div className="batch-main">
 
@@ -405,19 +580,17 @@ export default function Coaching() {
 
                 </div>
 
-
                 <div className="batch-mode">
 
                   <span className="batch-mode-label">
-                    MODE
+                    {text.batches.modeLabel}
                   </span>
 
                   <strong>
-                    {batch.mode}
+                    {batch.displayMode}
                   </strong>
 
                 </div>
-
 
                 <div className="batch-action">
 
@@ -429,7 +602,7 @@ export default function Coaching() {
                     to="/admission"
                     className="batch-enquire"
                   >
-                    Enquire
+                    {text.batches.enquire}
                     <ArrowUpRight size={15} />
                   </Link>
 
@@ -441,13 +614,12 @@ export default function Coaching() {
 
           </div>
 
-
           {/* EMPTY STATE */}
 
           {filteredBatches.length === 0 && (
 
             <div className="batch-empty">
-              No batches found. Try changing your filters.
+              {text.batches.empty}
             </div>
 
           )}
@@ -455,7 +627,6 @@ export default function Coaching() {
         </div>
 
       </section>
-
 
       {/* =====================================================
           TEST SERIES
@@ -473,15 +644,15 @@ export default function Coaching() {
             <div>
 
               <span className="section-label">
-                TEST SERIES
+                {text.testSeries.label}
               </span>
 
               <h2>
-                Practice.
+                {text.testSeries.title1}
                 <br />
-                Analyse.
+                {text.testSeries.title2}
                 <br />
-                Improve.
+                {text.testSeries.title3}
               </h2>
 
             </div>
@@ -489,8 +660,7 @@ export default function Coaching() {
             <div className="test-series-intro">
 
               <p>
-                Access Vidyaprabodhini's test series
-                through the official mobile application.
+                {text.testSeries.description}
               </p>
 
               <a
@@ -499,18 +669,17 @@ export default function Coaching() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Download Android App
+                {text.testSeries.downloadButton}
                 <ArrowUpRight size={16} />
               </a>
 
               <span className="app-note">
-                Available on Google Play
+                {text.testSeries.appNote}
               </span>
 
             </div>
 
           </div>
-
 
           {/* HOW IT WORKS */}
 
@@ -519,30 +688,28 @@ export default function Coaching() {
             <div>
 
               <span className="section-label">
-                HOW IT WORKS
+                {text.howItWorks.label}
               </span>
 
               <h2>
-                Start testing
+                {text.howItWorks.title1}
                 <br />
-                in four steps.
+                {text.howItWorks.title2}
               </h2>
 
             </div>
 
             <p>
-              Test series are accessed through the
-              Vidyaprabodhini mobile application.
+              {text.howItWorks.description}
             </p>
 
           </div>
 
-
           <div className="test-process-grid">
 
-            {steps.map((step) => {
+            {text.howItWorks.steps.map((step, index) => {
 
-              const Icon = step.icon
+              const Icon = stepIcons[index]
 
               return (
                 <article
@@ -582,7 +749,6 @@ export default function Coaching() {
 
       </section>
 
-
       {/* =====================================================
           TEST ACCESS
       ===================================================== */}
@@ -596,56 +762,50 @@ export default function Coaching() {
             <article className="test-access-card">
 
               <span className="section-label">
-                FREE TEST
+                {text.access.free.label}
               </span>
 
               <h2>
-                Start without
+                {text.access.free.title1}
                 <br />
-                a batch code.
+                {text.access.free.title2}
               </h2>
 
               <p>
-                Open the <strong>Free Test</strong> section
-                from the home menu of the Vidyaprabodhini
-                application and start practicing.
+                {text.access.free.description}
               </p>
 
               <div className="test-access-line">
 
                 <CheckCircle2 size={15} />
 
-                Available directly through the app
+                {text.access.free.tag}
 
               </div>
 
             </article>
 
-
             <article className="test-access-card dark">
 
               <span className="section-label">
-                EXCLUSIVE TEST
+                {text.access.exclusive.label}
               </span>
 
               <h2>
-                Have a batch
+                {text.access.exclusive.title1}
                 <br />
-                code?
+                {text.access.exclusive.title2}
               </h2>
 
               <p>
-                Contact your counsellor to receive your
-                batch code. Open <strong>Batches</strong> in
-                the application and enter the code to
-                access your exclusive test.
+                {text.access.exclusive.description}
               </p>
 
               <div className="test-access-line">
 
                 <KeyRound size={15} />
 
-                Batch code required
+                {text.access.exclusive.tag}
 
               </div>
 
@@ -656,7 +816,6 @@ export default function Coaching() {
         </div>
 
       </section>
-
 
       {/* =====================================================
           COUNSELLORS
@@ -671,29 +830,26 @@ export default function Coaching() {
             <div>
 
               <span className="section-label">
-                NEED HELP?
+                {text.support.label}
               </span>
 
               <h2>
-                Talk to a
+                {text.support.title1}
                 <br />
-                counsellor.
+                {text.support.title2}
               </h2>
 
             </div>
 
             <p>
-              If you need a batch code or assistance
-              accessing a test, contact the relevant
-              counsellor.
+              {text.support.description}
             </p>
 
           </div>
 
-
           <div className="counsellor-list">
 
-            {counsellors.map((counsellor) => (
+            {text.support.counsellors.map((counsellor) => (
 
               <div
                 className="counsellor-row"
@@ -719,7 +875,7 @@ export default function Coaching() {
                   href={`tel:${counsellor.phone}`}
                   className="counsellor-call"
                 >
-                  Call
+                  {text.support.call}
                   <ArrowUpRight size={15} />
                 </a>
 
@@ -733,7 +889,6 @@ export default function Coaching() {
 
       </section>
 
-
       {/* =====================================================
           APP CTA
       ===================================================== */}
@@ -745,18 +900,17 @@ export default function Coaching() {
           <div>
 
             <span className="section-label">
-              VIDYAPROBODHINI APP
+              {text.appCta.label}
             </span>
 
             <h2>
-              Your preparation,
+              {text.appCta.title1}
               <br />
-              wherever you are.
+              {text.appCta.title2}
             </h2>
 
             <p>
-              Access your test series and continue
-              practicing beyond the classroom.
+              {text.appCta.description}
             </p>
 
           </div>
@@ -767,44 +921,9 @@ export default function Coaching() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Download Android App
+            {text.appCta.download}
             <Download size={16} />
           </a>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          FINAL CTA
-      ===================================================== */}
-
-      <section className="coaching-final-cta">
-
-        <div className="container coaching-final-cta-inner">
-
-          <div>
-
-            <span className="section-label">
-              START YOUR PREPARATION
-            </span>
-
-            <h2>
-              Choose your path.
-              <br />
-              Start preparing.
-            </h2>
-
-          </div>
-
-          <Link
-            to="/admission"
-            className="button button-primary"
-          >
-            Enquire about admission
-            <ArrowUpRight size={16} />
-          </Link>
 
         </div>
 

@@ -4,6 +4,8 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ChatWidget from './components/chatbot/ChatWidget'
 import ScrollToTop from './components/ScrollToTop'
+import { LanguageProvider } from './components/LanguageContext'
+import LanguageBar from './components/LanguageBar'
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -25,7 +27,11 @@ function ProtectedCRMRoute({ children }) {
   const { session, loading } = useAuth()
 
   if (loading) {
-    return <div className="crm-auth-loading">Loading...</div>
+    return (
+      <div className="crm-auth-loading">
+        Loading...
+      </div>
+    )
   }
 
   if (!session) {
@@ -41,33 +47,53 @@ function ProtectedCRMRoute({ children }) {
 
 function PublicWebsite() {
   return (
-    <>
+    <LanguageProvider>
+
+      {/* LANGUAGE BAR */}
+      <LanguageBar />
+
+      {/* MAIN NAVBAR */}
       <Navbar />
 
       <Routes>
-        {/* HOME */}
-        <Route path="/" element={<Home />} />
 
-        {/* ABOUT */}
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
 
-        {/* COACHING (Batches + Test Series merged) */}
-        <Route path="/coaching" element={<Coaching />} />
+        <Route
+          path="/about"
+          element={<About />}
+        />
 
-        {/* ADMISSION */}
-        <Route path="/admission" element={<Admission />} />
+        <Route
+          path="/coaching"
+          element={<Coaching />}
+        />
 
-        {/* RESULT */}
-        <Route path="/result" element={<Result />} />
+        <Route
+          path="/admission"
+          element={<Admission />}
+        />
 
-        {/* GALLERY */}
-        <Route path="/gallery" element={<Gallery />} />
+        <Route
+          path="/result"
+          element={<Result />}
+        />
+
+        <Route
+          path="/gallery"
+          element={<Gallery />}
+        />
+
       </Routes>
 
       <Footer />
 
       <ChatWidget />
-    </>
+
+    </LanguageProvider>
   )
 }
 
@@ -78,24 +104,38 @@ function PublicWebsite() {
 export default function App() {
   return (
     <BrowserRouter>
-      {/* Resets window scroll position on every route navigation */}
+
+      {/* Reset scroll position on route change */}
       <ScrollToTop />
 
       <AuthProvider>
+
         <Routes>
+
           {/* =================================================
-              WEBSITE
+              PUBLIC WEBSITE
           ================================================= */}
-          <Route path="/*" element={<PublicWebsite />} />
+
+          <Route
+            path="/*"
+            element={<PublicWebsite />}
+          />
+
 
           {/* =================================================
               CRM LOGIN
           ================================================= */}
-          <Route path="/crm/login" element={<Login />} />
+
+          <Route
+            path="/crm/login"
+            element={<Login />}
+          />
+
 
           {/* =================================================
               CRM DASHBOARD
           ================================================= */}
+
           <Route
             path="/crm"
             element={
@@ -104,8 +144,11 @@ export default function App() {
               </ProtectedCRMRoute>
             }
           />
+
         </Routes>
+
       </AuthProvider>
+
     </BrowserRouter>
   )
 }

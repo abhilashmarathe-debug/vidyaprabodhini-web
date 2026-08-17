@@ -6,56 +6,12 @@ import {
   Monitor,
 } from 'lucide-react'
 import { useState } from 'react'
-
-const courses = [
-  {
-    id: 'UPSC',
-    title: 'UPSC',
-    subtitle: 'Civil Services',
-    description:
-      'Structured preparation for the Union Public Service Commission examination.',
-  },
-  {
-    id: 'MPSC',
-    title: 'MPSC',
-    subtitle: 'Rajyaseva',
-    description:
-      'Preparation for Maharashtra Public Service Commission examinations.',
-  },
-  {
-    id: 'Banking',
-    title: 'Banking',
-    subtitle: 'IBPS / SBI',
-    description:
-      'Focused preparation for banking and related competitive examinations.',
-  },
-  {
-    id: 'Saralseva',
-    title: 'Saralseva',
-    subtitle: 'State-level exams',
-    description:
-      'Preparation for examinations including Talathi, Police Bharti and Gramsevak.',
-  },
-]
-
-const modes = [
-  {
-    id: 'Offline',
-    title: 'Offline',
-    icon: MapPin,
-    description:
-      'Classroom-based preparation at Vidyaprabodhini, Kolhapur.',
-  },
-  {
-    id: 'Online',
-    title: 'Online',
-    icon: Monitor,
-    description:
-      'Flexible preparation through online learning.',
-  },
-]
+import { useLanguage } from '../components/LanguageContext.jsx'
 
 export default function Admission() {
+  const { language } = useLanguage()
+  const isMarathi = language === 'mr'
+
   const [course, setCourse] = useState('')
   const [mode, setMode] = useState('')
 
@@ -67,17 +23,241 @@ export default function Admission() {
 
   const [submitted, setSubmitted] = useState(false)
 
-  const selectedCourse = courses.find(
-    (item) => item.id === course
-  )
+  /* =========================================================
+     TRANSLATIONS
+  ========================================================= */
 
-  const selectedMode = modes.find(
-    (item) => item.id === mode
-  )
+  const text = isMarathi
+    ? {
+        hero: {
+          eyebrow: 'प्रवेश प्रक्रिया',
+          title1: 'तुमची तयारी',
+          title2: 'सुरू करा.',
+          description:
+            'तुम्ही कोणत्या परीक्षेची तयारी करत आहात आणि कोणती अध्ययन पद्धत निवडू इच्छिता ते सांगा. आमचे समुपदेशक तुम्हाला उपलब्ध पर्यायांची माहिती देतील.',
+        },
+        courseStep: {
+          label: '०१ / अभ्यासक्रम निवडा',
+          title1: 'तुम्ही कशाची',
+          title2: 'तयारी करत आहात?',
+          description:
+            'तुम्ही ज्या परीक्षेची तयारी करू इच्छिता ती निवडा. तुम्ही ही निवड कधीही बदलू शकता.',
+        },
+        modeStep: {
+          label: '०२ / पद्धत निवडा',
+          title1: 'तुम्हाला कसे',
+          title2: 'शिकायला आवडेल?',
+          description:
+            'तुमच्या दैनंदिन वेळापत्रकानुसार योग्य अध्ययन पद्धती निवडा.',
+        },
+        selectionStatus: {
+          label: 'तुमची निवड',
+          ready: 'तयार',
+          incomplete: 'अपूर्ण',
+          course: 'अभ्यासक्रम',
+          mode: 'अध्ययन पद्धती',
+          notSelected: 'निवडलेले नाही',
+        },
+        note: {
+          label: 'पुढील पायरी',
+          text: 'तुमचा अभ्यासक्रम आणि पसंतीची पद्धत निवडल्यानंतर चौकशी फॉर्म भरा. आमचे समुपदेशक लवकरच संबंधित बॅचच्या माहितीसह तुमच्याशी संपर्क साधतील.',
+        },
+        formCard: {
+          number: '०३',
+          label: 'प्रवेश चौकशी',
+          title1: 'चला, तयारीला',
+          title2: 'सुरुवात करूया.',
+          description:
+            'तुमची संपर्क माहिती द्या आणि तुमचा पसंतीचा अभ्यासक्रम व पद्धत निवडा.',
+          quickHeading: 'येथे निवड करू इच्छिता?',
+          optional: 'ऐच्छिक',
+          courseLabel: 'अभ्यासक्रम',
+          selectCourse: 'अभ्यासक्रम निवडा',
+          modeLabel: 'अध्ययन पद्धती',
+          selectMode: 'अध्ययन पद्धती निवडा',
+          currentSelection: 'सध्याची निवड',
+          fullName: 'पूर्ण नाव',
+          fullNamePlaceholder: 'तुमचे पूर्ण नाव लिहा',
+          mobile: 'मोबाईल नंबर',
+          email: 'ई-मेल पत्ता',
+          emailPlaceholder: 'you@example.com',
+          warning: 'पुढे जाण्यासाठी अभ्यासक्रम आणि अध्ययन पद्धती निवडा.',
+          ready: 'अभ्यासक्रम आणि अध्ययन पद्धती निवडली आहे.',
+          submit: 'चौकशी सबमिट करा',
+          submitted: 'चौकशी नोंदवली गेली आहे',
+          disclaimer:
+            'हा फॉर्म सबमिट करून, तुम्ही तुमच्या चौकशीसंदर्भात विद्याप्रबोधिनीकडून संपर्क साधण्यास सहमती देता.',
+        },
+        nextSteps: {
+          label: 'पुढील प्रक्रिया',
+          title1: 'इथून पुढे',
+          title2: 'अगदी सोपे.',
+          description:
+            'तुमची चौकशी प्राप्त झाल्यावर आमचे समुपदेशक तुम्हाला पुढील प्रक्रियेत मार्गदर्शन करतील.',
+          step1: {
+            number: '०१',
+            title: 'चौकशी नोंदवली',
+            text: 'तुमची माहिती आणि परीक्षेची पसंती आमच्याकडे नोंदवली जाते.',
+          },
+          step2: {
+            number: '०२',
+            title: 'समुपदेशक संपर्क',
+            text: 'तुमच्या शैक्षणिक गरजा समजून घेण्यासाठी समुपदेशक तुमच्याशी संपर्क साधतात.',
+          },
+          step3: {
+            number: '०३',
+            title: 'बॅच निश्चित करा',
+            text: 'संबंधित बॅच, वेळ आणि प्रवेशाच्या पुढील टप्प्यांची सविस्तर माहिती मिळवा.',
+          },
+        },
+      }
+    : {
+        hero: {
+          eyebrow: 'ADMISSION',
+          title1: 'Start your',
+          title2: 'preparation.',
+          description:
+            "Tell us what you're preparing for and how you'd like to learn. Our counsellor will help you understand the available options.",
+        },
+        courseStep: {
+          label: '01 / SELECT COURSE',
+          title1: 'What are you',
+          title2: 'preparing for?',
+          description:
+            'Choose the examination you are preparing for. You can change your selection anytime.',
+        },
+        modeStep: {
+          label: '02 / SELECT MODE',
+          title1: 'How would you',
+          title2: 'like to learn?',
+          description:
+            'Select the learning format that best fits your preparation routine.',
+        },
+        selectionStatus: {
+          label: 'YOUR SELECTION',
+          ready: 'READY',
+          incomplete: 'INCOMPLETE',
+          course: 'COURSE',
+          mode: 'LEARNING MODE',
+          notSelected: 'Not selected',
+        },
+        note: {
+          label: 'NEXT STEP',
+          text: 'After selecting your course and preferred mode, complete the enquiry form. A counsellor will contact you with the relevant batch details.',
+        },
+        formCard: {
+          number: '03',
+          label: 'ADMISSION ENQUIRY',
+          title1: "Let's get",
+          title2: 'started.',
+          description:
+            'Share your details and select your preferred course and learning mode.',
+          quickHeading: 'PREFER TO SELECT HERE?',
+          optional: 'Optional',
+          courseLabel: 'Course',
+          selectCourse: 'Select your course',
+          modeLabel: 'Learning mode',
+          selectMode: 'Select learning mode',
+          currentSelection: 'CURRENT SELECTION',
+          fullName: 'Full name',
+          fullNamePlaceholder: 'Enter your full name',
+          mobile: 'Mobile number',
+          email: 'Email address',
+          emailPlaceholder: 'you@example.com',
+          warning: 'Select a course and learning mode to continue.',
+          ready: 'Course and learning mode selected.',
+          submit: 'Submit enquiry',
+          submitted: 'Enquiry submitted',
+          disclaimer:
+            'By submitting this form, you agree to be contacted by Vidyaprabodhini regarding your enquiry.',
+        },
+        nextSteps: {
+          label: 'WHAT HAPPENS NEXT',
+          title1: 'Simple from',
+          title2: 'here.',
+          description:
+            'Once your enquiry is received, our counsellor can help you with the next steps.',
+          step1: {
+            number: '01',
+            title: 'Enquiry received',
+            text: 'Your details and preparation preferences are recorded.',
+          },
+          step2: {
+            number: '02',
+            title: 'Counsellor connects',
+            text: 'A counsellor contacts you to understand your requirements.',
+          },
+          step3: {
+            number: '03',
+            title: 'Choose your batch',
+            text: 'Get information about the relevant batch, mode and next steps.',
+          },
+        },
+      }
+
+  /* =========================================================
+     COURSES & MODES DATA
+  ========================================================= */
+
+  const courses = [
+    {
+      id: 'UPSC',
+      title: 'UPSC',
+      subtitle: isMarathi ? 'नागरी सेवा' : 'Civil Services',
+      description: isMarathi
+        ? 'केंद्रीय लोकसेवा आयोग (UPSC) परीक्षेची परिपूर्ण व संरचित तयारी.'
+        : 'Structured preparation for the Union Public Service Commission examination.',
+    },
+    {
+      id: 'MPSC',
+      title: 'MPSC',
+      subtitle: isMarathi ? 'राज्यसेवा व संयुक्त' : 'Rajyaseva',
+      description: isMarathi
+        ? 'महाराष्ट्र लोकसेवा आयोग (MPSC) राज्यसेवा व संयुक्त परीक्षांची तयारी.'
+        : 'Preparation for Maharashtra Public Service Commission examinations.',
+    },
+    {
+      id: 'Banking',
+      title: 'Banking',
+      subtitle: isMarathi ? 'IBPS / SBI / RRB' : 'IBPS / SBI',
+      description: isMarathi
+        ? 'बँकिंग आणि वित्तीय क्षेत्रातील भरती परीक्षांची केंद्रित तयारी.'
+        : 'Focused preparation for banking and related competitive examinations.',
+    },
+    {
+      id: 'Saralseva',
+      title: 'Saralseva',
+      subtitle: isMarathi ? 'तलाठी / पोलीस भरती' : 'State-level exams',
+      description: isMarathi
+        ? 'तलाठी, पोलीस भरती, ग्रामसेवक व इतर राज्यस्तरीय सरळसेवा परीक्षांची तयारी.'
+        : 'Preparation for examinations including Talathi, Police Bharti and Gramsevak.',
+    },
+  ]
+
+  const modes = [
+    {
+      id: 'Offline',
+      title: isMarathi ? 'ऑफलाइन' : 'Offline',
+      icon: MapPin,
+      description: isMarathi
+        ? 'विद्याप्रबोधिनी, कोल्हापूर येथे प्रत्यक्ष वर्गखोलीतील मार्गदर्शन.'
+        : 'Classroom-based preparation at Vidyaprabodhini, Kolhapur.',
+    },
+    {
+      id: 'Online',
+      title: isMarathi ? 'ऑनलाइन' : 'Online',
+      icon: Monitor,
+      description: isMarathi
+        ? 'डिजिटल क्लासेस आणि रेकॉर्डेड लेक्चर्सद्वारे लवचिक तयारी.'
+        : 'Flexible preparation through online learning.',
+    },
+  ]
+
+  const selectedCourse = courses.find((item) => item.id === course)
+  const selectedMode = modes.find((item) => item.id === mode)
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
-
     setFormData((previous) => ({
       ...previous,
       [name]: value,
@@ -119,13 +299,13 @@ export default function Admission() {
 
             <div className="eyebrow">
               <span />
-              ADMISSION
+              {text.hero.eyebrow}
             </div>
 
             <h1>
-              Start your
+              {text.hero.title1}
               <br />
-              preparation.
+              {text.hero.title2}
             </h1>
 
           </div>
@@ -133,9 +313,7 @@ export default function Admission() {
           <div className="admission-hero-copy">
 
             <p>
-              Tell us what you're preparing for and how
-              you'd like to learn. Our counsellor will help
-              you understand the available options.
+              {text.hero.description}
             </p>
 
           </div>
@@ -155,7 +333,7 @@ export default function Admission() {
 
 
           {/* =================================================
-              LEFT  COURSE + MODE
+              LEFT: COURSE + MODE
           ================================================= */}
 
           <div className="admission-selection">
@@ -170,18 +348,17 @@ export default function Admission() {
               <div className="admission-section-heading">
 
                 <span className="section-label">
-                  01 / SELECT COURSE
+                  {text.courseStep.label}
                 </span>
 
                 <h2>
-                  What are you
+                  {text.courseStep.title1}
                   <br />
-                  preparing for?
+                  {text.courseStep.title2}
                 </h2>
 
                 <p className="admission-heading-description">
-                  Choose the examination you are preparing
-                  for. You can change your selection anytime.
+                  {text.courseStep.description}
                 </p>
 
               </div>
@@ -249,18 +426,17 @@ export default function Admission() {
               <div className="admission-section-heading">
 
                 <span className="section-label">
-                  02 / SELECT MODE
+                  {text.modeStep.label}
                 </span>
 
                 <h2>
-                  How would you
+                  {text.modeStep.title1}
                   <br />
-                  like to learn?
+                  {text.modeStep.title2}
                 </h2>
 
                 <p className="admission-heading-description">
-                  Select the learning format that best fits
-                  your preparation routine.
+                  {text.modeStep.description}
                 </p>
 
               </div>
@@ -324,7 +500,7 @@ export default function Admission() {
               <div className="selection-status-header">
 
                 <span className="section-label">
-                  YOUR SELECTION
+                  {text.selectionStatus.label}
                 </span>
 
                 <span
@@ -335,8 +511,8 @@ export default function Admission() {
                   }
                 >
                   {course && mode
-                    ? 'READY'
-                    : 'INCOMPLETE'}
+                    ? text.selectionStatus.ready
+                    : text.selectionStatus.incomplete}
                 </span>
 
               </div>
@@ -347,13 +523,13 @@ export default function Admission() {
                 <div>
 
                   <span>
-                    COURSE
+                    {text.selectionStatus.course}
                   </span>
 
                   <strong>
                     {selectedCourse
                       ? `${selectedCourse.title}  ${selectedCourse.subtitle}`
-                      : 'Not selected'}
+                      : text.selectionStatus.notSelected}
                   </strong>
 
                 </div>
@@ -362,13 +538,13 @@ export default function Admission() {
                 <div>
 
                   <span>
-                    LEARNING MODE
+                    {text.selectionStatus.mode}
                   </span>
 
                   <strong>
                     {selectedMode
                       ? selectedMode.title
-                      : 'Not selected'}
+                      : text.selectionStatus.notSelected}
                   </strong>
 
                 </div>
@@ -385,14 +561,11 @@ export default function Admission() {
             <div className="admission-note">
 
               <span className="section-label">
-                NEXT STEP
+                {text.note.label}
               </span>
 
               <p>
-                After selecting your course and preferred
-                mode, complete the enquiry form. A counsellor
-                will contact you with the relevant batch
-                details.
+                {text.note.text}
               </p>
 
             </div>
@@ -401,7 +574,7 @@ export default function Admission() {
 
 
           {/* =================================================
-              RIGHT  ENQUIRY FORM
+              RIGHT: ENQUIRY FORM
           ================================================= */}
 
           <aside className="admission-form-card">
@@ -412,22 +585,21 @@ export default function Admission() {
             <div className="admission-form-header">
 
               <div className="form-header-number">
-                03
+                {text.formCard.number}
               </div>
 
               <span className="section-label">
-                ADMISSION ENQUIRY
+                {text.formCard.label}
               </span>
 
               <h2>
-                Let's get
+                {text.formCard.title1}
                 <br />
-                started.
+                {text.formCard.title2}
               </h2>
 
               <p>
-                Share your details and select your preferred
-                course and learning mode.
+                {text.formCard.description}
               </p>
 
             </div>
@@ -442,11 +614,11 @@ export default function Admission() {
               <div className="form-quick-heading">
 
                 <span>
-                  PREFER TO SELECT HERE?
+                  {text.formCard.quickHeading}
                 </span>
 
                 <small>
-                  Optional
+                  {text.formCard.optional}
                 </small>
 
               </div>
@@ -457,7 +629,7 @@ export default function Admission() {
               <div className="form-select-field">
 
                 <label htmlFor="form-course">
-                  Course
+                  {text.formCard.courseLabel}
                 </label>
 
                 <div className="form-select-wrapper">
@@ -471,7 +643,7 @@ export default function Admission() {
                   >
 
                     <option value="">
-                      Select your course
+                      {text.formCard.selectCourse}
                     </option>
 
                     {courses.map((item) => (
@@ -499,7 +671,7 @@ export default function Admission() {
               <div className="form-select-field">
 
                 <label htmlFor="form-mode">
-                  Learning mode
+                  {text.formCard.modeLabel}
                 </label>
 
                 <div className="form-select-wrapper">
@@ -513,7 +685,7 @@ export default function Admission() {
                   >
 
                     <option value="">
-                      Select learning mode
+                      {text.formCard.selectMode}
                     </option>
 
                     {modes.map((item) => (
@@ -546,7 +718,7 @@ export default function Admission() {
 
               <div className="form-selected-heading">
                 <span>
-                  CURRENT SELECTION
+                  {text.formCard.currentSelection}
                 </span>
               </div>
 
@@ -556,13 +728,13 @@ export default function Admission() {
                 <div className="form-selected-item">
 
                   <span>
-                    COURSE
+                    {text.selectionStatus.course}
                   </span>
 
                   <strong>
                     {selectedCourse
                       ? selectedCourse.title
-                      : 'Not selected'}
+                      : text.selectionStatus.notSelected}
                   </strong>
 
                 </div>
@@ -571,13 +743,13 @@ export default function Admission() {
                 <div className="form-selected-item">
 
                   <span>
-                    MODE
+                    {text.selectionStatus.mode}
                   </span>
 
                   <strong>
                     {selectedMode
                       ? selectedMode.title
-                      : 'Not selected'}
+                      : text.selectionStatus.notSelected}
                   </strong>
 
                 </div>
@@ -601,7 +773,7 @@ export default function Admission() {
               <div className="form-field">
 
                 <label htmlFor="full-name">
-                  Full name
+                  {text.formCard.fullName}
                 </label>
 
                 <input
@@ -610,7 +782,7 @@ export default function Admission() {
                   type="text"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="Enter your full name"
+                  placeholder={text.formCard.fullNamePlaceholder}
                   required
                 />
 
@@ -622,7 +794,7 @@ export default function Admission() {
               <div className="form-field">
 
                 <label htmlFor="mobile">
-                  Mobile number
+                  {text.formCard.mobile}
                 </label>
 
                 <input
@@ -643,7 +815,7 @@ export default function Admission() {
               <div className="form-field">
 
                 <label htmlFor="email">
-                  Email address
+                  {text.formCard.email}
                 </label>
 
                 <input
@@ -652,7 +824,7 @@ export default function Admission() {
                   type="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="you@example.com"
+                  placeholder={text.formCard.emailPlaceholder}
                 />
 
               </div>
@@ -684,8 +856,7 @@ export default function Admission() {
                   </span>
 
                   <p>
-                    Select a course and learning mode
-                    to continue.
+                    {text.formCard.warning}
                   </p>
 
                 </div>
@@ -697,7 +868,7 @@ export default function Admission() {
                   <CheckCircle2 size={16} />
 
                   <span>
-                    Course and learning mode selected.
+                    {text.formCard.ready}
                   </span>
 
                 </div>
@@ -714,8 +885,8 @@ export default function Admission() {
               >
 
                 {submitted
-                  ? 'Enquiry submitted'
-                  : 'Submit enquiry'}
+                  ? text.formCard.submitted
+                  : text.formCard.submit}
 
                 {!submitted && (
                   <ArrowUpRight size={16} />
@@ -725,9 +896,7 @@ export default function Admission() {
 
 
               <p className="form-disclaimer">
-                By submitting this form, you agree to be
-                contacted by Vidyaprabodhini regarding your
-                enquiry.
+                {text.formCard.disclaimer}
               </p>
 
             </form>
@@ -752,20 +921,19 @@ export default function Admission() {
             <div>
 
               <span className="section-label">
-                WHAT HAPPENS NEXT
+                {text.nextSteps.label}
               </span>
 
               <h2>
-                Simple from
+                {text.nextSteps.title1}
                 <br />
-                here.
+                {text.nextSteps.title2}
               </h2>
 
             </div>
 
             <p>
-              Once your enquiry is received, our counsellor
-              can help you with the next steps.
+              {text.nextSteps.description}
             </p>
 
           </div>
@@ -776,16 +944,15 @@ export default function Admission() {
             <div>
 
               <span>
-                01
+                {text.nextSteps.step1.number}
               </span>
 
               <h3>
-                Enquiry received
+                {text.nextSteps.step1.title}
               </h3>
 
               <p>
-                Your details and preparation preferences
-                are recorded.
+                {text.nextSteps.step1.text}
               </p>
 
             </div>
@@ -794,16 +961,15 @@ export default function Admission() {
             <div>
 
               <span>
-                02
+                {text.nextSteps.step2.number}
               </span>
 
               <h3>
-                Counsellor connects
+                {text.nextSteps.step2.title}
               </h3>
 
               <p>
-                A counsellor contacts you to understand
-                your requirements.
+                {text.nextSteps.step2.text}
               </p>
 
             </div>
@@ -812,16 +978,15 @@ export default function Admission() {
             <div>
 
               <span>
-                03
+                {text.nextSteps.step3.number}
               </span>
 
               <h3>
-                Choose your batch
+                {text.nextSteps.step3.title}
               </h3>
 
               <p>
-                Get information about the relevant batch,
-                mode and next steps.
+                {text.nextSteps.step3.text}
               </p>
 
             </div>

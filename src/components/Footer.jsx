@@ -6,33 +6,15 @@ import {
   X,
 } from 'lucide-react'
 
+import { useLanguage } from '../components/LanguageContext.jsx'
+
 import logo from '../assets/logo1.jpeg'
 
-const navigation = [
-  { label: 'Home', path: '/' },
-  { label: 'About Us', path: '/about' },
-  { label: 'Coaching', path: '/coaching' },
-  { label: 'Admission', path: '/admission' },
-  { label: 'Result', path: '/result' },
-  { label: 'Gallery', path: '/gallery' },
-]
-
-const courses = [
-  'UPSC',
-  'MPSC',
-  'Banking',
-  'Saralseva',
-]
-
-const learningModes = [
-  'Offline',
-  'Online',
-]
-
 export default function Footer() {
+  const { language } = useLanguage()
+  const isMarathi = language === 'mr'
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-
   const [submitted, setSubmitted] = useState(false)
 
   const [formData, setFormData] = useState({
@@ -43,13 +25,173 @@ export default function Footer() {
     mode: '',
   })
 
+  /* =========================================================
+     TRANSLATIONS
+  ========================================================= */
+
+  const text = isMarathi
+    ? {
+        footer: {
+          label: 'विद्याप्रबोधिनी',
+          title1: 'तुमची तयारी',
+          title2: 'येथून सुरू होते.',
+          enquire: 'प्रवेशाबद्दल चौकशी करा',
+
+          description:
+            'UPSC, MPSC, Banking आणि Saralseva स्पर्धा परीक्षांसाठी मार्गदर्शन आणि तयारी.',
+
+          navigation: 'नेव्हिगेशन',
+          preparation: 'अभ्यासक्रम',
+          contact: 'संपर्क',
+
+          city: 'कोल्हापूर, महाराष्ट्र',
+
+          copyright: 'सर्व हक्क राखीव.',
+          designed: 'SkewX Technologies कडून डिझाइन',
+
+          modal: {
+            label: 'प्रवेश चौकशी',
+            title1: 'तुमची',
+            title2: 'तयारी सुरू करा.',
+
+            successLabel: 'चौकशी प्राप्त झाली',
+            successTitle: 'तुमच्या चौकशीबद्दल धन्यवाद.',
+            successDescription:
+              'तुमच्या अभ्यासक्रम आणि अध्ययन पद्धतीसंदर्भात आमची टीम लवकरच तुमच्याशी संपर्क साधेल.',
+            close: 'बंद करा',
+          },
+
+          form: {
+            fullName: 'पूर्ण नाव',
+            fullNamePlaceholder: 'तुमचे पूर्ण नाव लिहा',
+
+            mobile: 'मोबाईल नंबर',
+
+            email: 'ई-मेल पत्ता',
+            emailPlaceholder: 'you@example.com',
+
+            course: 'अभ्यासक्रम',
+            selectCourse: 'अभ्यासक्रम निवडा',
+
+            learningMode: 'अध्ययन पद्धती',
+            selectMode: 'अध्ययन पद्धती निवडा',
+
+            selectWarning:
+              'पुढे जाण्यासाठी अभ्यासक्रम आणि अध्ययन पद्धती निवडा.',
+
+            selectionReady:
+              'अभ्यासक्रम आणि अध्ययन पद्धती निवडली आहे.',
+
+            submit: 'चौकशी सबमिट करा',
+
+            disclaimer:
+              'हा फॉर्म सबमिट करून, तुम्ही तुमच्या चौकशीसंदर्भात विद्याप्रबोधिनीकडून संपर्क साधण्यास सहमती देता.',
+          },
+        },
+      }
+    : {
+        footer: {
+          label: 'VIDYAPROBODHINI',
+          title1: 'Your preparation',
+          title2: 'starts here.',
+          enquire: 'Enquire about admission',
+
+          description:
+            'Guidance and preparation for UPSC, MPSC, Banking and Saralseva competitive examinations.',
+
+          navigation: 'NAVIGATION',
+          preparation: 'PREPARATION',
+          contact: 'CONTACT',
+
+          city: 'Kolhapur, Maharashtra',
+
+          copyright: 'All rights reserved.',
+          designed: 'Designed by SkewX Technologies',
+
+          modal: {
+            label: 'ADMISSION ENQUIRY',
+            title1: 'Start your',
+            title2: 'preparation.',
+
+            successLabel: 'ENQUIRY RECEIVED',
+            successTitle: 'Thank you for your enquiry.',
+            successDescription:
+              'Our team will get in touch with you regarding your course and learning mode.',
+            close: 'Close',
+          },
+
+          form: {
+            fullName: 'Full name',
+            fullNamePlaceholder: 'Enter your full name',
+
+            mobile: 'Mobile number',
+
+            email: 'Email address',
+            emailPlaceholder: 'you@example.com',
+
+            course: 'Course',
+            selectCourse: 'Select course',
+
+            learningMode: 'Learning mode',
+            selectMode: 'Select mode',
+
+            selectWarning:
+              'Select a course and learning mode to continue.',
+
+            selectionReady:
+              'Course and learning mode selected.',
+
+            submit: 'Submit enquiry',
+
+            disclaimer:
+              'By submitting this form, you agree to be contacted by Vidyaprabodhini regarding your enquiry.',
+          },
+        },
+      }
+
+  const navigation = [
+    {
+      label: isMarathi ? 'मुख्यपृष्ठ' : 'Home',
+      path: '/',
+    },
+    {
+      label: isMarathi ? 'आमच्याबद्दल' : 'About Us',
+      path: '/about',
+    },
+    {
+      label: isMarathi ? 'कोचिंग' : 'Coaching',
+      path: '/coaching',
+    },
+    {
+      label: isMarathi ? 'प्रवेश' : 'Admission',
+      path: '/admission',
+    },
+    {
+      label: isMarathi ? 'निकाल' : 'Result',
+      path: '/result',
+    },
+    {
+      label: isMarathi ? 'गॅलरी' : 'Gallery',
+      path: '/gallery',
+    },
+  ]
+
+  const courses = [
+    'UPSC',
+    'MPSC',
+    'Banking',
+    'Saralseva',
+  ]
+
+  const learningModes = isMarathi
+    ? ['ऑफलाइन', 'ऑनलाइन']
+    : ['Offline', 'Online']
 
   /* =========================================================
      FORM HANDLING
   ========================================================= */
 
   const handleInputChange = (event) => {
-
     const {
       name,
       value,
@@ -59,12 +201,9 @@ export default function Footer() {
       ...prev,
       [name]: value,
     }))
-
   }
 
-
   const handleSubmit = (event) => {
-
     event.preventDefault()
 
     if (!formData.course || !formData.mode) {
@@ -85,42 +224,23 @@ export default function Footer() {
     )
 
     setSubmitted(true)
-
   }
 
-
   /* =========================================================
-     OPEN MODAL
+     MODAL
   ========================================================= */
 
   const openModal = () => {
-
     setSubmitted(false)
-
     setIsModalOpen(true)
-
   }
-
-
-  /* =========================================================
-     CLOSE MODAL
-  ========================================================= */
 
   const closeModal = () => {
-
     setIsModalOpen(false)
-
     setSubmitted(false)
-
   }
 
-
-  /* =========================================================
-     RESET AFTER SUCCESS
-  ========================================================= */
-
   const handleCloseAfterSubmit = () => {
-
     setFormData({
       name: '',
       mobile: '',
@@ -130,15 +250,11 @@ export default function Footer() {
     })
 
     setSubmitted(false)
-
     setIsModalOpen(false)
-
   }
-
 
   return (
     <footer className="site-footer">
-
 
       {/* =====================================================
           CTA
@@ -151,34 +267,29 @@ export default function Footer() {
           <div>
 
             <span className="section-label">
-              VIDYAPROBODHINI
+              {text.footer.label}
             </span>
 
             <h2>
-              Your preparation
+              {text.footer.title1}
               <br />
-              starts here.
+              {text.footer.title2}
             </h2>
 
           </div>
-
 
           <button
             type="button"
             className="button footer-cta-button"
             onClick={openModal}
           >
-
-            Enquire about admission
-
+            {text.footer.enquire}
             <ArrowUpRight size={16} />
-
           </button>
 
         </div>
 
       </section>
-
 
       {/* =====================================================
           MAIN FOOTER
@@ -189,7 +300,6 @@ export default function Footer() {
         <div className="container">
 
           <div className="footer-grid">
-
 
             {/* =================================================
                 BRAND
@@ -210,17 +320,13 @@ export default function Footer() {
 
               </Link>
 
-
               <p>
                 स्पर्धा परीक्षा मार्गदर्शन केंद्र, कोल्हापूर
               </p>
 
-
               <p className="footer-description">
-                Guidance and preparation for UPSC, MPSC,
-                Banking and Saralseva competitive examinations.
+                {text.footer.description}
               </p>
-
 
               <div className="footer-socials">
 
@@ -234,7 +340,6 @@ export default function Footer() {
                   IG
                 </a>
 
-
                 <a
                   href="#"
                   aria-label="Facebook"
@@ -245,13 +350,11 @@ export default function Footer() {
                   FB
                 </a>
 
-
                 <a
-                  href="#"
+                  href="https://www.youtube.com/c/VidyaPrabodhiniKolhapur"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="YouTube"
-                  onClick={(event) =>
-                    event.preventDefault()
-                  }
                 >
                   YT
                 </a>
@@ -260,7 +363,6 @@ export default function Footer() {
 
             </div>
 
-
             {/* =================================================
                 NAVIGATION
             ================================================= */}
@@ -268,27 +370,23 @@ export default function Footer() {
             <div className="footer-column">
 
               <span className="footer-column-title">
-                NAVIGATION
+                {text.footer.navigation}
               </span>
-
 
               <nav className="footer-links">
 
                 {navigation.map((item) => (
-
                   <Link
                     key={item.path}
                     to={item.path}
                   >
                     {item.label}
                   </Link>
-
                 ))}
 
               </nav>
 
             </div>
-
 
             {/* =================================================
                 COURSES
@@ -297,27 +395,23 @@ export default function Footer() {
             <div className="footer-column">
 
               <span className="footer-column-title">
-                PREPARATION
+                {text.footer.preparation}
               </span>
-
 
               <div className="footer-links">
 
                 {courses.map((course) => (
-
                   <Link
                     key={course}
                     to="/coaching"
                   >
                     {course}
                   </Link>
-
                 ))}
 
               </div>
 
             </div>
-
 
             {/* =================================================
                 CONTACT
@@ -326,9 +420,8 @@ export default function Footer() {
             <div className="footer-column">
 
               <span className="footer-column-title">
-                CONTACT
+                {text.footer.contact}
               </span>
-
 
               <div className="footer-contact">
 
@@ -336,11 +429,9 @@ export default function Footer() {
                   Vidyaprabodhini
                 </p>
 
-
                 <p>
-                  Kolhapur, Maharashtra
+                  {text.footer.city}
                 </p>
-
 
                 <a href="mailto:info@vidyaprabodhini.in">
                   info@vidyaprabodhini.in
@@ -356,7 +447,6 @@ export default function Footer() {
 
       </div>
 
-
       {/* =====================================================
           BOTTOM BAR
       ===================================================== */}
@@ -366,19 +456,17 @@ export default function Footer() {
         <div className="container footer-bottom-inner">
 
           <p>
-            © {new Date().getFullYear()} Vidyaprabodhini.
-            All rights reserved.
+            © {new Date().getFullYear()} Vidyaprabodhini.{' '}
+            {text.footer.copyright}
           </p>
 
-
           <p className="footer-credit">
-            Designed by SkewX Technologies
+            {text.footer.designed}
           </p>
 
         </div>
 
       </div>
-
 
       {/* =====================================================
           ADMISSION ENQUIRY MODAL
@@ -406,7 +494,6 @@ export default function Footer() {
             aria-labelledby="admission-modal-title"
           >
 
-
             {/* =================================================
                 MODAL HEADER
             ================================================= */}
@@ -416,32 +503,31 @@ export default function Footer() {
               <div>
 
                 <span className="section-label">
-                  ADMISSION ENQUIRY
+                  {text.footer.modal.label}
                 </span>
 
-
                 <h2 id="admission-modal-title">
-                  Start your
+                  {text.footer.modal.title1}
                   <br />
-                  preparation.
+                  {text.footer.modal.title2}
                 </h2>
 
               </div>
-
 
               <button
                 type="button"
                 className="admission-modal-close"
                 onClick={closeModal}
-                aria-label="Close admission enquiry"
+                aria-label={
+                  isMarathi
+                    ? 'प्रवेश चौकशी बंद करा'
+                    : 'Close admission enquiry'
+                }
               >
-
                 <X size={20} />
-
               </button>
 
             </div>
-
 
             {/* =================================================
                 SUCCESS STATE
@@ -452,40 +538,32 @@ export default function Footer() {
               <div className="admission-success">
 
                 <div className="admission-success-icon">
-
                   <CheckCircle2 size={28} />
-
                 </div>
 
-
                 <span className="section-label">
-                  ENQUIRY RECEIVED
+                  {text.footer.modal.successLabel}
                 </span>
 
-
                 <h3>
-                  Thank you for your enquiry.
+                  {text.footer.modal.successTitle}
                 </h3>
 
-
                 <p>
-                  Our team will get in touch with you
-                  regarding your course and learning mode.
+                  {text.footer.modal.successDescription}
                 </p>
-
 
                 <button
                   type="button"
                   className="button button-primary"
                   onClick={handleCloseAfterSubmit}
                 >
-                  Close
+                  {text.footer.modal.close}
                 </button>
 
               </div>
 
             ) : (
-
 
               /* =================================================
                   FORM
@@ -496,15 +574,13 @@ export default function Footer() {
                 onSubmit={handleSubmit}
               >
 
-
                 {/* NAME */}
 
                 <div className="footer-form-field">
 
                   <label htmlFor="footer-full-name">
-                    Full name
+                    {text.footer.form.fullName}
                   </label>
-
 
                   <input
                     id="footer-full-name"
@@ -512,21 +588,21 @@ export default function Footer() {
                     type="text"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Enter your full name"
+                    placeholder={
+                      text.footer.form.fullNamePlaceholder
+                    }
                     required
                   />
 
                 </div>
-
 
                 {/* MOBILE */}
 
                 <div className="footer-form-field">
 
                   <label htmlFor="footer-mobile">
-                    Mobile number
+                    {text.footer.form.mobile}
                   </label>
-
 
                   <input
                     id="footer-mobile"
@@ -540,15 +616,13 @@ export default function Footer() {
 
                 </div>
 
-
                 {/* EMAIL */}
 
                 <div className="footer-form-field">
 
                   <label htmlFor="footer-email">
-                    Email address
+                    {text.footer.form.email}
                   </label>
-
 
                   <input
                     id="footer-email"
@@ -556,25 +630,24 @@ export default function Footer() {
                     type="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="you@example.com"
+                    placeholder={
+                      text.footer.form.emailPlaceholder
+                    }
                   />
 
                 </div>
 
-
                 {/* COURSE + MODE */}
 
                 <div className="footer-form-row">
-
 
                   {/* COURSE */}
 
                   <div className="footer-form-field">
 
                     <label htmlFor="footer-course">
-                      Course
+                      {text.footer.form.course}
                     </label>
-
 
                     <select
                       id="footer-course"
@@ -585,34 +658,29 @@ export default function Footer() {
                     >
 
                       <option value="">
-                        Select course
+                        {text.footer.form.selectCourse}
                       </option>
 
-
                       {courses.map((course) => (
-
                         <option
                           key={course}
                           value={course}
                         >
                           {course}
                         </option>
-
                       ))}
 
                     </select>
 
                   </div>
 
-
                   {/* MODE */}
 
                   <div className="footer-form-field">
 
                     <label htmlFor="footer-mode">
-                      Learning mode
+                      {text.footer.form.learningMode}
                     </label>
-
 
                     <select
                       id="footer-mode"
@@ -623,19 +691,16 @@ export default function Footer() {
                     >
 
                       <option value="">
-                        Select mode
+                        {text.footer.form.selectMode}
                       </option>
 
-
                       {learningModes.map((mode) => (
-
                         <option
                           key={mode}
                           value={mode}
                         >
                           {mode}
                         </option>
-
                       ))}
 
                     </select>
@@ -643,7 +708,6 @@ export default function Footer() {
                   </div>
 
                 </div>
-
 
                 {/* VALIDATION */}
 
@@ -657,8 +721,7 @@ export default function Footer() {
                     </span>
 
                     <p>
-                      Select a course and learning mode
-                      to continue.
+                      {text.footer.form.selectWarning}
                     </p>
 
                   </div>
@@ -670,13 +733,12 @@ export default function Footer() {
                     <CheckCircle2 size={16} />
 
                     <span>
-                      Course and learning mode selected.
+                      {text.footer.form.selectionReady}
                     </span>
 
                   </div>
 
                 )}
-
 
                 {/* SUBMIT */}
 
@@ -688,22 +750,14 @@ export default function Footer() {
                     !formData.mode
                   }
                 >
-
-                  Submit enquiry
-
+                  {text.footer.form.submit}
                   <ArrowUpRight size={16} />
-
                 </button>
-
 
                 {/* DISCLAIMER */}
 
                 <p className="form-disclaimer">
-
-                  By submitting this form, you agree to be
-                  contacted by Vidyaprabodhini regarding your
-                  enquiry.
-
+                  {text.footer.form.disclaimer}
                 </p>
 
               </form>

@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
 import logo from '../assets/logo1.jpeg'
+import { useLanguage } from './LanguageContext'
 
 /* =========================================================
    NAVIGATION
@@ -10,23 +11,23 @@ import logo from '../assets/logo1.jpeg'
 
 const navigation = [
   {
-    label: 'Home',
+    key: 'home',
     path: '/',
   },
   {
-    label: 'About Us',
+    key: 'about',
     path: '/about',
   },
   {
-    label: 'Coaching',
+    key: 'coaching',
     path: '/coaching',
   },
   {
-    label: 'Result',
+    key: 'result',
     path: '/result',
   },
   {
-    label: 'Gallery',
+    key: 'gallery',
     path: '/gallery',
   },
 ]
@@ -38,12 +39,15 @@ const navigation = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
+  const { t } = useLanguage()
+
   const closeMobileMenu = () => {
     setMobileOpen(false)
   }
 
   return (
     <header className="site-header">
+
       <div className="container navbar">
 
         {/* =================================================
@@ -61,6 +65,7 @@ export default function Navbar() {
             alt="Vidyaprabodhini Academy"
           />
         </Link>
+
 
         {/* =================================================
             NAVIGATION
@@ -86,9 +91,10 @@ export default function Navbar() {
                   : 'nav-link'
               }
             >
-              {item.label}
+              {t(`nav.${item.key}`)}
             </NavLink>
           ))}
+
 
           {/* =================================================
               ADMISSION CTA
@@ -103,10 +109,11 @@ export default function Navbar() {
                 : 'nav-action'
             }
           >
-            Enquire now
+            {t('nav.enquire')}
           </NavLink>
 
         </nav>
+
 
         {/* =================================================
             MOBILE MENU BUTTON
@@ -134,6 +141,7 @@ export default function Navbar() {
         </button>
 
       </div>
+
     </header>
   )
 }

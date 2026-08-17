@@ -1,5 +1,11 @@
 import { ArrowUpRight, X } from 'lucide-react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useLanguage } from '../components/LanguageContext.jsx'
+
+/* =========================================================
+   ASSET IMPORTS
+========================================================= */
 
 import mg3307 from '../assets/gallery/_MG_3307.jpg'
 import mg3366 from '../assets/gallery/_MG_3366.jpg'
@@ -15,76 +21,138 @@ import dsc0473 from '../assets/gallery/DSC_0473.jpg'
 import img1088 from '../assets/gallery/IMG_1088.jpg'
 import img1131 from '../assets/gallery/IMG_1131.jpg'
 
-const galleryImages = [
-  {
-    id: 1,
-    image: mg3307,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 2,
-    image: mg3366,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 3,
-    image: mg3379,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 4,
-    image: mg3381,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 5,
-    image: mg3412,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 6,
-    image: img6178,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 7,
-    image: img6189,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 8,
-    image: img6245,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 9,
-    image: dsc0001,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 10,
-    image: dsc0468,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 11,
-    image: dsc0473,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 12,
-    image: img1088,
-    title: 'Vidyaprabodhini',
-  },
-  {
-    id: 13,
-    image: img1131,
-    title: 'Vidyaprabodhini',
-  },
-]
-
 export default function Gallery() {
+  const { language } = useLanguage()
+  const isMarathi = language === 'mr'
   const [selectedImage, setSelectedImage] = useState(null)
+
+  /* =========================================================
+     TRANSLATIONS
+  ========================================================= */
+
+  const text = isMarathi
+    ? {
+        hero: {
+          eyebrow: 'छायाचित्र दालन',
+          title1: 'विद्याप्रबोधिनीचे',
+          title2: 'काही क्षण.',
+          description:
+            'विद्याप्रबोधिनीतील वर्गखोल्या, उपक्रम, कार्यक्रम, प्राध्यापक आणि विद्यार्थ्यांच्या प्रवासाची एक सुंदर झलक.',
+        },
+        gallery: {
+          label: 'आमचे छायाचित्र दालन',
+          title1: 'विद्याप्रबोधिनी',
+          title2: 'अंतरंग.',
+          photosCount: 'छायाचित्रे',
+          view: 'पहा',
+          imageTitle: 'विद्याप्रबोधिनी',
+          closeAria: 'प्रतिमा बंद करा',
+        },
+        cta: {
+          label: 'विद्याप्रबोधिनी',
+          title1: 'शिका.',
+          title2: 'तयारी करा.',
+          title3: 'घडवा.',
+          button: 'प्रवेशाबद्दल चौकशी करा',
+        },
+      }
+    : {
+        hero: {
+          eyebrow: 'Photo Gallery',
+          title1: 'Moments from',
+          title2: 'Vidyaprabodhini.',
+          description:
+            'A glimpse into the classrooms, events, activities and people that make Vidyaprabodhini what it is.',
+        },
+        gallery: {
+          label: 'OUR GALLERY',
+          title1: 'Inside',
+          title2: 'Vidyaprabodhini.',
+          photosCount: 'PHOTOS',
+          view: 'View',
+          imageTitle: 'Vidyaprabodhini',
+          closeAria: 'Close image',
+        },
+        cta: {
+          label: 'VIDYAPRABODHINI',
+          title1: 'Learn.',
+          title2: 'Prepare.',
+          title3: 'Grow.',
+          button: 'Enquire about admission',
+        },
+      }
+
+  /* =========================================================
+     GALLERY IMAGES DATA
+  ========================================================= */
+
+  const galleryImages = [
+    {
+      id: 1,
+      image: mg3307,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 2,
+      image: mg3366,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 3,
+      image: mg3379,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 4,
+      image: mg3381,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 5,
+      image: mg3412,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 6,
+      image: img6178,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 7,
+      image: img6189,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 8,
+      image: img6245,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 9,
+      image: dsc0001,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 10,
+      image: dsc0468,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 11,
+      image: dsc0473,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 12,
+      image: img1088,
+      title: text.gallery.imageTitle,
+    },
+    {
+      id: 13,
+      image: img1131,
+      title: text.gallery.imageTitle,
+    },
+  ]
 
   return (
     <main className="gallery-page">
@@ -99,13 +167,13 @@ export default function Gallery() {
 
             <div className="eyebrow">
               <span />
-              Photo Gallery
+              {text.hero.eyebrow}
             </div>
 
             <h1>
-              Moments from
+              {text.hero.title1}
               <br />
-              Vidyaprabodhini.
+              {text.hero.title2}
             </h1>
 
           </div>
@@ -113,9 +181,7 @@ export default function Gallery() {
           <div className="gallery-hero-copy">
 
             <p>
-              A glimpse into the classrooms, events,
-              activities and people that make
-              Vidyaprabodhini what it is.
+              {text.hero.description}
             </p>
 
           </div>
@@ -136,17 +202,19 @@ export default function Gallery() {
             <div>
 
               <span className="section-label">
-                OUR GALLERY
+                {text.gallery.label}
               </span>
 
               <h2>
-                Inside Vidyaprabodhini.
+                {text.gallery.title1}
+                <br />
+                {text.gallery.title2}
               </h2>
 
             </div>
 
             <span className="gallery-count">
-              {String(galleryImages.length).padStart(2, '0')} PHOTOS
+              {String(galleryImages.length).padStart(2, '0')} {text.gallery.photosCount}
             </span>
 
           </div>
@@ -173,7 +241,7 @@ export default function Gallery() {
                   <div className="gallery-image-overlay">
 
                     <span>
-                      View
+                      {text.gallery.view}
                     </span>
 
                     <ArrowUpRight size={16} />
@@ -215,26 +283,26 @@ export default function Gallery() {
           <div>
 
             <span className="section-label">
-              VIDYAPROBODHINI
+              {text.cta.label}
             </span>
 
             <h2>
-              Learn.
+              {text.cta.title1}
               <br />
-              Prepare.
+              {text.cta.title2}
               <br />
-              Grow.
+              {text.cta.title3}
             </h2>
 
           </div>
 
-          <a
-            href="/admission"
+          <Link
+            to="/admission"
             className="button button-primary"
           >
-            Enquire about admission
+            {text.cta.button}
             <ArrowUpRight size={16} />
-          </a>
+          </Link>
 
         </div>
 
@@ -254,7 +322,7 @@ export default function Gallery() {
             type="button"
             className="gallery-lightbox-close"
             onClick={() => setSelectedImage(null)}
-            aria-label="Close image"
+            aria-label={text.gallery.closeAria}
           >
             <X size={20} />
           </button>
