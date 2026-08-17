@@ -1,10 +1,6 @@
-import { ArrowUpRight } from 'lucide-react'
+﻿import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../components/LanguageContext.jsx'
-
-/* =========================================================
-   ASSET IMPORTS
-========================================================= */
 
 import gal2 from '../assets/result/gal2.jpg'
 import gall1 from '../assets/result/gall1.jpg'
@@ -18,10 +14,6 @@ import result5 from '../assets/result/result5.jpg'
 export default function Result() {
   const { language } = useLanguage()
   const isMarathi = language === 'mr'
-
-  /* =========================================================
-     TRANSLATIONS
-  ========================================================= */
 
   const text = isMarathi
     ? {
@@ -75,77 +67,26 @@ export default function Result() {
         },
       }
 
-  /* =========================================================
-     ACHIEVEMENTS DATA
-  ========================================================= */
-
   const achievements = [
-    {
-      id: 1,
-      image: gal2,
-      title: text.gallery.achievementTitle,
-      source: text.gallery.coverageSource,
-    },
-    {
-      id: 2,
-      image: gall1,
-      title: text.gallery.achievementTitle,
-      source: text.gallery.coverageSource,
-    },
-    {
-      id: 3,
-      image: photo1,
-      title: text.gallery.achievementTitle,
-      source: text.gallery.coverageSource,
-    },
-    {
-      id: 4,
-      image: photo2,
-      title: text.gallery.achievementTitle,
-      source: text.gallery.coverageSource,
-    },
-    {
-      id: 5,
-      image: photo3,
-      title: text.gallery.achievementTitle,
-      source: text.gallery.coverageSource,
-    },
-    {
-      id: 6,
-      image: photo4,
-      title: text.gallery.achievementTitle,
-      source: text.gallery.coverageSource,
-    },
-    {
-      id: 7,
-      image: photo5,
-      title: text.gallery.achievementTitle,
-      source: text.gallery.coverageSource,
-    },
-    {
-      id: 8,
-      image: result5,
-      title: text.gallery.achievementTitle,
-      source: text.gallery.coverageSource,
-    },
+    { id: 1, image: gal2, title: text.gallery.achievementTitle, source: text.gallery.coverageSource },
+    { id: 2, image: gall1, title: text.gallery.achievementTitle, source: text.gallery.coverageSource },
+    { id: 3, image: photo1, title: text.gallery.achievementTitle, source: text.gallery.coverageSource },
+    { id: 4, image: photo2, title: text.gallery.achievementTitle, source: text.gallery.coverageSource },
+    { id: 5, image: photo3, title: text.gallery.achievementTitle, source: text.gallery.coverageSource },
+    { id: 6, image: photo4, title: text.gallery.achievementTitle, source: text.gallery.coverageSource },
+    { id: 7, image: photo5, title: text.gallery.achievementTitle, source: text.gallery.coverageSource },
+    { id: 8, image: result5, title: text.gallery.achievementTitle, source: text.gallery.coverageSource },
   ]
 
   return (
     <main className="results-page">
-
-      {/* HERO */}
-
       <section className="results-hero">
-
         <div className="container results-hero-grid">
-
           <div>
-
             <div className="eyebrow">
               <span className="" />
               {text.hero.eyebrow}
             </div>
-
             <h1>
               {text.hero.title1}
               <br />
@@ -153,134 +94,62 @@ export default function Result() {
               <br />
               {text.hero.title3}
             </h1>
-
           </div>
-
           <div className="results-hero-copy">
-
-            <p>
-              {text.hero.description}
-            </p>
-
+            <p>{text.hero.description}</p>
           </div>
-
         </div>
-
       </section>
 
-
-      {/* ACHIEVEMENTS */}
-
       <section className="results-gallery">
-
         <div className="container">
-
           <div className="results-gallery-header">
-
             <div>
-
-              <span className="section-label">
-                {text.gallery.label}
-              </span>
-
+              <span className="section-label">{text.gallery.label}</span>
               <h2>
                 {text.gallery.title1}
                 <br />
                 {text.gallery.title2}
               </h2>
-
             </div>
-
-            <p>
-              {text.gallery.description}
-            </p>
-
+            <p>{text.gallery.description}</p>
           </div>
-
-
-          {/* MASONRY */}
 
           <div className="results-masonry">
-
             {achievements.map((item) => (
-
-              <article
-                className="result-item"
-                key={item.id}
-              >
-
+              <article className="result-item" key={item.id}>
                 <div className="result-image-wrap">
-
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                  />
-
+                  <img src={item.image} alt={item.title} loading="lazy" />
                 </div>
-
-
                 <div className="result-meta">
-
                   <div>
-
-                    <span>
-                      {item.source}
-                    </span>
-
-                    <h3>
-                      {item.title}
-                    </h3>
-
+                    <span>{item.source}</span>
+                    <h3>{item.title}</h3>
                   </div>
-
                   <ArrowUpRight size={15} />
-
                 </div>
-
               </article>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
 
-
-      {/* CTA */}
-
       <section className="results-cta">
-
         <div className="container results-cta-inner">
-
           <div>
-
-            <span className="section-label">
-              {text.cta.label}
-            </span>
-
+            <span className="section-label">{text.cta.label}</span>
             <h2>
               {text.cta.title1}
               <br />
               {text.cta.title2}
             </h2>
-
           </div>
-
-          <Link
-            to="/admission"
-            className="button button-primary"
-          >
+          <Link to="/admission" className="button button-primary">
             {text.cta.button}
             <ArrowUpRight size={16} />
           </Link>
-
         </div>
-
       </section>
-
     </main>
   )
 }
