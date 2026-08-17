@@ -79,12 +79,11 @@ export default function Home() {
           title: 'तुमची परीक्षा निवडा.',
           description:
             'तुमच्या परीक्षा आणि पसंतीच्या अध्ययन पद्धतीनुसार योग्य तयारीचा पर्याय निवडा.',
-          view: 'बॅचेस पहा',
+          view: 'सविस्तर माहिती पहा',
           items: {
             upsc: 'नागरी सेवा परीक्षा',
             mpsc: 'महाराष्ट्र लोकसेवा आयोग',
             banking: 'बँकिंग परीक्षा',
-            saralseva: 'महाराष्ट्र शासन भरती परीक्षा',
           },
         },
 
@@ -230,12 +229,11 @@ export default function Home() {
           title: 'Choose your examination.',
           description:
             'Explore preparation options based on your examination and preferred learning mode.',
-          view: 'View batches',
+          view: 'Explore program',
           items: {
             upsc: 'Civil Services Examination',
             mpsc: 'Maharashtra Public Service Commission',
             banking: 'Banking examinations',
-            saralseva: 'Maharashtra government recruitment',
           },
         },
 
@@ -349,22 +347,20 @@ export default function Home() {
     {
       number: '01',
       title: 'UPSC',
+      path: '/upsc',
       description: text.programs.items.upsc,
     },
     {
       number: '02',
       title: 'MPSC',
+      path: '/mpsc',
       description: text.programs.items.mpsc,
     },
     {
       number: '03',
       title: 'Banking',
+      path: '/banking',
       description: text.programs.items.banking,
-    },
-    {
-      number: '04',
-      title: 'Saralseva',
-      description: text.programs.items.saralseva,
     },
   ]
 
@@ -566,13 +562,12 @@ export default function Home() {
       )}
 
       {/* =====================================================
-          HERO
+          HERO CAROUSEL
       ===================================================== */}
 
       <section className="home-hero">
 
         <div className="home-hero-slider">
-
           {heroSlides.map((slide, index) => (
             <img
               key={slide.image}
@@ -585,9 +580,7 @@ export default function Home() {
               }
             />
           ))}
-
           <div className="home-hero-overlay" />
-
         </div>
 
         <div className="container home-hero-grid">
@@ -686,11 +679,11 @@ export default function Home() {
 
           </div>
 
-          <div className="program-grid">
+          <div className="program-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
 
             {programs.map((program) => (
               <Link
-                to="/coaching"
+                to={program.path}
                 className="program-card"
                 key={program.title}
               >
@@ -1158,54 +1151,6 @@ export default function Home() {
               />
 
             ))}
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* =====================================================
-          CTA
-      ===================================================== */}
-
-      <section className="home-cta">
-
-        <div className="container home-cta-inner">
-
-          <div>
-
-            <span className="section-label">
-              {text.cta.label}
-            </span>
-
-            <h2>
-              {text.cta.title1}
-              <br />
-              {text.cta.title2}
-            </h2>
-
-            <p>
-              {text.cta.description}
-            </p>
-
-          </div>
-
-          <div className="home-cta-actions">
-
-            <Link
-              to="/coaching"
-              className="button button-primary"
-            >
-              {text.cta.explore}
-              <ArrowUpRight size={16} />
-            </Link>
-
-            <Link
-              to="/admission"
-              className="button button-secondary"
-            >
-              {text.cta.admission}
-            </Link>
 
           </div>
 

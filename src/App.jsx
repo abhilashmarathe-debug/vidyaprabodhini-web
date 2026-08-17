@@ -13,6 +13,9 @@ import Coaching from './pages/Coaching'
 import Admission from './pages/Admission'
 import Result from './pages/Result'
 import Gallery from './pages/Gallery'
+import Upsc from './pages/Upsc'
+import Mpsc from './pages/Mpsc'
+import Banking from './pages/Banking'
 
 import Login from './pages/crm/Login'
 import Dashboard from './pages/crm/Dashboard'
@@ -70,6 +73,21 @@ function PublicWebsite() {
         <Route
           path="/coaching"
           element={<Coaching />}
+        />
+
+        <Route
+          path="/upsc"
+          element={<Upsc />}
+        />
+
+        <Route
+          path="/mpsc"
+          element={<Mpsc />}
+        />
+
+        <Route
+          path="/banking"
+          element={<Banking />}
         />
 
         <Route

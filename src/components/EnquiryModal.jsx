@@ -178,10 +178,6 @@ export default function EnquiryModal({ isOpen, onClose }) {
                   Banking
                 </option>
 
-                <option value="Saralseva">
-                  Saralseva
-                </option>
-
               </select>
 
             </div>

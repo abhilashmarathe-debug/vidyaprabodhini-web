@@ -224,14 +224,6 @@ export default function Admission() {
         ? 'बँकिंग आणि वित्तीय क्षेत्रातील भरती परीक्षांची केंद्रित तयारी.'
         : 'Focused preparation for banking and related competitive examinations.',
     },
-    {
-      id: 'Saralseva',
-      title: 'Saralseva',
-      subtitle: isMarathi ? 'तलाठी / पोलीस भरती' : 'State-level exams',
-      description: isMarathi
-        ? 'तलाठी, पोलीस भरती, ग्रामसेवक व इतर राज्यस्तरीय सरळसेवा परीक्षांची तयारी.'
-        : 'Preparation for examinations including Talathi, Police Bharti and Gramsevak.',
-    },
   ]
 
   const modes = [

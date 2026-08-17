@@ -7,7 +7,6 @@ import {
   KeyRound,
   MapPin,
   Monitor,
-  Smartphone,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../components/LanguageContext.jsx'
@@ -42,14 +41,14 @@ export default function Coaching() {
           title2: 'सराव.',
           title3: 'यश.',
           description:
-            'UPSC, MPSC, Banking आणि Saralseva परीक्षांची परिपूर्ण तयारी — संरचित कोचिंग, लवचिक अध्ययन पद्धती आणि केंद्रित सराव परीक्षांचा संगम.',
+            'UPSC, MPSC आणि Banking परीक्षांची परिपूर्ण तयारी — संरचित कोचिंग, लवचिक अध्ययन पद्धती आणि केंद्रित सराव परीक्षांचा संगम.',
         },
         batches: {
           label: 'कोचिंग बॅचेस',
           title1: 'तुमची योग्य',
           title2: 'बॅच निवडा.',
           description:
-            'UPSC, MPSC, Banking आणि Saralseva परीक्षांसाठी ऑफलाइन आणि ऑनलाइन उपलब्ध बॅचेस पहा.',
+            'UPSC, MPSC आणि Banking परीक्षांसाठी ऑफलाइन आणि ऑनलाइन उपलब्ध बॅचेस पहा.',
           examFilter: 'परीक्षा',
           modeFilter: 'पद्धत',
           all: 'सर्व',
@@ -154,14 +153,14 @@ export default function Coaching() {
           title2: 'Practice.',
           title3: 'Perform.',
           description:
-            'Complete preparation for UPSC, MPSC, Banking and Saralseva combining structured coaching, flexible learning modes and focused test practice.',
+            'Complete preparation for UPSC, MPSC and Banking combining structured coaching, flexible learning modes and focused test practice.',
         },
         batches: {
           label: 'COACHING BATCHES',
           title1: 'Find your',
           title2: 'batch.',
           description:
-            'Explore preparation batches for UPSC, MPSC, Banking and Saralseva across offline and online learning modes.',
+            'Explore preparation batches for UPSC, MPSC and Banking across offline and online learning modes.',
           examFilter: 'EXAMINATION',
           modeFilter: 'MODE',
           all: 'All',
@@ -251,7 +250,7 @@ export default function Coaching() {
           ],
         },
         appCta: {
-          label: 'VIDYAPROBODHINI APP',
+          label: 'VIDYAPRABODHINI APP',
           title1: 'Your preparation,',
           title2: 'wherever you are.',
           description:
@@ -325,34 +324,13 @@ export default function Coaching() {
       schedule: isMarathi ? 'लवचिक वेळ' : 'Flexible schedule',
       status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
     },
-    {
-      id: 7,
-      course: 'Saralseva',
-      title: isMarathi ? 'सरळसेवा भरती तयारी' : 'Saralseva Preparation',
-      mode: 'Offline',
-      displayMode: isMarathi ? 'ऑफलाइन' : 'Offline',
-      location: isMarathi ? 'कोल्हापूर' : 'Kolhapur',
-      schedule: isMarathi ? 'सोमवार ते शनिवार' : 'Weekday & Weekend',
-      status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
-    },
-    {
-      id: 8,
-      course: 'Saralseva',
-      title: isMarathi ? 'सरळसेवा भरती तयारी' : 'Saralseva Preparation',
-      mode: 'Online',
-      displayMode: isMarathi ? 'ऑनलाइन' : 'Online',
-      location: isMarathi ? 'ऑनलाइन' : 'Online',
-      schedule: isMarathi ? 'लवचिक वेळ' : 'Flexible schedule',
-      status: isMarathi ? 'प्रवेश सुरू' : 'Admissions open',
-    },
   ]
 
   const courses = [
     { key: 'All', label: text.batches.all },
     { key: 'UPSC', label: 'UPSC' },
     { key: 'MPSC', label: 'MPSC' },
-    { key: 'Banking', label: isMarathi ? 'Banking' : 'Banking' },
-    { key: 'Saralseva', label: isMarathi ? 'Saralseva' : 'Saralseva' },
+    { key: 'Banking', label: 'Banking' },
   ]
 
   const modes = [
@@ -361,7 +339,7 @@ export default function Coaching() {
     { key: 'Online', label: text.batches.online },
   ]
 
-  const stepIcons = [Download, Smartphone, KeyRound, CheckCircle2]
+  const stepIcons = [Download, KeyRound, CheckCircle2, CheckCircle2]
 
   const filteredBatches = batches.filter((batch) => {
     const courseMatch =
