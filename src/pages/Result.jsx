@@ -14,7 +14,6 @@ import photo3 from '../assets/result/photo_2022-06-20_12-26-45.jpg'
 import photo4 from '../assets/result/photo_2022-06-20_12-26-52.jpg'
 import photo5 from '../assets/result/photo_2022-06-20_12-26-56.jpg'
 import result5 from '../assets/result/result5.jpg'
-import resultgal5 from '../assets/result/resultgal5.jpg'
 
 export default function Result() {
   const { language } = useLanguage()
@@ -126,12 +125,6 @@ export default function Result() {
     {
       id: 8,
       image: result5,
-      title: text.gallery.achievementTitle,
-      source: text.gallery.coverageSource,
-    },
-    {
-      id: 9,
-      image: resultgal5,
       title: text.gallery.achievementTitle,
       source: text.gallery.coverageSource,
     },
