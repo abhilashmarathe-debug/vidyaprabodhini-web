@@ -1,6 +1,9 @@
 import {
   ArrowUpRight,
   BookOpen,
+  CheckCircle2,
+  Compass,
+  GraduationCap,
   Layers3,
   Target,
   Users,
@@ -35,31 +38,50 @@ export default function About() {
           metaCity: 'कोल्हापूर',
         },
         approach: {
-          label: 'आमची कार्यपद्धती',
-          title1: 'विद्यार्थ्यांच्या गरजांनुसार',
+          label: 'विद्याप्रबोधिनीची कार्यपद्धती',
+          title1: 'तुमच्या ध्येयाभोवती',
           title2: 'घडवलेली तयारी.',
           description:
-            'स्पर्धा परीक्षांसाठी सातत्यपूर्ण अभ्यासाची गरज असते. आमची कार्यपद्धती संरचित अध्ययन, सराव, नियमित पुनरावृत्ती आणि सततच्या मार्गदर्शनाचा मेळ घालते.',
-          items: [
+            'स्पर्धा परीक्षांसाठी केवळ माहिती पुरेशी नसते. प्रत्येक टप्प्यावर सातत्य, संरचित सराव आणि योग्य मार्गदर्शन आवश्यक असते.',
+          pillars: [
             {
               number: '01',
-              title: 'केंद्रित तयारी',
-              text: 'परीक्षेच्या बदलत्या स्वरूपानुसार आणि विद्यार्थ्यांच्या पातळीनुसार तयारी केली जाते.',
+              title: 'केंद्रित अभ्यासक्रम (Focused Curriculum)',
+              tagline: 'परीक्षेच्या बदलत्या ट्रेंडनुसार तंतोतंत अभ्यास',
+              icon: Target,
+              summary:
+                'अनावश्यक माहितीचा भार कमी करून थेट परीक्षेच्या दृष्टीने आवश्यक असणाऱ्या मूलभूत व विश्लेषणात्मक संकल्पनांवर भर दिला जातो.',
+              points: [
+                'आयोगाच्या नवीनतम अभ्यासक्रमावर आधारित नोट्स व साहित्य',
+                'मागील वर्षांच्या प्रश्नपत्रिकांचे सखोल विश्लेषण (PYQ Analysis)',
+                'दैनिक चालू घडामोडींचे परीक्षाभिमुख विश्लेषण',
+              ],
             },
             {
               number: '02',
-              title: 'संरचित अध्ययन',
-              text: 'स्पष्ट अध्ययन पद्धतीमुळे विद्यार्थ्यांना मूलभूत संकल्पनांपासून नियमित सरावापर्यंत टप्प्याटप्प्याने जाता येते.',
+              title: 'संरचित अध्ययन (Structured Learning)',
+              tagline: 'संकल्पनांपासून उत्तरलेखन आणि नियमित सरावापर्यंत',
+              icon: Layers3,
+              summary:
+                'टप्प्याटप्प्याने होणारी प्रगती हीच यशाची गुरुकिल्ली आहे. पायाभूत अभ्यासापासून ते मुख्य परीक्षेच्या सराव चाचण्यांपर्यंतचे सुसूत्र नियोजन.',
+              points: [
+                'विषयनिहाय अभ्यासक्रम वेळेत पूर्ण करण्याची १००% हमी',
+                'दैनिक आणि साप्ताहिक टेस्ट सिरीजद्वारे प्रगतीचे मूल्यांकन',
+                'नियमित पुनरावृत्ती (Revision cycles) मुळे संकल्पनांची दृढता',
+              ],
             },
             {
               number: '03',
-              title: 'सातत्यपूर्ण सराव',
-              text: 'नियमित पुनरावृत्ती, सराव चाचण्या आणि मूल्यमापन हे स्पर्धा परीक्षेच्या तयारीतील महत्त्वाचे पैलू आहेत.',
-            },
-            {
-              number: '04',
-              title: 'मार्गदर्शन आणि सहकार्य',
-              text: 'विद्यार्थ्यांना संपूर्ण प्रवासात वैयक्तिक मार्गदर्शन आणि पुढील योग्य पाऊल उचलण्यासाठी सहाय्य मिळते.',
+              title: 'मार्गदर्शित तयारी (Guided Preparation)',
+              tagline: 'तज्ज्ञ प्राध्यापक व सेवारत अधिकाऱ्यांचे वैयक्तिक मार्गदर्शन',
+              icon: Compass,
+              summary:
+                'अभ्यासातील अडथळे, वेळेचे व्यवस्थापन आणि मानसिक कणखरता यासाठी प्रत्येक विद्यार्थ्याला वैयक्तिक समुपदेशन व सहकार्य मिळते.',
+              points: [
+                'विद्यार्थ्यांच्या कमकुवत घटकांवर वैयक्तिक उपाययोजना व फॉलो-अप',
+                'यशस्वी IAS, IPS आणि राज्यस्तरीय अधिकाऱ्यांचे मार्गदर्शन सत्रे',
+                'मुलाखत व व्यक्तिमत्त्व विकासासाठी विशेष सराव व मॉक सेशन्स',
+              ],
             },
           ],
         },
@@ -129,31 +151,50 @@ export default function About() {
           metaCity: 'KOLHAPUR',
         },
         approach: {
-          label: 'OUR APPROACH',
+          label: 'THE VIDYAPROBODHINI APPROACH',
           title1: 'Preparation built',
-          title2: 'around students.',
+          title2: 'around your goal.',
           description:
-            'Competitive examinations require consistency over time. Our approach combines structured learning, practice, revision and continuous guidance.',
-          items: [
+            'Competitive examinations require more than information. They require consistency, structured practice and the right guidance at every stage.',
+          pillars: [
             {
               number: '01',
-              title: 'Focused preparation',
-              text: 'Preparation stays aligned with the requirements of the examination and the stage of the learner.',
+              title: 'Focused Curriculum',
+              tagline: 'Targeted syllabus mapped to current exam patterns',
+              icon: Target,
+              summary:
+                'We eliminate informational clutter to focus strictly on foundational understanding, conceptual clarity, and critical analytical ability required to succeed.',
+              points: [
+                'Comprehensive study material strictly aligned with exam blueprints',
+                'In-depth previous years question paper analysis (PYQ Analysis)',
+                'Structured daily and monthly current affairs coverage',
+              ],
             },
             {
               number: '02',
-              title: 'Structured learning',
-              text: 'A clear learning structure helps students move from concepts and fundamentals to regular practice.',
+              title: 'Structured Learning',
+              tagline: 'From fundamental clarity to descriptive answer mastery',
+              icon: Layers3,
+              summary:
+                'Incremental, milestone-driven progress is the key to longevity in competitive exam prep. A disciplined schedule moves students seamlessly from basics to intensive mock practice.',
+              points: [
+                'Guaranteed 100% syllabus coverage with timely completions',
+                'Regular evaluation through weekly chapter tests and full-length mocks',
+                'Recurring revision cycles ensuring strong retention under pressure',
+              ],
             },
             {
               number: '03',
-              title: 'Consistent practice',
-              text: 'Regular revision, testing and evaluation form an important part of competitive examination preparation.',
-            },
-            {
-              number: '04',
-              title: 'Guided support',
-              text: 'Students can seek guidance throughout their preparation and make informed decisions about their next step.',
+              title: 'Guided Preparation',
+              tagline: 'Expert faculty mentorship and direct officer interaction',
+              icon: Compass,
+              summary:
+                'Academic progress is closely paired with personal mentorship to refine strategy, build exam temperament, and overcome individual hurdles.',
+              points: [
+                'One-on-one doubt resolution and progress follow-ups',
+                'Direct mentoring sessions with serving IAS, IPS, and state officers',
+                'Specialized personality and interview readiness modules',
+              ],
             },
           ],
         },
@@ -210,64 +251,18 @@ export default function About() {
         },
       }
 
-  const principleIcons = [Target, BookOpen, Layers3, Users]
-
   return (
     <main className="about-page">
 
       {/* =====================================================
-          HERO
+          DETAILED APPROACH SECTION (MATCHED WITH HOME PILLARS)
       ===================================================== */}
 
-      <section className="about-hero">
-        <div className="container about-hero-grid">
-
-          <div className="about-hero-heading">
-
-            <div className="eyebrow">
-              <span />
-              {text.hero.eyebrow}
-            </div>
-
-            <h1>
-              {text.hero.title1}
-              <br />
-              {text.hero.title2}
-            </h1>
-
-          </div>
-
-          <div className="about-hero-copy">
-
-            <p>
-              {text.hero.description}
-            </p>
-
-            <div className="about-hero-meta">
-              <span>{text.hero.metaLabel}</span>
-              <strong>{text.hero.metaYear}</strong>
-              <span>·</span>
-              <span>{text.hero.metaCity}</span>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          APPROACH
-      ===================================================== */}
-
-      <section className="about-approach">
-
+      <section className="about-approach" id="approach">
         <div className="container">
 
           <div className="section-heading">
-
             <div>
-
               <span className="section-label">
                 {text.approach.label}
               </span>
@@ -277,72 +272,94 @@ export default function About() {
                 <br />
                 {text.approach.title2}
               </h2>
-
             </div>
 
             <p>
               {text.approach.description}
             </p>
-
           </div>
 
-
-          <div className="principles-grid">
-
-            {text.approach.items.map((item, index) => {
-              const Icon = principleIcons[index]
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '40px' }}>
+            {text.approach.pillars.map((pillar) => {
+              const Icon = pillar.icon
 
               return (
                 <article
-                  className="principle-card"
-                  key={item.number}
+                  key={pillar.number}
+                  style={{
+                    padding: '36px',
+                    borderRadius: 'var(--radius-lg)',
+                    border: '1px solid var(--line)',
+                    background: 'var(--surface)',
+                    boxShadow: 'var(--shadow-sm)',
+                    display: 'grid',
+                    gridTemplateColumns: '80px 1fr',
+                    gap: '24px',
+                    alignItems: 'flex-start',
+                  }}
                 >
-
-                  <div className="principle-top">
-
-                    <span>
-                      {item.number}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                    <div
+                      style={{
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: 'var(--radius-md)',
+                        background: 'var(--brand-light, #eef2ff)',
+                        color: 'var(--brand)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Icon size={26} />
+                    </div>
+                    <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--subtle)', letterSpacing: '1px' }}>
+                      {pillar.number}
                     </span>
-
-                    <Icon size={18} />
-
                   </div>
 
-                  <div className="principle-content">
+                  <div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '12px', marginBottom: '6px' }}>
+                      <h3 style={{ fontSize: '22px', fontWeight: '800', color: 'var(--ink)' }}>
+                        {pillar.title}
+                      </h3>
+                      <span style={{ fontSize: '12px', color: 'var(--brand)', fontWeight: '600' }}>
+                        {pillar.tagline}
+                      </span>
+                    </div>
 
-                    <h3>
-                      {item.title}
-                    </h3>
-
-                    <p>
-                      {item.text}
+                    <p style={{ fontSize: '14.5px', color: 'var(--muted)', lineHeight: '1.65', marginBottom: '18px' }}>
+                      {pillar.summary}
                     </p>
 
+                    <div style={{ paddingTop: '16px', borderTop: '1px solid var(--line)' }}>
+                      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+                        {pillar.points.map((pt, i) => (
+                          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '13px', color: 'var(--ink)', lineHeight: '1.45' }}>
+                            <CheckCircle2 size={16} style={{ color: 'var(--brand)', flexShrink: 0, marginTop: '2px' }} />
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-
                 </article>
               )
             })}
-
           </div>
 
         </div>
-
       </section>
-
 
       {/* =====================================================
           STORY
       ===================================================== */}
 
       <section className="about-story">
-
         <div className="container">
 
           <div className="about-story-header">
-
             <div>
-
               <span className="section-label">
                 {text.story.label}
               </span>
@@ -352,32 +369,22 @@ export default function About() {
                 <br />
                 {text.story.title2}
               </h2>
-
             </div>
 
             <div className="about-story-intro">
-
               <p>
                 {text.story.intro}
               </p>
-
             </div>
-
           </div>
 
-
           <div className="about-story-layout">
-
             <aside className="about-story-sidebar">
-
               <div className="about-story-index">
-
                 <span>01</span>
-
                 <span>
                   {text.story.sectionTag}
                 </span>
-
               </div>
 
               <div className="about-story-line" />
@@ -385,61 +392,42 @@ export default function About() {
               <span className="about-story-year">
                 {text.story.sinceText}
               </span>
-
             </aside>
 
-
             <article className="about-story-content">
-
               <div className="about-story-top">
-
                 <div className="about-founder">
-
                   <div className="about-founder-image">
-
                     <img
                       src={chandrakantDada}
                       alt={text.story.founderName}
                     />
-
                   </div>
 
                   <div className="about-founder-caption">
-
                     <strong>
                       {text.story.founderName}
                     </strong>
-
                     <span>
                       {text.story.founderRole}
                     </span>
-
                   </div>
-
                 </div>
 
-
                 <div className="about-story-heading">
-
                   <span>
                     VIDYA PRABODHINI
                   </span>
-
                   <h3>
                     {text.story.journeySubtitle}
                   </h3>
-
                   <p>
                     {text.story.journeyDesc}
                   </p>
-
                 </div>
-
               </div>
 
-
               <div className="about-story-text">
-
                 <p className="about-story-lead">
                   {text.story.paragraphs[0]}
                 </p>
@@ -451,30 +439,22 @@ export default function About() {
                       {paragraph}
                     </p>
                   ))}
-
               </div>
-
             </article>
-
           </div>
 
         </div>
-
       </section>
-
 
       {/* =====================================================
           LEARNING MODES
       ===================================================== */}
 
       <section className="about-modes">
-
         <div className="container">
 
           <div className="about-modes-header">
-
             <div>
-
               <span className="section-label">
                 {text.modes.label}
               </span>
@@ -484,7 +464,6 @@ export default function About() {
                 <br />
                 {text.modes.title2}
               </h2>
-
             </div>
 
             <Link
@@ -494,22 +473,16 @@ export default function About() {
               {text.modes.explore}
               <ArrowUpRight size={15} />
             </Link>
-
           </div>
 
-
           <div className="about-modes-grid">
-
             {/* OFFLINE */}
-
             <article className="about-mode-card">
-
               <div className="about-mode-number">
                 01
               </div>
 
               <div>
-
                 <span>
                   {text.modes.offline.tag}
                 </span>
@@ -521,24 +494,18 @@ export default function About() {
                 <p>
                   {text.modes.offline.desc}
                 </p>
-
               </div>
 
               <ArrowUpRight size={18} />
-
             </article>
 
-
             {/* ONLINE */}
-
             <article className="about-mode-card dark">
-
               <div className="about-mode-number">
                 02
               </div>
 
               <div>
-
                 <span>
                   {text.modes.online.tag}
                 </span>
@@ -550,67 +517,13 @@ export default function About() {
                 <p>
                   {text.modes.online.desc}
                 </p>
-
               </div>
 
               <ArrowUpRight size={18} />
-
             </article>
-
           </div>
 
         </div>
-
-      </section>
-
-
-      {/* =====================================================
-          CTA
-      ===================================================== */}
-
-      <section className="about-cta">
-
-        <div className="container about-cta-inner">
-
-          <div>
-
-            <span className="section-label">
-              {text.cta.label}
-            </span>
-
-            <h2>
-              {text.cta.title1}
-              <br />
-              {text.cta.title2}
-            </h2>
-
-            <p>
-              {text.cta.description}
-            </p>
-
-          </div>
-
-          <div className="about-cta-actions">
-
-            <Link
-              to="/coaching"
-              className="button button-secondary"
-            >
-              {text.cta.explore}
-            </Link>
-
-            <Link
-              to="/admission"
-              className="button button-primary"
-            >
-              {text.cta.admission}
-              <ArrowUpRight size={16} />
-            </Link>
-
-          </div>
-
-        </div>
-
       </section>
 
     </main>

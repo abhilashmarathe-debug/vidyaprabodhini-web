@@ -437,7 +437,7 @@ export default function Mpsc() {
             </p>
 
             <div className="hero-actions" style={{ marginTop: '28px' }}>
-              <Link to="/coaching" className="button button-secondary">
+              <Link to="/coaching?course=MPSC#batches" className="button button-secondary">
                 {text.hero.exploreBatches}
               </Link>
 
@@ -450,7 +450,6 @@ export default function Mpsc() {
 
         </div>
       </section>
-
 
       {/* =====================================================
           BATCHES SECTION (CLIENT DATA)
@@ -520,7 +519,6 @@ export default function Mpsc() {
         </div>
       </section>
 
-
       {/* =====================================================
           ASSURANCES SECTION (WE ALSO ASSURE YOU..)
       ===================================================== */}
@@ -570,7 +568,6 @@ export default function Mpsc() {
 
         </div>
       </section>
-
 
       {/* =====================================================
           FACULTY & TEAM SECTION (WITH PHOTOGRAPHS)

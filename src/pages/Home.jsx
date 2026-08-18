@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   ArrowLeft,
   ArrowRight,
@@ -14,16 +14,52 @@ import {
   X,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import lottie from 'lottie-web'
 import { useLanguage } from '../components/LanguageContext.jsx'
 
 import slide6 from '../assets/slide6.jpg'
 import slide2 from '../assets/slide2.jpg'
 import slide7 from '../assets/slide7.jpg'
 
+import approachAnimationData from '../assets/Woman discovering business statistics.json'
+
 import ravikumarJadhav from '../assets/testimonials/ravikumar_jadhav.jpg'
 import annapurnaTalangade from '../assets/testimonials/annapurna_talangade.jpg'
 import laxmanPujari from '../assets/testimonials/laxman_pujari.jpg'
 import arunPatil from '../assets/testimonials/arun_patil.jpg'
+
+/* =========================================================
+   ROBUST LOTTIE CONTAINER
+========================================================= */
+function LottiePlayer({ animationData }) {
+  const containerRef = useRef(null)
+
+  useEffect(() => {
+    if (!containerRef.current) return
+
+    const instance = lottie.loadAnimation({
+      container: containerRef.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: animationData,
+    })
+
+    return () => instance.destroy()
+  }, [animationData])
+
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        width: '100%',
+        maxWidth: '460px',
+        height: '380px',
+        margin: '0 auto',
+      }}
+    />
+  )
+}
 
 export default function Home() {
   const { language } = useLanguage()
@@ -817,35 +853,32 @@ export default function Home() {
       </section>
 
       {/* =====================================================
-          APPROACH
+          APPROACH (WITH LOTTIE ANIMATION)
       ===================================================== */}
 
       <section className="home-approach">
 
         <div className="container home-approach-grid">
 
-          <div className="home-approach-image">
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: '#f8fafc',
+              borderRadius: 'var(--radius-lg, 16px)',
+              padding: '20px',
+              border: '1px solid var(--line, #e2e8f0)',
+              overflow: 'hidden',
+              minHeight: '400px',
+            }}
+          >
 
-            <img
-              src={slide7}
-              alt={
-                isMarathi
-                  ? 'विद्याप्रबोधिनी विद्यार्थी आणि प्राध्यापक'
-                  : 'Vidya Prabodhini students and faculty'
-              }
+            <LottiePlayer
+              animationData={approachAnimationData}
             />
-
-            <div className="home-approach-image-tag">
-
-              <span>
-                2010
-              </span>
-
-              <small>
-                {text.approach.since}
-              </small>
-
-            </div>
 
           </div>
 
@@ -885,7 +918,7 @@ export default function Home() {
             </div>
 
             <Link
-              to="/about"
+              to="/about#approach"
               className="button button-primary"
             >
               {text.approach.button}
@@ -1151,6 +1184,54 @@ export default function Home() {
               />
 
             ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          CTA
+      ===================================================== */}
+
+      <section className="home-cta">
+
+        <div className="container home-cta-inner">
+
+          <div>
+
+            <span className="section-label">
+              {text.cta.label}
+            </span>
+
+            <h2>
+              {text.cta.title1}
+              <br />
+              {text.cta.title2}
+            </h2>
+
+            <p>
+              {text.cta.description}
+            </p>
+
+          </div>
+
+          <div className="home-cta-actions">
+
+            <Link
+              to="/coaching"
+              className="button button-primary"
+            >
+              {text.cta.explore}
+              <ArrowUpRight size={16} />
+            </Link>
+
+            <Link
+              to="/admission"
+              className="button button-secondary"
+            >
+              {text.cta.admission}
+            </Link>
 
           </div>
 

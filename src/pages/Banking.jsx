@@ -359,7 +359,7 @@ export default function Banking() {
             </p>
 
             <div className="hero-actions" style={{ marginTop: '28px' }}>
-              <Link to="/coaching" className="button button-secondary">
+              <Link to="/coaching?course=Banking#batches" className="button button-secondary">
                 {text.hero.exploreBatches}
               </Link>
 
@@ -372,7 +372,6 @@ export default function Banking() {
 
         </div>
       </section>
-
 
       {/* =====================================================
           BATCHES SECTION (CLIENT DATA)
@@ -442,7 +441,6 @@ export default function Banking() {
         </div>
       </section>
 
-
       {/* =====================================================
           ASSURANCES SECTION (WE ALSO ASSURE YOU..)
       ===================================================== */}
@@ -492,7 +490,6 @@ export default function Banking() {
 
         </div>
       </section>
-
 
       {/* =====================================================
           FACULTY & TEAM SECTION (FIRST 3 MEMBERS ONLY)

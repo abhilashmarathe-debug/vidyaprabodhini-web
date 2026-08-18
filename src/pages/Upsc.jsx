@@ -387,7 +387,7 @@ export default function Upsc() {
             </p>
 
             <div className="hero-actions" style={{ marginTop: '28px' }}>
-              <Link to="/coaching" className="button button-secondary">
+              <Link to="/coaching?course=UPSC#batches" className="button button-secondary">
                 {text.hero.exploreBatches}
               </Link>
 

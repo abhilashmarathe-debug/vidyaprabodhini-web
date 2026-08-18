@@ -2246,12 +2246,9 @@ a {
 
 .section-label {
   display: block;
-
   color: var(--brand);
-
-  font-size: 11px;
+  font-size: 24px !important; /* Test with an obvious size */
   font-weight: 700;
-
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }

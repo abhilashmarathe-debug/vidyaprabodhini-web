@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   ArrowUpRight,
   CalendarDays,
@@ -7,8 +7,9 @@ import {
   KeyRound,
   MapPin,
   Monitor,
+  Smartphone,
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../components/LanguageContext.jsx'
 
 /* =========================================================
@@ -26,8 +27,29 @@ export default function Coaching() {
   const { language } = useLanguage()
   const isMarathi = language === 'mr'
 
-  const [courseFilter, setCourseFilter] = useState('All')
+  const [searchParams] = useSearchParams()
+  const initialCourse = searchParams.get('course') || 'All'
+
+  const [courseFilter, setCourseFilter] = useState(initialCourse)
   const [modeFilter, setModeFilter] = useState('All')
+
+  /* =========================================================
+     AUTO-ACTIVATE FILTER & SCROLL TO BATCHES ON PARAM CHANGE
+  ========================================================= */
+  useEffect(() => {
+    const courseParam = searchParams.get('course')
+    if (courseParam && ['UPSC', 'MPSC', 'Banking'].includes(courseParam)) {
+      setCourseFilter(courseParam)
+
+      // Smooth scroll to batches section
+      const batchesElem = document.getElementById('batches')
+      if (batchesElem) {
+        setTimeout(() => {
+          batchesElem.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+      }
+    }
+  }, [searchParams])
 
   /* =========================================================
      TRANSLATIONS
@@ -105,7 +127,7 @@ export default function Coaching() {
             title1: 'बॅच कोडशिवाय',
             title2: 'सराव सुरू करा.',
             description:
-              'विद्याप्रबोधिनी ॲप्लिकेशनच्या होम मेनूमधून **Free Test** सेक्शन उघडा आणि त्वरित सराव सुरू करा.',
+              'विद्याप्रबोधिनी ॲप्लिकेशनच्या होम मेनूमधून Free Test सेक्शन उघडा आणि त्वरित सराव सुरू करा.',
             tag: 'ॲपद्वारे थेट उपलब्ध',
           },
           exclusive: {
@@ -113,7 +135,7 @@ export default function Coaching() {
             title1: 'तुमच्याकडे बॅच कोड',
             title2: 'आहे का?',
             description:
-              'तुमचा बॅच कोड मिळवण्यासाठी समुपदेशकांशी संपर्क साधा. ॲपमध्ये **Batches** उघडा आणि विशेष टेस्टसाठी कोड टाका.',
+              'तुमचा बॅच कोड मिळवण्यासाठी समुपदेशकांशी संपर्क साधा. ॲपमध्ये Batches उघडा आणि विशेष टेस्टसाठी कोड टाका.',
             tag: 'बॅच कोड आवश्यक',
           },
         },
@@ -148,7 +170,7 @@ export default function Coaching() {
       }
     : {
         hero: {
-          eyebrow: 'VIDYAPROBODHINI COACHING',
+          eyebrow: 'VIDYAPRABODHINI COACHING',
           title1: 'Prepare.',
           title2: 'Practice.',
           title3: 'Perform.',
@@ -217,7 +239,7 @@ export default function Coaching() {
             title1: 'Start without',
             title2: 'a batch code.',
             description:
-              'Open the **Free Test** section from the home menu of the Vidyaprabodhini application and start practicing.',
+              'Open the Free Test section from the home menu of the Vidyaprabodhini application and start practicing.',
             tag: 'Available directly through the app',
           },
           exclusive: {
@@ -225,7 +247,7 @@ export default function Coaching() {
             title1: 'Have a batch',
             title2: 'code?',
             description:
-              'Contact your counsellor to receive your batch code. Open **Batches** in the application and enter the code to access your exclusive test.',
+              'Contact your counsellor to receive your batch code. Open Batches in the application and enter the code to access your exclusive test.',
             tag: 'Batch code required',
           },
         },
@@ -339,7 +361,7 @@ export default function Coaching() {
     { key: 'Online', label: text.batches.online },
   ]
 
-  const stepIcons = [Download, KeyRound, CheckCircle2, CheckCircle2]
+  const stepIcons = [Download, Smartphone, KeyRound, CheckCircle2]
 
   const filteredBatches = batches.filter((batch) => {
     const courseMatch =
