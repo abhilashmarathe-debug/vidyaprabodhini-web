@@ -931,98 +931,100 @@ export default function Home() {
       </section>
 
       {/* =====================================================
-          YOUTUBE
-      ===================================================== */}
+    YOUTUBE
+===================================================== */}
 
-      <section className="home-youtube">
+<section className="home-youtube">
+  <div className="container">
+    <div className="youtube-header">
+      <div>
+        <span className="section-label">
+          {text.youtube.label}
+        </span>
+        <h2>
+          {text.youtube.title1}
+          <br />
+          {text.youtube.title2}
+        </h2>
+      </div>
 
-        <div className="container">
+      <a
+        href="https://www.youtube.com/c/VidyaPrabodhiniKolhapur"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button youtube-subscribe-button"
+        style={{
+          backgroundColor: '#FF0000',
+          color: '#ffffff',
+          border: '1px solid #FF0000',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '10px 20px',
+          borderRadius: '8px',
+          fontWeight: '600',
+          textDecoration: 'none',
+          transition: 'background-color 0.2s ease, transform 0.2s ease',
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#cc0000')}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#FF0000')}
+      >
+        {text.youtube.subscribe}
+        <ArrowUpRight size={16} />
+      </a>
 
-          <div className="youtube-header">
+    </div>
 
-            <div>
+    <div className="youtube-grid">
+      <div className="youtube-video">
+        <iframe
+          src="https://www.youtube.com/embed/TD5ZPNHyX_s"
+          title="Vidya Prabodhini YouTube video"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
 
-              <span className="section-label">
-                {text.youtube.label}
-              </span>
-
-              <h2>
-                {text.youtube.title1}
-                <br />
-                {text.youtube.title2}
-              </h2>
-
-            </div>
-
-            <a
-              href="https://www.youtube.com/c/VidyaPrabodhiniKolhapur"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button youtube-subscribe-button"
-            >
-              {text.youtube.subscribe}
-              <ArrowUpRight size={16} />
-            </a>
-
-          </div>
-
-          <div className="youtube-grid">
-
-            <div className="youtube-video">
-
-              <iframe
-                src="https://www.youtube.com/embed/TD5ZPNHyX_s"
-                title="Vidya Prabodhini YouTube video"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-
-              <div className="youtube-play-badge">
-                <Play
-                  size={18}
-                  fill="currentColor"
-                />
-              </div>
-
-            </div>
-
-            <div className="youtube-content">
-
-              <span className="youtube-channel">
-                {text.youtube.channel}
-              </span>
-
-              <h3>
-                {text.youtube.heading1}
-                <br />
-                {text.youtube.heading2}
-              </h3>
-
-              <p>
-                {text.youtube.paragraph1}
-              </p>
-
-              <p>
-                {text.youtube.paragraph2}
-              </p>
-
-              <a
-                href="https://www.youtube.com/c/VidyaPrabodhiniKolhapur"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="youtube-channel-link"
-              >
-                {text.youtube.visit}
-                <ArrowUpRight size={15} />
-              </a>
-
-            </div>
-
-          </div>
-
+        <div className="youtube-play-badge">
+          <Play
+            size={18}
+            fill="currentColor"
+          />
         </div>
-      </section>
+      </div>
+
+      <div className="youtube-content">
+        <span className="youtube-channel">
+          {text.youtube.channel}
+        </span>
+
+        <h3>
+          {text.youtube.heading1}
+          <br />
+          {text.youtube.heading2}
+        </h3>
+
+        <p>
+          {text.youtube.paragraph1}
+        </p>
+
+        <p>
+          {text.youtube.paragraph2}
+        </p>
+
+        <a
+          href="https://www.youtube.com/c/VidyaPrabodhiniKolhapur"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="youtube-channel-link"
+        >
+          {text.youtube.visit}
+          <ArrowUpRight size={15} />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* =====================================================
           TESTIMONIALS
@@ -1190,53 +1192,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* =====================================================
-          CTA
-      ===================================================== */}
-
-      <section className="home-cta">
-
-        <div className="container home-cta-inner">
-
-          <div>
-
-            <span className="section-label">
-              {text.cta.label}
-            </span>
-
-            <h2>
-              {text.cta.title1}
-              <br />
-              {text.cta.title2}
-            </h2>
-
-            <p>
-              {text.cta.description}
-            </p>
-
-          </div>
-
-          <div className="home-cta-actions">
-
-            <Link
-              to="/coaching"
-              className="button button-primary"
-            >
-              {text.cta.explore}
-              <ArrowUpRight size={16} />
-            </Link>
-
-            <Link
-              to="/admission"
-              className="button button-secondary"
-            >
-              {text.cta.admission}
-            </Link>
-
-          </div>
-
-        </div>
-      </section>
 
     </main>
   )

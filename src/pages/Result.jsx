@@ -134,22 +134,6 @@ export default function Result() {
         </div>
       </section>
 
-      <section className="results-cta">
-        <div className="container results-cta-inner">
-          <div>
-            <span className="section-label">{text.cta.label}</span>
-            <h2>
-              {text.cta.title1}
-              <br />
-              {text.cta.title2}
-            </h2>
-          </div>
-          <Link to="/admission" className="button button-primary">
-            {text.cta.button}
-            <ArrowUpRight size={16} />
-          </Link>
-        </div>
-      </section>
     </main>
   )
 }

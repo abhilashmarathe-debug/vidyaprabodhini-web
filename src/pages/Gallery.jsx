@@ -274,39 +274,6 @@ export default function Gallery() {
       </section>
 
 
-      {/* CTA */}
-
-      <section className="gallery-cta">
-
-        <div className="container gallery-cta-inner">
-
-          <div>
-
-            <span className="section-label">
-              {text.cta.label}
-            </span>
-
-            <h2>
-              {text.cta.title1}
-              <br />
-              {text.cta.title2}
-              <br />
-              {text.cta.title3}
-            </h2>
-
-          </div>
-
-          <Link
-            to="/admission"
-            className="button button-primary"
-          >
-            {text.cta.button}
-            <ArrowUpRight size={16} />
-          </Link>
-
-        </div>
-
-      </section>
 
 
       {/* LIGHTBOX */}
