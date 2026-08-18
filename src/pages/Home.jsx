@@ -938,9 +938,6 @@ export default function Home() {
   <div className="container">
     <div className="youtube-header">
       <div>
-        <span className="section-label">
-          {text.youtube.label}
-        </span>
         <h2>
           {text.youtube.title1}
           <br />
@@ -969,7 +966,6 @@ export default function Home() {
         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#cc0000')}
         onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#FF0000')}
       >
-        {text.youtube.subscribe}
         <ArrowUpRight size={16} />
       </a>
 
