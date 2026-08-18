@@ -33,7 +33,6 @@ export default function Gallery() {
   const text = isMarathi
     ? {
         hero: {
-          eyebrow: 'छायाचित्र दालन',
           title1: 'विद्याप्रबोधिनीचे',
           title2: 'काही क्षण.',
           description:
@@ -58,7 +57,6 @@ export default function Gallery() {
       }
     : {
         hero: {
-          eyebrow: 'Photo Gallery',
           title1: 'Moments from',
           title2: 'Vidyaprabodhini.',
           description:
@@ -156,51 +154,30 @@ export default function Gallery() {
 
   return (
     <main className="gallery-page">
-
       {/* HERO */}
-
       <section className="gallery-hero">
-
         <div className="container gallery-hero-grid">
-
           <div>
-
-            <div className="eyebrow">
-              <span />
-              {text.hero.eyebrow}
-            </div>
-
-            <h1>
+            <h1 style={{ margin: '0 0 20px', fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: '1.08', letterSpacing: '-0.035em', fontWeight: '750' }}>
               {text.hero.title1}
               <br />
               {text.hero.title2}
             </h1>
-
           </div>
 
-          <div className="gallery-hero-copy">
-
-            <p>
+          <div className="gallery-hero-copy" style={{ maxWidth: '440px' }}>
+            <p style={{ margin: '0 0 24px', fontSize: '16px', lineHeight: '1.6' }}>
               {text.hero.description}
             </p>
-
           </div>
-
         </div>
-
       </section>
 
-
       {/* GALLERY */}
-
       <section className="gallery-section">
-
         <div className="container">
-
           <div className="gallery-heading">
-
             <div>
-
               <span className="section-label">
                 {text.gallery.label}
               </span>
@@ -210,28 +187,21 @@ export default function Gallery() {
                 <br />
                 {text.gallery.title2}
               </h2>
-
             </div>
 
             <span className="gallery-count">
               {String(galleryImages.length).padStart(2, '0')} {text.gallery.photosCount}
             </span>
-
           </div>
 
-
           <div className="gallery-masonry">
-
             {galleryImages.map((item, index) => (
-
               <article
                 className="gallery-item"
                 key={item.id}
                 onClick={() => setSelectedImage(item)}
               >
-
                 <div className="gallery-image-wrap">
-
                   <img
                     src={item.image}
                     alt={item.title}
@@ -239,20 +209,15 @@ export default function Gallery() {
                   />
 
                   <div className="gallery-image-overlay">
-
                     <span>
                       {text.gallery.view}
                     </span>
 
                     <ArrowUpRight size={16} />
-
                   </div>
-
                 </div>
 
-
                 <div className="gallery-item-meta">
-
                   <span>
                     {String(item.id).padStart(2, '0')}
                   </span>
@@ -260,31 +225,19 @@ export default function Gallery() {
                   <p>
                     {item.title}
                   </p>
-
                 </div>
-
               </article>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
 
-
-
-
       {/* LIGHTBOX */}
-
       {selectedImage && (
-
         <div
           className="gallery-lightbox"
           onClick={() => setSelectedImage(null)}
         >
-
           <button
             type="button"
             className="gallery-lightbox-close"
@@ -294,31 +247,23 @@ export default function Gallery() {
             <X size={20} />
           </button>
 
-
           <div
             className="gallery-lightbox-content"
             onClick={(event) => event.stopPropagation()}
           >
-
             <img
               src={selectedImage.image}
               alt={selectedImage.title}
             />
 
             <div className="gallery-lightbox-caption">
-
               <span>
                 {selectedImage.title}
               </span>
-
             </div>
-
           </div>
-
         </div>
-
       )}
-
     </main>
   )
 }

@@ -37,7 +37,6 @@ export default function Mpsc() {
   const text = isMarathi
     ? {
         hero: {
-          eyebrow: 'महाराष्ट्र लोकसेवा आयोग',
           title1: 'MPSC',
           title2: 'राज्यसेवा आणि संयुक्त (गट ब) परीक्षा',
           subtitle: '( Rajyaseva, PSI, STI, ASO & Group C )',
@@ -102,7 +101,7 @@ export default function Mpsc() {
             },
             {
               title: 'दैनिक उत्तरलेखन सराव',
-              subtitle: 'Daily Writing Practice (As per new syllabus)',
+              subtitle: 'Daily Writing Practice',
               desc: 'नवीन अभ्यासक्रमानुसार उत्तरलेखनाची तंत्रे व तज्ज्ञांकडून मूल्यांकन.',
             },
             {
@@ -216,9 +215,8 @@ export default function Mpsc() {
       }
     : {
         hero: {
-          eyebrow: 'Maharashtra Public Service Commission',
           title1: 'MPSC',
-          title2: 'State Services & Combined (Group B) Exams',
+          title2: 'State Services & Combined Exams',
           subtitle: '( Rajyaseva, PSI, STI, ASO & Group C )',
           description:
             'Comprehensive coaching for Deputy Collector, DySP, Tehsildar, and Group B/C Services with structured classrooms, updated syllabus coverage, and rigorous test practice.',
@@ -405,38 +403,29 @@ export default function Mpsc() {
 
   return (
     <main className="course-detail-page">
-      {/* QUICK EXAM SWITCHER */}
       <ExamSwitcher current="mpsc" />
 
-      {/* =====================================================
-          HERO SECTION
-      ===================================================== */}
-
+      {/* HERO SECTION */}
       <section className="about-hero">
         <div className="container about-hero-grid">
-
           <div className="about-hero-heading">
-            <div className="eyebrow">
-              <span />
-              {text.hero.eyebrow}
-            </div>
-
-            <h1>
+            <h1 style={{ margin: '0 0 16px', fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: '1.08', letterSpacing: '-0.035em', fontWeight: '750', color: 'var(--ink)' }}>
               {text.hero.title1}
               <br />
               {text.hero.title2}
             </h1>
-            <p style={{ marginTop: '8px', color: 'var(--brand)', fontWeight: '700', fontSize: '18px' }}>
+
+            <p style={{ margin: '0 0 24px', color: 'var(--brand)', fontWeight: '700', fontSize: 'clamp(16px, 2vw, 18px)' }}>
               {text.hero.subtitle}
             </p>
           </div>
 
-          <div className="about-hero-copy">
-            <p>
+          <div className="about-hero-copy" style={{ maxWidth: '440px' }}>
+            <p style={{ margin: '0 0 24px', fontSize: '16px', lineHeight: '1.6', color: 'var(--muted)' }}>
               {text.hero.description}
             </p>
 
-            <div className="hero-actions" style={{ marginTop: '28px' }}>
+            <div className="hero-actions" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px' }}>
               <Link to="/coaching?course=MPSC#batches" className="button button-secondary">
                 {text.hero.exploreBatches}
               </Link>
@@ -447,17 +436,12 @@ export default function Mpsc() {
               </Link>
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          BATCHES SECTION (CLIENT DATA)
-      ===================================================== */}
-
+      {/* BATCHES SECTION */}
       <section className="about-approach" id="batches">
         <div className="container">
-
           <div className="section-heading">
             <div>
               <span className="section-label">
@@ -515,17 +499,12 @@ export default function Mpsc() {
               </article>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          ASSURANCES SECTION (WE ALSO ASSURE YOU..)
-      ===================================================== */}
-
+      {/* ASSURANCES SECTION */}
       <section className="home-why-us" style={{ background: 'var(--background)' }}>
         <div className="container">
-
           <div className="section-heading">
             <div>
               <span className="section-label">
@@ -565,17 +544,12 @@ export default function Mpsc() {
               )
             })}
           </div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          FACULTY & TEAM SECTION (WITH PHOTOGRAPHS)
-      ===================================================== */}
-
+      {/* FACULTY & TEAM SECTION */}
       <section className="about-story" style={{ background: 'var(--surface)' }}>
         <div className="container">
-
           <div className="section-heading">
             <div>
               <span className="section-label">
@@ -663,10 +637,8 @@ export default function Mpsc() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
-
     </main>
   )
 }

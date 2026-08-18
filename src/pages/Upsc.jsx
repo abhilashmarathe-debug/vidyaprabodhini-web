@@ -35,7 +35,6 @@ export default function Upsc() {
   const text = isMarathi
     ? {
         hero: {
-          eyebrow: 'केंद्रीय लोकसेवा आयोग',
           title1: 'UPSC',
           title2: 'नागरी सेवा परीक्षा',
           subtitle: '( पूर्व + मुख्य + मुलाखत )',
@@ -190,7 +189,6 @@ export default function Upsc() {
       }
     : {
         hero: {
-          eyebrow: 'Union Public Service Commission',
           title1: 'UPSC',
           title2: 'Civil Services Examination',
           subtitle: '( Pre + Mains + Interview )',
@@ -355,38 +353,29 @@ export default function Upsc() {
 
   return (
     <main className="course-detail-page">
-      {/* QUICK EXAM SWITCHER */}
       <ExamSwitcher current="upsc" />
 
-      {/* =====================================================
-          HERO SECTION
-      ===================================================== */}
-
+      {/* HERO SECTION */}
       <section className="about-hero">
         <div className="container about-hero-grid">
-
           <div className="about-hero-heading">
-            <div className="eyebrow">
-              <span />
-              {text.hero.eyebrow}
-            </div>
-
-            <h1>
+            <h1 style={{ margin: '0 0 16px', fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: '1.08', letterSpacing: '-0.035em', fontWeight: '750', color: 'var(--ink)' }}>
               {text.hero.title1}
               <br />
               {text.hero.title2}
             </h1>
-            <p style={{ marginTop: '8px', color: 'var(--brand)', fontWeight: '700', fontSize: '18px' }}>
+
+            <p style={{ margin: '0 0 24px', color: 'var(--brand)', fontWeight: '700', fontSize: 'clamp(16px, 2vw, 18px)' }}>
               {text.hero.subtitle}
             </p>
           </div>
 
-          <div className="about-hero-copy">
-            <p>
+          <div className="about-hero-copy" style={{ maxWidth: '440px' }}>
+            <p style={{ margin: '0 0 24px', fontSize: '16px', lineHeight: '1.6', color: 'var(--muted)' }}>
               {text.hero.description}
             </p>
 
-            <div className="hero-actions" style={{ marginTop: '28px' }}>
+            <div className="hero-actions" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px' }}>
               <Link to="/coaching?course=UPSC#batches" className="button button-secondary">
                 {text.hero.exploreBatches}
               </Link>
@@ -397,17 +386,12 @@ export default function Upsc() {
               </Link>
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          BATCHES SECTION
-      ===================================================== */}
-
+      {/* BATCHES SECTION */}
       <section className="about-approach" id="batches">
         <div className="container">
-
           <div className="section-heading">
             <div>
               <span className="section-label">
@@ -465,17 +449,12 @@ export default function Upsc() {
               </article>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          ASSURANCES SECTION
-      ===================================================== */}
-
+      {/* ASSURANCES SECTION */}
       <section className="home-why-us" style={{ background: 'var(--background)' }}>
         <div className="container">
-
           <div className="section-heading">
             <div>
               <span className="section-label">
@@ -515,17 +494,12 @@ export default function Upsc() {
               )
             })}
           </div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          FACULTY & TEAM SECTION (WITH PHOTOGRAPHS)
-      ===================================================== */}
-
+      {/* FACULTY & TEAM SECTION */}
       <section className="about-story" style={{ background: 'var(--surface)' }}>
         <div className="container">
-
           <div className="section-heading">
             <div>
               <span className="section-label">
@@ -613,10 +587,8 @@ export default function Upsc() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
-
     </main>
   )
 }

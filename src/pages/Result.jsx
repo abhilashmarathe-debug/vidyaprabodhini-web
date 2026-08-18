@@ -18,7 +18,6 @@ export default function Result() {
   const text = isMarathi
     ? {
         hero: {
-          eyebrow: 'निकाल आणि यश',
           title1: 'विश्वासार्ह',
           title2: 'निकाल.',
           title3: 'उज्वल यश.',
@@ -43,7 +42,6 @@ export default function Result() {
       }
     : {
         hero: {
-          eyebrow: 'Results & Achievements',
           title1: 'Results that',
           title2: 'speak for',
           title3: 'themselves.',
@@ -80,14 +78,11 @@ export default function Result() {
 
   return (
     <main className="results-page">
+      {/* HERO SECTION */}
       <section className="results-hero">
         <div className="container results-hero-grid">
           <div>
-            <div className="eyebrow">
-              <span className="" />
-              {text.hero.eyebrow}
-            </div>
-            <h1>
+            <h1 style={{ margin: '0 0 20px', fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: '1.08', letterSpacing: '-0.035em', fontWeight: '750' }}>
               {text.hero.title1}
               <br />
               {text.hero.title2}
@@ -95,12 +90,14 @@ export default function Result() {
               {text.hero.title3}
             </h1>
           </div>
-          <div className="results-hero-copy">
-            <p>{text.hero.description}</p>
+
+          <div className="results-hero-copy" style={{ maxWidth: '440px' }}>
+            <p style={{ margin: '0 0 24px', fontSize: '16px', lineHeight: '1.6' }}>{text.hero.description}</p>
           </div>
         </div>
       </section>
 
+      {/* GALLERY SECTION */}
       <section className="results-gallery">
         <div className="container">
           <div className="results-gallery-header">
@@ -134,6 +131,32 @@ export default function Result() {
         </div>
       </section>
 
+      {/* CTA SECTION */}
+      <section className="home-cta">
+        <div className="container home-cta-inner">
+          <div>
+            <span className="section-label">
+              {text.cta.label}
+            </span>
+
+            <h2>
+              {text.cta.title1}
+              <br />
+              {text.cta.title2}
+            </h2>
+          </div>
+
+          <div className="home-cta-actions">
+            <Link
+              to="/admission"
+              className="button button-primary"
+            >
+              {text.cta.button}
+              <ArrowUpRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }

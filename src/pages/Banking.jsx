@@ -31,7 +31,6 @@ export default function Banking() {
   const text = isMarathi
     ? {
         hero: {
-          eyebrow: 'बँकिंग व वित्तीय भरती परीक्षा',
           title1: 'Banking',
           title2: 'IBPS, SBI व RRB भरती परीक्षा',
           subtitle: '( PO, Clerk, SO & Insurance Exams )',
@@ -174,8 +173,7 @@ export default function Banking() {
       }
     : {
         hero: {
-          eyebrow: 'Banking & Financial Recruitment Exams',
-          title1: 'BANKING',
+          title1: 'Banking',
           title2: 'IBPS, SBI & RRB Examination Coaching',
           subtitle: '( PO, Clerk, SO & Insurance Exams )',
           description:
@@ -327,38 +325,29 @@ export default function Banking() {
 
   return (
     <main className="course-detail-page">
-      {/* QUICK EXAM SWITCHER */}
       <ExamSwitcher current="banking" />
 
-      {/* =====================================================
-          HERO SECTION
-      ===================================================== */}
-
+      {/* HERO SECTION */}
       <section className="about-hero">
         <div className="container about-hero-grid">
-
           <div className="about-hero-heading">
-            <div className="eyebrow">
-              <span />
-              {text.hero.eyebrow}
-            </div>
-
-            <h1>
+            <h1 style={{ margin: '0 0 16px', fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: '1.08', letterSpacing: '-0.035em', fontWeight: '750', color: 'var(--ink)' }}>
               {text.hero.title1}
               <br />
               {text.hero.title2}
             </h1>
-            <p style={{ marginTop: '8px', color: 'var(--brand)', fontWeight: '700', fontSize: '18px' }}>
+
+            <p style={{ margin: '0 0 24px', color: 'var(--brand)', fontWeight: '700', fontSize: 'clamp(16px, 2vw, 18px)' }}>
               {text.hero.subtitle}
             </p>
           </div>
 
-          <div className="about-hero-copy">
-            <p>
+          <div className="about-hero-copy" style={{ maxWidth: '440px' }}>
+            <p style={{ margin: '0 0 24px', fontSize: '16px', lineHeight: '1.6', color: 'var(--muted)' }}>
               {text.hero.description}
             </p>
 
-            <div className="hero-actions" style={{ marginTop: '28px' }}>
+            <div className="hero-actions" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px' }}>
               <Link to="/coaching?course=Banking#batches" className="button button-secondary">
                 {text.hero.exploreBatches}
               </Link>
@@ -369,17 +358,12 @@ export default function Banking() {
               </Link>
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          BATCHES SECTION (CLIENT DATA)
-      ===================================================== */}
-
+      {/* BATCHES SECTION */}
       <section className="about-approach" id="batches">
         <div className="container">
-
           <div className="section-heading">
             <div>
               <span className="section-label">
@@ -437,17 +421,12 @@ export default function Banking() {
               </article>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          ASSURANCES SECTION (WE ALSO ASSURE YOU..)
-      ===================================================== */}
-
+      {/* ASSURANCES SECTION */}
       <section className="home-why-us" style={{ background: 'var(--background)' }}>
         <div className="container">
-
           <div className="section-heading">
             <div>
               <span className="section-label">
@@ -487,17 +466,12 @@ export default function Banking() {
               )
             })}
           </div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          FACULTY & TEAM SECTION (FIRST 3 MEMBERS ONLY)
-      ===================================================== */}
-
+      {/* FACULTY & TEAM SECTION */}
       <section className="about-story" style={{ background: 'var(--surface)' }}>
         <div className="container">
-
           <div className="section-heading">
             <div>
               <span className="section-label">
@@ -585,10 +559,8 @@ export default function Banking() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
-
     </main>
   )
 }

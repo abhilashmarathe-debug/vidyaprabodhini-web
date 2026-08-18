@@ -254,24 +254,6 @@ a {
   max-width: 680px;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  margin-bottom: 25px;
-
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  background: var(--brand-light);
-  color: var(--brand);
-
-  font-size: 11px;
-  font-weight: 700;
-
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-}
 
 .hero-copy h1 {
   max-width: 690px;
@@ -1755,48 +1737,7 @@ a {
   color: #ffffff;
 }
 
-/* ---------------------------------------------------------
-   EYEBROW
---------------------------------------------------------- */
 
-.home-hero-content .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  margin-bottom: 28px;
-  padding: 9px 16px;
-
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.10);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  color: #ffffff;
-
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.home-hero-content .eyebrow span {
-  width: 7px;
-  height: 7px;
-
-  flex-shrink: 0;
-
-  border-radius: 50%;
-
-  background: #8b5cf6;
-
-  box-shadow:
-    0 0 0 4px rgba(139, 92, 246, 0.15),
-    0 0 18px rgba(139, 92, 246, 0.8);
-}
 
 /* ---------------------------------------------------------
    MAIN HEADING
@@ -2105,7 +2046,6 @@ a {
    HERO ANIMATION
 --------------------------------------------------------- */
 
-.home-hero-content .eyebrow,
 .home-hero-content h1,
 .home-hero-content > p,
 .home-hero-actions {
@@ -2199,9 +2139,7 @@ a {
     padding-right: 20px;
   }
 
-  .home-hero-content .eyebrow {
-    font-size: 10px;
-  }
+  
 
   .home-hero-actions {
     flex-direction: column;
@@ -2247,7 +2185,7 @@ a {
 .section-label {
   display: block;
   color: var(--brand);
-  font-size: 24px !important; /* Test with an obvious size */
+  font-size: 18px !important; /* Test with an obvious size */
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -7508,10 +7446,7 @@ a {
   color: rgba(255, 255, 255, 0.78);
 }
 
-.hero-copy .eyebrow {
-  color: white;
-  background: rgba(79, 70, 229, 0.4);
-}
+
 
 .hero-note {
   color: rgba(255, 255, 255, 0.75);
@@ -8725,9 +8660,7 @@ a {
    HERO TEXT ANIMATION
 ========================================================= */
 
-.home-hero-content .eyebrow {
-  animation: heroFadeUp 0.6s ease both;
-}
+
 
 .home-hero-content h1 {
   animation: heroFadeUp 0.7s ease both;
@@ -9097,15 +9030,7 @@ a {
   padding-top: 40px;
 }
 
-.home-hero-content .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
 
-  margin-bottom: 28px;
-
-  color: #ffffff;
-}
 
 .home-hero-content h1 {
   margin: 0;
@@ -11167,50 +11092,33 @@ a {
   align-items: center;
 }
 
-.coaching-hero .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
 
-  margin-bottom: 25px;
 
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
 
-  color: var(--coaching-blue);
-}
-
-.coaching-hero .eyebrow-line {
-  width: 28px;
-  height: 2px;
-
-  background: var(--coaching-blue);
-}
 
 .coaching-hero h1 {
-  margin: 0;
+  margin: 0 0 20px;
 
-  max-width: 700px;
+  max-width: 600px;
 
-  font-size: clamp(60px, 8vw, 105px);
-  line-height: 0.88;
-  letter-spacing: -0.065em;
+  /* Scaled down from 105px to a balanced headline size */
+  font-size: clamp(36px, 5.5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   font-weight: 750;
 
   color: var(--coaching-ink);
 }
 
 .coaching-hero-copy {
-  max-width: 480px;
+  max-width: 440px;
 }
 
 .coaching-hero-copy p {
-  margin: 0 0 30px;
+  margin: 0 0 24px;
 
-  font-size: 18px;
-  line-height: 1.75;
+  font-size: 16px;
+  line-height: 1.6;
 
   color: var(--coaching-muted);
 }
@@ -11218,9 +11126,9 @@ a {
 .coaching-hero-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
 }
-
 
 /* =========================================================
    OVERVIEW
@@ -12408,22 +12316,9 @@ a {
   }
 }
 
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 22px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
 
-.eyebrow-line {
-  width: 34px;
-  height: 1px;
-  background: #e5232f;
-}
+
+
 
 .home-hero h1 {
   max-width: 800px;
