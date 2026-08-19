@@ -375,7 +375,7 @@ export default function About() {
           <div className="about-story-layout">
             <aside className="about-story-sidebar">
               <div className="about-story-index">
-                <span>01</span>
+                
                 <span>
                   {text.story.sectionTag}
                 </span>
@@ -490,7 +490,6 @@ export default function About() {
                 </p>
               </div>
 
-              <ArrowUpRight size={18} />
             </article>
 
             {/* ONLINE */}
@@ -513,7 +512,6 @@ export default function About() {
                 </p>
               </div>
 
-              <ArrowUpRight size={18} />
             </article>
           </div>
 

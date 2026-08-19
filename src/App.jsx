@@ -6,6 +6,7 @@ import ChatWidget from './components/chatbot/ChatWidget'
 import ScrollToTop from './components/ScrollToTop'
 import { LanguageProvider } from './components/LanguageContext'
 import LanguageBar from './components/LanguageBar'
+import CookieBanner from './components/CookieBanner'
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -16,6 +17,10 @@ import Gallery from './pages/Gallery'
 import Upsc from './pages/Upsc'
 import Mpsc from './pages/Mpsc'
 import Banking from './pages/Banking'
+
+import Terms from './pages/Terms'
+import Privacy from './pages/Privacy'
+import CookiePolicy from './pages/CookiePolicy'
 
 import Login from './pages/crm/Login'
 import Dashboard from './pages/crm/Dashboard'
@@ -105,11 +110,30 @@ function PublicWebsite() {
           element={<Gallery />}
         />
 
+        {/* LEGAL PAGES */}
+        <Route
+          path="/terms"
+          element={<Terms />}
+        />
+
+        <Route
+          path="/privacy"
+          element={<Privacy />}
+        />
+
+        <Route
+          path="/cookie-policy"
+          element={<CookiePolicy />}
+        />
+
       </Routes>
 
       <Footer />
 
       <ChatWidget />
+
+      {/* COOKIE CONSENT POPUP */}
+      <CookieBanner />
 
     </LanguageProvider>
   )

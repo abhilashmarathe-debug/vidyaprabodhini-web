@@ -54,7 +54,7 @@ export default function Coaching() {
   }, [searchParams])
 
   /* =========================================================
-     TRANSLATIONS
+      TRANSLATIONS
   ========================================================= */
   const text = isMarathi
     ? {
@@ -281,7 +281,7 @@ export default function Coaching() {
       }
 
   /* =========================================================
-     BATCHES DATA
+      BATCHES DATA
   ========================================================= */
   const batches = [
     {
@@ -395,7 +395,9 @@ export default function Coaching() {
         <div className="container">
           <div className="section-heading">
             <div>
-              <span className="section-label">{text.batches.label}</span>
+              <span className="section-label" style={{ color: '#e53935' }}>
+                {text.batches.label}
+              </span>
               <h2>
                 {text.batches.title1}
                 <br />
@@ -504,7 +506,9 @@ export default function Coaching() {
         <div className="container">
           <div className="section-heading">
             <div>
-              <span className="section-label">{text.testSeries.label}</span>
+              <span className="section-label" style={{ color: '#e53935' }}>
+                {text.testSeries.label}
+              </span>
               <h2>
                 {text.testSeries.title1}
                 <br />
@@ -525,7 +529,9 @@ export default function Coaching() {
 
           <div className="test-process-header">
             <div>
-              <span className="section-label">{text.howItWorks.label}</span>
+              <span className="section-label" style={{ color: '#e53935' }}>
+                {text.howItWorks.label}
+              </span>
               <h2>
                 {text.howItWorks.title1}
                 <br />
@@ -595,7 +601,9 @@ export default function Coaching() {
         <div className="container">
           <div className="test-support-header">
             <div>
-              <span className="section-label">{text.support.label}</span>
+              <span className="section-label" style={{ color: '#e53935' }}>
+                {text.support.label}
+              </span>
               <h2>
                 {text.support.title1}
                 <br />

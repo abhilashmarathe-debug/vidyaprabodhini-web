@@ -349,7 +349,7 @@ export default function Home() {
         testimonials: {
           label: 'STUDENT SUCCESS',
           title1: 'Stories of',
-          title2: 'determination.',
+          title2: 'Determination.',
           description:
             'The journey of every aspirant is different. Here are a few voices representing the dedication and success of our students.',
           previous: 'Previous testimonial',

@@ -518,27 +518,28 @@ export default function Admission() {
       ===================================================== */}
       <section className="admission-next-section">
         <div className="container">
-          <div className="section-heading">
-            <span className="section-label">{text.nextSteps.label}</span>
-            <h2>
-              {text.nextSteps.title1} <span>{text.nextSteps.title2}</span>
-            </h2>
+          <div className="section-heading" style={{ gridTemplateColumns: 'minmax(0, 1.2fr) minmax(280px, 0.8fr)' }}>
+            <div>
+              <span className="section-label" style={{ color: '#e53935' }}>
+                {text.nextSteps.label}
+              </span>
+              <h2>
+                {text.nextSteps.title1} <span>{text.nextSteps.title2}</span>
+              </h2>
+            </div>
             <p>{text.nextSteps.description}</p>
           </div>
 
           <div className="next-steps-grid">
             <div className="next-step-card">
-              <div className="step-number">01</div>
               <h3>{text.nextSteps.step1.title}</h3>
               <p>{text.nextSteps.step1.text}</p>
             </div>
             <div className="next-step-card">
-              <div className="step-number">02</div>
               <h3>{text.nextSteps.step2.title}</h3>
               <p>{text.nextSteps.step2.text}</p>
             </div>
             <div className="next-step-card">
-              <div className="step-number">03</div>
               <h3>{text.nextSteps.step3.title}</h3>
               <p>{text.nextSteps.step3.text}</p>
             </div>
