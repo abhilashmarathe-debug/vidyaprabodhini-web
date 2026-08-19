@@ -37,8 +37,9 @@ export default function Footer() {
           title2: 'येथून सुरू होते.',
           enquire: 'प्रवेशाबद्दल चौकशी करा',
 
+          subtitle: 'स्पर्धा परीक्षा मार्गदर्शन केंद्र, कोल्हापूर',
           description:
-            'UPSC, MPSC, Banking आणि Saralseva स्पर्धा परीक्षांसाठी मार्गदर्शन आणि तयारी.',
+            'UPSC, MPSC आणि Banking स्पर्धा परीक्षांसाठी मार्गदर्शन आणि तयारी.',
 
           navigation: 'नेव्हिगेशन',
           preparation: 'अभ्यासक्रम',
@@ -96,8 +97,9 @@ export default function Footer() {
           title2: 'starts here.',
           enquire: 'Enquire about admission',
 
+          subtitle: 'Competitive Examination Guidance Centre, Kolhapur',
           description:
-            'Guidance and preparation for UPSC, MPSC, Banking and Saralseva competitive examinations.',
+            'Guidance and preparation for UPSC, MPSC, and Banking competitive examinations.',
 
           navigation: 'NAVIGATION',
           preparation: 'PREPARATION',
@@ -180,7 +182,6 @@ export default function Footer() {
     'UPSC',
     'MPSC',
     'Banking',
-    'Saralseva',
   ]
 
   const learningModes = isMarathi
@@ -209,14 +210,6 @@ export default function Footer() {
     if (!formData.course || !formData.mode) {
       return
     }
-
-    /*
-      Connect your Supabase / CRM submission here.
-
-      Example:
-
-      await submitAdmissionEnquiry(formData)
-    */
 
     console.log(
       'Footer admission enquiry:',
@@ -321,7 +314,7 @@ export default function Footer() {
               </Link>
 
               <p>
-                स्पर्धा परीक्षा मार्गदर्शन केंद्र, कोल्हापूर
+                {text.footer.subtitle}
               </p>
 
               <p className="footer-description">
@@ -403,7 +396,7 @@ export default function Footer() {
                 {courses.map((course) => (
                   <Link
                     key={course}
-                    to="/coaching"
+                    to={`/coaching?course=${course}#batches`}
                   >
                     {course}
                   </Link>

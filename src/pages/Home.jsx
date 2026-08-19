@@ -85,21 +85,18 @@ export default function Home() {
         hero: {
           slides: [
             {
-              eyebrow: 'विद्याप्रबोधिनी अकॅडमी',
               title1: 'तुमची',
               title2: 'तयारी घडवा.',
               description:
                 'स्पर्धा परीक्षांसाठी संरचित अध्ययन, नियमित सराव आणि सातत्यपूर्ण प्रगतीवर आधारित तयारीचे कार्यक्रम.',
             },
             {
-              eyebrow: 'स्पर्धा परीक्षा',
               title1: 'ध्येयासह',
               title2: 'तयारी करा.',
               description:
                 'गंभीर स्पर्धा परीक्षार्थींसाठी केंद्रित मार्गदर्शन आणि शिस्तबद्ध अध्ययनाचे वातावरण.',
             },
             {
-              eyebrow: 'विद्याप्रबोधिनी · कोल्हापूर',
               title1: 'तुमचे ध्येय.',
               title2: 'आमचे मार्गदर्शन.',
               description:
@@ -190,7 +187,6 @@ export default function Home() {
         },
 
         youtube: {
-          label: 'युट्यूबवर सबस्क्राईब करा',
           title1: 'मोफत आणि नियमित',
           title2: 'व्हिडिओ मार्गदर्शन.',
           subscribe: 'सबस्क्राईब करा',
@@ -235,21 +231,18 @@ export default function Home() {
         hero: {
           slides: [
             {
-              eyebrow: 'VIDYAPROBODHINI ACADEMY',
               title1: 'Build your',
               title2: 'preparation.',
               description:
                 'Preparation programs for competitive examinations, designed around structured learning, practice and consistent progress.',
             },
             {
-              eyebrow: 'COMPETITIVE EXAMINATION',
               title1: 'Prepare with',
               title2: 'purpose.',
               description:
                 'Focused guidance and a disciplined learning environment for serious competitive examination aspirants.',
             },
             {
-              eyebrow: 'VIDYAPROBODHINI · KOLHAPUR',
               title1: 'Your goal.',
               title2: 'Our guidance.',
               description:
@@ -340,7 +333,6 @@ export default function Home() {
         },
 
         youtube: {
-          label: 'SUBSCRIBE US ON YOUTUBE',
           title1: 'Free and regular',
           title2: 'video boosters.',
           subscribe: 'Subscribe',
@@ -403,7 +395,6 @@ export default function Home() {
   const heroSlides = [
     {
       image: slide6,
-      eyebrow: text.hero.slides[0].eyebrow,
       title: (
         <>
           {text.hero.slides[0].title1}
@@ -415,7 +406,6 @@ export default function Home() {
     },
     {
       image: slide2,
-      eyebrow: text.hero.slides[1].eyebrow,
       title: (
         <>
           {text.hero.slides[1].title1}
@@ -427,7 +417,6 @@ export default function Home() {
     },
     {
       image: slide7,
-      eyebrow: text.hero.slides[2].eyebrow,
       title: (
         <>
           {text.hero.slides[2].title1}
@@ -626,11 +615,6 @@ export default function Home() {
             key={`hero-${activeSlide}-${language}`}
           >
 
-            <div className="eyebrow">
-              <span className="eyebrow-line" />
-              {currentSlide.eyebrow}
-            </div>
-
             <h1>
               {currentSlide.title}
             </h1>
@@ -715,7 +699,8 @@ export default function Home() {
 
           </div>
 
-          <div className="program-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          {/* Grid without hardcoded style */}
+          <div className="program-grid">
 
             {programs.map((program) => (
               <Link
@@ -872,7 +857,7 @@ export default function Home() {
               padding: '20px',
               border: '1px solid var(--line, #e2e8f0)',
               overflow: 'hidden',
-              minHeight: '400px',
+              minHeight: '380px',
             }}
           >
 
@@ -931,96 +916,96 @@ export default function Home() {
       </section>
 
       {/* =====================================================
-    YOUTUBE
-===================================================== */}
+          YOUTUBE
+      ===================================================== */}
 
-<section className="home-youtube">
-  <div className="container">
-    <div className="youtube-header">
-      <div>
-        <h2>
-          {text.youtube.title1}
-          <br />
-          {text.youtube.title2}
-        </h2>
-      </div>
+      <section className="home-youtube">
+        <div className="container">
+          <div className="youtube-header">
+            <div>
+              <h2>
+                {text.youtube.title1}
+                <br />
+                {text.youtube.title2}
+              </h2>
+            </div>
 
-      <a
-        href="https://www.youtube.com/c/VidyaPrabodhiniKolhapur"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="button youtube-subscribe-button"
-        style={{
-          backgroundColor: '#FF0000',
-          color: '#ffffff',
-          border: '1px solid #FF0000',
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '8px',
-          padding: '10px 20px',
-          borderRadius: '8px',
-          fontWeight: '600',
-          textDecoration: 'none',
-          transition: 'background-color 0.2s ease, transform 0.2s ease',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#cc0000')}
-        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#FF0000')}
-      >
-        <ArrowUpRight size={16} />
-      </a>
+            <a
+              href="https://www.youtube.com/c/VidyaPrabodhiniKolhapur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button youtube-subscribe-button"
+              style={{
+                backgroundColor: '#FF0000',
+                color: '#ffffff',
+                border: '1px solid #FF0000',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 20px',
+                borderRadius: '8px',
+                fontWeight: '600',
+                textDecoration: 'none',
+                transition: 'background-color 0.2s ease, transform 0.2s ease',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#cc0000')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#FF0000')}
+            >
+              {text.youtube.subscribe}
+              <ArrowUpRight size={16} />
+            </a>
+          </div>
 
-    </div>
+          <div className="youtube-grid">
+            <div className="youtube-video">
+              <iframe
+                src="https://www.youtube.com/embed/TD5ZPNHyX_s"
+                title="Vidya Prabodhini YouTube video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
 
-    <div className="youtube-grid">
-      <div className="youtube-video">
-        <iframe
-          src="https://www.youtube.com/embed/TD5ZPNHyX_s"
-          title="Vidya Prabodhini YouTube video"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
+              <div className="youtube-play-badge">
+                <Play
+                  size={18}
+                  fill="currentColor"
+                />
+              </div>
+            </div>
 
-        <div className="youtube-play-badge">
-          <Play
-            size={18}
-            fill="currentColor"
-          />
+            <div className="youtube-content">
+              <span className="youtube-channel">
+                {text.youtube.channel}
+              </span>
+
+              <h3>
+                {text.youtube.heading1}
+                <br />
+                {text.youtube.heading2}
+              </h3>
+
+              <p>
+                {text.youtube.paragraph1}
+              </p>
+
+              <p>
+                {text.youtube.paragraph2}
+              </p>
+
+              <a
+                href="https://www.youtube.com/c/VidyaPrabodhiniKolhapur"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="youtube-channel-link"
+              >
+                {text.youtube.visit}
+                <ArrowUpRight size={15} />
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="youtube-content">
-        <span className="youtube-channel">
-          {text.youtube.channel}
-        </span>
-
-        <h3>
-          {text.youtube.heading1}
-          <br />
-          {text.youtube.heading2}
-        </h3>
-
-        <p>
-          {text.youtube.paragraph1}
-        </p>
-
-        <p>
-          {text.youtube.paragraph2}
-        </p>
-
-        <a
-          href="https://www.youtube.com/c/VidyaPrabodhiniKolhapur"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="youtube-channel-link"
-        >
-          {text.youtube.visit}
-          <ArrowUpRight size={15} />
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* =====================================================
           TESTIMONIALS
