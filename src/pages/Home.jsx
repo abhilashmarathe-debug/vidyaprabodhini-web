@@ -373,19 +373,16 @@ export default function Home() {
 
   const programs = [
     {
-      number: '01',
       title: 'UPSC',
       path: '/upsc',
       description: text.programs.items.upsc,
     },
     {
-      number: '02',
       title: 'MPSC',
       path: '/mpsc',
       description: text.programs.items.mpsc,
     },
     {
-      number: '03',
       title: 'Banking',
       path: '/banking',
       description: text.programs.items.banking,
@@ -779,7 +776,6 @@ export default function Home() {
               return (
                 <article
                   className="why-us-card"
-                  key={item.number}
                 >
 
                   <div className="why-us-card-inner">
@@ -788,9 +784,7 @@ export default function Home() {
 
                       <div className="why-us-top">
 
-                        <span>
-                          {item.number}
-                        </span>
+                        
 
                         <Icon size={20} />
 
@@ -811,10 +805,6 @@ export default function Home() {
                     </div>
 
                     <div className="why-us-card-back">
-
-                      <span className="why-us-back-number">
-                        {item.number}
-                      </span>
 
                       <h3>
                         {item.title}

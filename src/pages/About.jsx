@@ -45,7 +45,6 @@ export default function About() {
             'स्पर्धा परीक्षांसाठी केवळ माहिती पुरेशी नसते. प्रत्येक टप्प्यावर सातत्य, संरचित सराव आणि योग्य मार्गदर्शन आवश्यक असते.',
           pillars: [
             {
-              number: '01',
               title: 'केंद्रित अभ्यासक्रम (Focused Curriculum)',
               tagline: 'परीक्षेच्या बदलत्या ट्रेंडनुसार तंतोतंत अभ्यास',
               icon: Target,
@@ -58,7 +57,6 @@ export default function About() {
               ],
             },
             {
-              number: '02',
               title: 'संरचित अध्ययन (Structured Learning)',
               tagline: 'संकल्पनांपासून उत्तरलेखन आणि नियमित सरावापर्यंत',
               icon: Layers3,
@@ -71,7 +69,6 @@ export default function About() {
               ],
             },
             {
-              number: '03',
               title: 'मार्गदर्शित तयारी (Guided Preparation)',
               tagline: 'तज्ज्ञ प्राध्यापक व सेवारत अधिकाऱ्यांचे वैयक्तिक मार्गदर्शन',
               icon: Compass,
@@ -158,7 +155,6 @@ export default function About() {
             'Competitive examinations require more than information. They require consistency, structured practice and the right guidance at every stage.',
           pillars: [
             {
-              number: '01',
               title: 'Focused Curriculum',
               tagline: 'Targeted syllabus mapped to current exam patterns',
               icon: Target,
@@ -171,7 +167,6 @@ export default function About() {
               ],
             },
             {
-              number: '02',
               title: 'Structured Learning',
               tagline: 'From fundamental clarity to descriptive answer mastery',
               icon: Layers3,
@@ -184,7 +179,6 @@ export default function About() {
               ],
             },
             {
-              number: '03',
               title: 'Guided Preparation',
               tagline: 'Expert faculty mentorship and direct officer interaction',
               icon: Compass,
@@ -479,7 +473,7 @@ export default function About() {
             {/* OFFLINE */}
             <article className="about-mode-card">
               <div className="about-mode-number">
-                01
+                
               </div>
 
               <div>
@@ -502,7 +496,7 @@ export default function About() {
             {/* ONLINE */}
             <article className="about-mode-card dark">
               <div className="about-mode-number">
-                02
+                
               </div>
 
               <div>

@@ -212,22 +212,18 @@ export default function Coaching() {
             'Test series are accessed through the Vidyaprabodhini mobile application.',
           steps: [
             {
-              number: '01',
               title: 'Download the app',
               text: 'Download the official Vidyaprabodhini mobile application and sign in to access the test section.',
             },
             {
-              number: '02',
               title: 'Choose your test',
               text: 'For free tests, open the Free Test section directly from the home screen of the application.',
             },
             {
-              number: '03',
               title: 'Enter your batch code',
               text: 'For exclusive tests, contact your counsellor to receive the batch code and enter it through the Batches section.',
             },
             {
-              number: '04',
               title: 'Start your test',
               text: 'Select the available test and begin your examination-focused practice.',
             },

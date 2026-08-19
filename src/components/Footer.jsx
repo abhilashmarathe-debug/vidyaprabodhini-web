@@ -324,32 +324,48 @@ export default function Footer() {
               <div className="footer-socials">
 
                 <a
-                  href="#"
+                  href="https://instagram.com/vidya_prabodhini"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Instagram"
-                  onClick={(event) =>
-                    event.preventDefault()
-                  }
                 >
                   IG
                 </a>
 
                 <a
-                  href="#"
+                  href="https://facebook.com/vidyaprabodhinikendra"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Facebook"
-                  onClick={(event) =>
-                    event.preventDefault()
-                  }
                 >
                   FB
                 </a>
 
                 <a
-                  href="https://www.youtube.com/c/VidyaPrabodhiniKolhapur"
+                  href="https://twitter.com/vidyaprabodhini"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter / X"
+                >
+                  X
+                </a>
+
+                <a
+                  href="http://www.youtube.com/@VidyaPrabodhiniKolhapur"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
                 >
                   YT
+                </a>
+
+                <a
+                  href="https://t.me/VidyaPrabodhiniMPSC"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Telegram"
+                >
+                  TG
                 </a>
 
               </div>
@@ -426,8 +442,8 @@ export default function Footer() {
                   {text.footer.city}
                 </p>
 
-                <a href="mailto:info@vidyaprabodhini.in">
-                  info@vidyaprabodhini.in
+                <a href="mailto:vidyaprabodhinidigital@gmail.com">
+                  vidyaprabodhinidigital@gmail.com
                 </a>
 
               </div>
