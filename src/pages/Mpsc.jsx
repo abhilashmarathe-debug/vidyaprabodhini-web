@@ -53,7 +53,6 @@ export default function Mpsc() {
             'विद्याप्रबोधिनीमध्ये राज्यसेवा, संयुक्त गट ब व मुलाखतीची परिपूर्ण तयारी करून घेणारे विशेष कोर्सेस.',
           batches: [
             {
-              id: '01',
               title: 'राज्यसेवा (Rajyaseva)',
               stage: 'सामान्य अध्ययन + मराठी व इंग्रजी',
               starts: 'जून अखेरचा आठवडा / जुलै पहिला आठवडा',
@@ -64,7 +63,6 @@ export default function Mpsc() {
               ],
             },
             {
-              id: '02',
               title: 'संयुक्त (गट ब) परीक्षा',
               stage: 'PSI / STI / ASO',
               starts: 'जून अखेरचा आठवडा / जुलै पहिला आठवडा',
@@ -75,7 +73,6 @@ export default function Mpsc() {
               ],
             },
             {
-              id: '03',
               title: 'मुलाखत (Interview)',
               stage: 'वैयक्तिक मार्गदर्शन व अभिरूप मुलाखती',
               starts: 'ऑक्टोबर',
@@ -231,7 +228,6 @@ export default function Mpsc() {
             'Tailored preparation modules covering Rajyaseva, Combine Group B, and Interview Guidance.',
           batches: [
             {
-              id: '01',
               title: 'State Services (Rajyaseva)',
               stage: 'General Studies + Marathi & English',
               starts: 'June last week / July first week',
@@ -242,7 +238,6 @@ export default function Mpsc() {
               ],
             },
             {
-              id: '02',
               title: 'Combine (Group B) Exam',
               stage: 'PSI / STI / ASO',
               starts: 'June last week / July first week',
@@ -253,7 +248,6 @@ export default function Mpsc() {
               ],
             },
             {
-              id: '03',
               title: 'Interview Guidance',
               stage: 'Personal Mentoring & Mock Interviews',
               starts: 'October',
@@ -405,27 +399,29 @@ export default function Mpsc() {
     <main className="course-detail-page">
       <ExamSwitcher current="mpsc" />
 
-      {/* HERO SECTION */}
-      <section className="about-hero">
-        <div className="container about-hero-grid">
-          <div className="about-hero-heading">
-            <h1 style={{ margin: '0 0 16px', fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: '1.08', letterSpacing: '-0.035em', fontWeight: '750', color: 'var(--ink)' }}>
+      {/* =========================================================
+          HERO SECTION
+      ========================================================= */}
+      <section style={{ padding: '54px 0 46px', borderBottom: '1px solid var(--line)', background: 'var(--background)' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '36px', alignItems: 'center' }}>
+          <div>
+            <h1 style={{ margin: '0 0 12px', fontSize: 'clamp(30px, 4vw, 44px)', lineHeight: '1.15', fontWeight: '800', color: 'var(--ink)', letterSpacing: '-0.025em' }}>
               {text.hero.title1}
               <br />
               {text.hero.title2}
             </h1>
 
-            <p style={{ margin: '0 0 24px', color: 'var(--brand)', fontWeight: '700', fontSize: 'clamp(16px, 2vw, 18px)' }}>
+            <p style={{ margin: '0 0 16px', color: 'var(--brand)', fontWeight: '700', fontSize: '15px' }}>
               {text.hero.subtitle}
             </p>
           </div>
 
-          <div className="about-hero-copy" style={{ maxWidth: '440px' }}>
-            <p style={{ margin: '0 0 24px', fontSize: '16px', lineHeight: '1.6', color: 'var(--muted)' }}>
+          <div style={{ maxWidth: '500px' }}>
+            <p style={{ margin: '0 0 22px', fontSize: '15px', lineHeight: '1.65', color: 'var(--muted)' }}>
               {text.hero.description}
             </p>
 
-            <div className="hero-actions" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px' }}>
               <Link to="/coaching?course=MPSC#batches" className="button button-secondary">
                 {text.hero.exploreBatches}
               </Link>
@@ -439,48 +435,59 @@ export default function Mpsc() {
         </div>
       </section>
 
-      {/* BATCHES SECTION */}
-      <section className="about-approach" id="batches">
+      {/* =========================================================
+          BATCHES SECTION (3 COLUMNS)
+      ========================================================= */}
+      <section id="batches" style={{ padding: '64px 0 58px' }}>
         <div className="container">
-          <div className="section-heading">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'end', marginBottom: '36px' }}>
             <div>
-              <span className="section-label">
+              <span className="section-label" style={{ marginBottom: '10px' }}>
                 {text.batchesSection.label}
               </span>
 
-              <h2>
+              <h2 style={{ margin: 0, fontSize: 'clamp(26px, 3.5vw, 36px)', lineHeight: '1.1', fontWeight: '800' }}>
                 {text.batchesSection.title1}
                 <br />
                 {text.batchesSection.title2}
               </h2>
             </div>
 
-            <p>
+            <p style={{ margin: 0, fontSize: '14.5px', lineHeight: '1.65', color: 'var(--muted)' }}>
               {text.batchesSection.description}
             </p>
           </div>
 
-          <div className="principles-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
-            {text.batchesSection.batches.map((batch) => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '22px', width: '100%' }}>
+            {text.batchesSection.batches.map((batch, index) => (
               <article
-                className="principle-card"
-                key={batch.id}
-                style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+                key={index}
+                style={{
+                  background: 'var(--surface)',
+                  border: '1px solid var(--line)',
+                  borderRadius: '16px',
+                  padding: '28px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  boxShadow: 'var(--shadow-sm)',
+                }}
               >
                 <div>
-                  <div className="principle-top">
-                    <span>{batch.id}</span>
-                    <span style={{ fontSize: '10px', color: 'var(--muted)', fontWeight: '600' }}>
+                  <div style={{ marginBottom: '16px' }}>
+                    <span style={{ display: 'inline-block', fontSize: '11px', color: 'var(--muted)', fontWeight: '600', background: 'var(--surface-raised, #f1f5f9)', padding: '5px 12px', borderRadius: '6px' }}>
                       {batch.stage}
                     </span>
                   </div>
 
-                  <div className="principle-content" style={{ marginTop: '20px' }}>
-                    <h3 style={{ fontSize: '22px' }}>{batch.title}</h3>
-                    <ul style={{ marginTop: '14px', listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <div>
+                    <h3 style={{ fontSize: '20px', fontWeight: '750', color: 'var(--ink)', margin: '0 0 16px' }}>
+                      {batch.title}
+                    </h3>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '11px' }}>
                       {batch.features.map((feat, idx) => (
-                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12.5px', color: 'var(--muted)' }}>
-                          <CheckCircle2 size={15} style={{ color: 'var(--brand)', flexShrink: 0, marginTop: '2px' }} />
+                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '9px', fontSize: '13px', color: 'var(--muted)', lineHeight: '1.45' }}>
+                          <CheckCircle2 size={16} style={{ color: 'var(--brand)', flexShrink: 0, marginTop: '2px' }} />
                           <span>{feat}</span>
                         </li>
                       ))}
@@ -488,11 +495,11 @@ export default function Mpsc() {
                   </div>
                 </div>
 
-                <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid var(--line)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <small style={{ fontSize: '10px', color: 'var(--subtle)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
+                <div style={{ marginTop: '26px', paddingTop: '16px', borderTop: '1px solid var(--line)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <small style={{ fontSize: '10.5px', color: 'var(--subtle)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
                     {isMarathi ? 'सुरुवात' : 'STARTS FROM'}
                   </small>
-                  <strong style={{ fontSize: '13px', color: 'var(--ink)' }}>
+                  <strong style={{ fontSize: '14px', color: 'var(--ink)', fontWeight: '700' }}>
                     {batch.starts}
                   </strong>
                 </div>
@@ -502,43 +509,60 @@ export default function Mpsc() {
         </div>
       </section>
 
-      {/* ASSURANCES SECTION */}
-      <section className="home-why-us" style={{ background: 'var(--background)' }}>
+      {/* =========================================================
+          ASSURANCES SECTION (3x2 BALANCED GRID)
+      ========================================================= */}
+      <section style={{ background: 'var(--background)', padding: '64px 0 58px', borderTop: '1px solid var(--line)' }}>
         <div className="container">
-          <div className="section-heading">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'end', marginBottom: '36px' }}>
             <div>
-              <span className="section-label">
+              <span className="section-label" style={{ marginBottom: '10px' }}>
                 {text.assurances.label}
               </span>
 
-              <h2>
+              <h2 style={{ margin: 0, fontSize: 'clamp(26px, 3.5vw, 36px)', lineHeight: '1.1', fontWeight: '800' }}>
                 {text.assurances.title1}
                 <br />
                 {text.assurances.title2}
               </h2>
             </div>
 
-            <p>
+            <p style={{ margin: 0, fontSize: '14.5px', lineHeight: '1.65', color: 'var(--muted)' }}>
               {text.assurances.description}
             </p>
           </div>
 
-          <div className="principles-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', gap: '22px', width: '100%' }}>
             {text.assurances.items.map((item, index) => {
               const Icon = assuranceIcons[index]
               return (
-                <article className="principle-card" key={item.title}>
-                  <div className="principle-top">
-                    <span>{String(index + 1).padStart(2, '0')}</span>
-                    <Icon size={18} />
-                  </div>
+                <article
+                  key={item.title}
+                  style={{
+                    background: 'var(--surface)',
+                    border: '1px solid var(--line)',
+                    borderRadius: '16px',
+                    padding: '28px',
+                    boxShadow: 'var(--shadow-sm)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <div>
+                    <div style={{ color: 'var(--brand)', marginBottom: '16px' }}>
+                      <Icon size={22} />
+                    </div>
 
-                  <div className="principle-content">
-                    <h3>{item.title}</h3>
-                    <small style={{ display: 'block', color: 'var(--brand)', fontWeight: '600', fontSize: '11px', marginTop: '2px' }}>
+                    <h3 style={{ fontSize: '18px', fontWeight: '700', color: 'var(--ink)', margin: 0 }}>
+                      {item.title}
+                    </h3>
+                    <small style={{ display: 'block', color: 'var(--brand)', fontWeight: '600', fontSize: '11.5px', marginTop: '4px', marginBottom: '10px' }}>
                       {item.subtitle}
                     </small>
-                    <p>{item.desc}</p>
+                    <p style={{ margin: 0, fontSize: '13px', lineHeight: '1.6', color: 'var(--muted)' }}>
+                      {item.desc}
+                    </p>
                   </div>
                 </article>
               )
@@ -547,41 +571,42 @@ export default function Mpsc() {
         </div>
       </section>
 
-      {/* FACULTY & TEAM SECTION */}
-      <section className="about-story" style={{ background: 'var(--surface)' }}>
+      {/* =========================================================
+          FACULTY & TEAM SECTION
+      ========================================================= */}
+      <section style={{ background: 'var(--surface)', padding: '64px 0 74px', borderTop: '1px solid var(--line)' }}>
         <div className="container">
-          <div className="section-heading">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'end', marginBottom: '36px' }}>
             <div>
-              <span className="section-label">
+              <span className="section-label" style={{ marginBottom: '10px' }}>
                 {text.facultySection.label}
               </span>
 
-              <h2>
+              <h2 style={{ margin: 0, fontSize: 'clamp(26px, 3.5vw, 36px)', lineHeight: '1.1', fontWeight: '800' }}>
                 {text.facultySection.title1}
                 <br />
                 {text.facultySection.title2}
               </h2>
             </div>
 
-            <p>
+            <p style={{ margin: 0, fontSize: '14.5px', lineHeight: '1.65', color: 'var(--muted)' }}>
               {text.facultySection.description}
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', gap: '22px', width: '100%' }}>
             {text.facultySection.faculties.map((faculty) => (
               <div
                 key={faculty.name}
                 style={{
-                  padding: '24px',
-                  borderRadius: 'var(--radius-lg)',
+                  padding: '26px',
+                  borderRadius: '16px',
                   border: '1px solid var(--line)',
                   background: 'var(--surface)',
                   boxShadow: 'var(--shadow-sm)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  transition: 'all 0.2s ease',
                 }}
               >
                 <div>
@@ -590,9 +615,9 @@ export default function Mpsc() {
                       src={faculty.image}
                       alt={faculty.name}
                       style={{
-                        width: '72px',
-                        height: '72px',
-                        borderRadius: 'var(--radius-md)',
+                        width: '68px',
+                        height: '68px',
+                        borderRadius: '12px',
                         objectFit: 'cover',
                         objectPosition: 'top',
                         border: '1px solid var(--line)',
@@ -601,27 +626,27 @@ export default function Mpsc() {
                     />
 
                     <div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--brand)', marginBottom: '4px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--brand)', marginBottom: '3px' }}>
                         <GraduationCap size={14} />
                         <span style={{ fontSize: '10px', fontWeight: '700', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
                           FACULTY
                         </span>
                       </div>
 
-                      <h3 style={{ fontSize: '17px', fontWeight: '750', color: 'var(--ink)', lineHeight: '1.2' }}>
+                      <h3 style={{ fontSize: '16px', fontWeight: '750', color: 'var(--ink)', lineHeight: '1.25', margin: 0 }}>
                         {faculty.name}
                       </h3>
                     </div>
                   </div>
 
-                  <p style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: '1.45', minHeight: '34px' }}>
+                  <p style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: '1.45', margin: '0 0 12px' }}>
                     {faculty.qual}
                   </p>
 
-                  <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--line)' }}>
-                    <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                  <div style={{ paddingTop: '12px', borderTop: '1px solid var(--line)' }}>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                       {faculty.details.map((det, i) => (
-                        <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', color: 'var(--muted)' }}>
+                        <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11.5px', color: 'var(--muted)' }}>
                           <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--brand)', flexShrink: 0 }} />
                           <span>{det}</span>
                         </li>

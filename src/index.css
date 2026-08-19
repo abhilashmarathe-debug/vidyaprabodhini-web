@@ -14472,3 +14472,45 @@ img, iframe, svg {
   }
 }
 
+/* =========================================================
+   REFINED EXAM HERO HEADINGS
+========================================================= */
+
+.course-hero-title {
+  margin: 0 0 14px !important;
+  font-size: clamp(28px, 4.2vw, 48px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.025em !important;
+  font-weight: 750 !important;
+  color: var(--ink) !important;
+}
+
+.course-hero-subtitle {
+  margin: 0 0 20px !important;
+  color: var(--brand) !important;
+  font-weight: 700 !important;
+  font-size: clamp(14px, 1.8vw, 16px) !important;
+}
+
+.course-hero-description {
+  margin: 0 0 20px !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: var(--muted) !important;
+}
+
+@media (max-width: 640px) {
+  .course-hero-title {
+    font-size: clamp(24px, 6.8vw, 32px) !important;
+    line-height: 1.15 !important;
+  }
+
+  .course-hero-subtitle {
+    font-size: 14px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .course-hero-description {
+    font-size: 14px !important;
+  }
+}
