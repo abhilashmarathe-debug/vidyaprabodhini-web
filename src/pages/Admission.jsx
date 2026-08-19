@@ -1,11 +1,23 @@
 import {
-  ArrowUpRight,
+  ArrowRight,
+  Award,
+  BookOpen,
+  Building2,
   CheckCircle2,
+  ChevronRight,
+  Clock,
+  GraduationCap,
+  Landmark,
+  Loader2,
+  Lock,
   MapPin,
   Monitor,
+  Phone,
+  ShieldCheck,
   Sparkles,
+  User,
 } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { useLanguage } from '../components/LanguageContext.jsx'
 
 export default function Admission() {
@@ -19,189 +31,213 @@ export default function Admission() {
     mobile: '',
     email: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
-  // Step References for Auto-Scroll
+  // Step References for Smooth Auto-Scroll
   const step2Ref = useRef(null)
   const step3Ref = useRef(null)
+
+  // Progress Calculation
+  const progress = useMemo(() => {
+    let count = 0
+    if (course) count += 33
+    if (mode) count += 33
+    if (formData.name && formData.mobile.length >= 10) count += 34
+    return count
+  }, [course, mode, formData])
 
   const handleCourseSelect = (selectedId) => {
     setCourse(selectedId)
     setTimeout(() => {
-      if (step2Ref.current) {
-        step2Ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
+      step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }, 150)
   }
 
   const handleModeSelect = (selectedId) => {
     setMode(selectedId)
     setTimeout(() => {
-      if (step3Ref.current) {
-        step3Ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
+      step3Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }, 150)
   }
 
   /* =========================================================
       TRANSLATIONS
   ========================================================= */
-
   const text = isMarathi
     ? {
+        badge: 'प्रवेश प्रक्रिया २०२६ - २०२७',
         hero: {
-          title1: 'तुमची तयारी',
-          title2: 'सुरू करा.',
+          title1: 'तुमच्या यशाची तयारी',
+          title2: 'इथून सुरू करा.',
           description:
-            'खालील तीन सोप्या टप्प्यांत तुमचा अभ्यासक्रम आणि संपर्क माहिती भरा. आमचे समुपदेशक तुमच्याशी लवकरच संपर्क साधतील.',
+            'खालील तीन सोप्या टप्प्यांत तुमचा अभ्यासक्रम निवडा व नोंदणी करा. आमचे वरिष्ठ समुपदेशक बॅच व अभ्यास आराखड्यासाठी थेट संपर्क साधतील.',
         },
         step1: {
           label: 'पायरी ०१',
           title: 'तुम्ही कोणत्या परीक्षेची तयारी करत आहात?',
-          description: 'तुम्हाला हवा असलेला अभ्यासक्रम निवडा.',
+          description: 'तुमचे ध्येय निवडा आणि विशेष बॅच मिळवा.',
         },
         step2: {
           label: 'पायरी ०२',
-          title: 'तुम्हाला कसे शिकायला आवडेल?',
-          description: 'तुमच्या सोयीनुसार योग्य अध्ययन पद्धत निवडा.',
+          title: 'तुमची सोयीस्कर अध्ययन पद्धत कोणती?',
+          description: 'ऑफलाइन किंवा थेट लाइव्ह वर्ग निवडा.',
         },
         step3: {
           label: 'पायरी ०३',
-          title: 'तुमची संपर्क माहिती भरा',
-          description: 'प्रवेश व बॅचच्या माहितीसाठी तुमचे तपशील द्या.',
+          title: 'तुमचे संपर्क तपशील भरा',
+          description: 'प्रवेश निश्चिती व समुपदेशनासाठी माहिती द्या.',
           fullName: 'पूर्ण नाव',
-          fullNamePlaceholder: 'तुमचे पूर्ण नाव लिहा',
+          fullNamePlaceholder: 'उदा. अमित सूर्यवंशी',
           mobile: 'मोबाईल नंबर',
-          mobilePlaceholder: '+91 98765 43210',
-          email: 'ई-मेल पत्ता (ऐच्छिक)',
-          emailPlaceholder: 'you@example.com',
-          submit: 'प्रवेश चौकशी सादर करा',
-          submitted: 'चौकशी यशस्वीरीत्या नोंदवली गेली आहे!',
-          selectionMissing: 'कृपया प्रथम अभ्यासक्रम आणि अध्ययन पद्धत निवडा',
-          disclaimer:
-            'हा फॉर्म सबमिट करून, तुम्ही विद्याप्रबोधिनीकडून माहिती आणि मार्गदर्शनासाठी संपर्क साधण्यास सहमती देता.',
+          mobilePlaceholder: '९८७६५ ४३२१०',
+          email: 'ई-मेल पत्ता (पर्यायी)',
+          emailPlaceholder: 'amit@example.com',
+          submit: 'प्रवेश चौकशी अर्ज पाठवा',
+          submitting: 'नोंदणी होत आहे...',
+          submitted: 'नोंदणी यशस्वीरीत्या पूर्ण झाली!',
+          selectionMissing: 'कृपया प्रथम अभ्यासक्रम आणि शिकण्याची पद्धत निवडा.',
+          disclaimer: 'तुमचा डेटा १००% सुरक्षित राहील. आम्ही कोणताही स्पॅम पाठवत नाही.',
+        },
+        summary: {
+          course: 'निवडलेला कोर्स:',
+          mode: 'माध्यम:',
+          notSelected: 'निवडले नाही',
         },
         nextSteps: {
-          label: 'पुढील प्रक्रिया',
-          title1: 'इथून पुढे',
-          title2: 'काय घडेल?',
-          description:
-            'अर्ज प्राप्त झाल्यानंतर आमची टीम तुम्हाला पुढील मार्गदर्शन करेल.',
+          label: 'प्रवेश प्रक्रिया',
+          title1: 'अर्ज केल्यानंतर',
+          title2: 'पुढे काय होईल?',
+          description: 'नोंदणी पूर्ण झाल्यानंतरची पारदर्शक आणि सोपी प्रक्रिया.',
           step1: {
-            title: 'माहिती पडताळणी',
-            text: 'तुमची माहिती आणि निवड आमच्या नोंदणी प्रणालीत नोंदवली जाते.',
+            title: '१. प्राधान्य नोंदणी',
+            text: 'तुमचे निवडलेले निकष थेट आमच्या बॅच मॅनेजमेंट सिस्टीममध्ये नोंदवले जातात.',
           },
           step2: {
-            title: 'समुपदेशकांचा कॉल',
-            text: 'अभ्यासक्रम व बॅचच्या वेळेचे नियोजन समजून घेण्यासाठी समुपदेशक संपर्क करतील.',
+            title: '२. तज्ज्ञ समुपदेशन कॉल',
+            text: 'आमचे वरिष्ठ मार्गदर्शक २४ तासांत संपर्क करून अभ्यासक्रम व टाइमटेबल समजावून सांगतील.',
           },
           step3: {
-            title: 'प्रवेश निश्चिती',
-            text: 'मार्गदर्शन सत्र आणि अभ्यास साहित्य मिळवून तयारीला सुरुवात करा.',
+            title: '३. प्रवेश व साहित्य वाटप',
+            text: 'सीट निश्चित करा, डिजिटल लायब्ररी ऍक्सेस मिळवा आणि थेट तयारीला लागा.',
           },
         },
       }
     : {
+        badge: 'ADMISSIONS OPEN 2026 - 2027',
         hero: {
-          title1: 'Start your',
-          title2: 'preparation.',
+          title1: 'Architect your path to',
+          title2: 'public service.',
           description:
-            'Complete your application in three simple steps below. Our counsellors will reach out with complete batch details.',
+            'Complete your streamlined 3-step application below. Connect directly with senior faculty and lock your structured prep schedule.',
         },
         step1: {
           label: 'STEP 01',
-          title: 'What examination are you targeting?',
-          description: 'Choose your desired competitive examination track.',
+          title: 'Select Target Examination',
+          description: 'Choose your desired competitive examination curriculum.',
         },
         step2: {
           label: 'STEP 02',
-          title: 'How would you like to learn?',
-          description: 'Select the learning format that suits your schedule.',
+          title: 'Choose Learning Format',
+          description: 'Pick an immersive classroom or dynamic live-stream model.',
         },
         step3: {
           label: 'STEP 03',
-          title: 'Enter your contact details',
-          description: 'Provide your details to confirm batch availability.',
+          title: 'Applicant Information',
+          description: 'Provide your details to verify current seat availability.',
           fullName: 'Full Name',
-          fullNamePlaceholder: 'Enter your full name',
+          fullNamePlaceholder: 'e.g. Rahul Sharma',
           mobile: 'Mobile Number',
           mobilePlaceholder: '+91 98765 43210',
           email: 'Email Address (Optional)',
-          emailPlaceholder: 'you@example.com',
-          submit: 'Submit Admission Enquiry',
-          submitted: 'Enquiry Submitted Successfully!',
-          selectionMissing: 'Please select both course and learning mode above',
-          disclaimer:
-            'By submitting this form, you agree to receive guidance and admission updates from Vidyaprabodhini.',
+          emailPlaceholder: 'rahul@example.com',
+          submit: 'Submit Admission Request',
+          submitting: 'Processing Application...',
+          submitted: 'Application Received Successfully!',
+          selectionMissing: 'Please complete Steps 01 & 02 above to proceed.',
+          disclaimer: 'Your details are encrypted and strictly protected under our privacy policy.',
+        },
+        summary: {
+          course: 'Target Track:',
+          mode: 'Format:',
+          notSelected: 'Not selected',
         },
         nextSteps: {
-          label: 'WHAT HAPPENS NEXT',
-          title1: 'Simple next',
-          title2: 'steps.',
-          description:
-            'Once your form is submitted, here is how the admission process moves forward.',
+          label: 'ROADMAP',
+          title1: 'What happens',
+          title2: 'after submission?',
+          description: 'Clear, transparent next steps toward starting your cohort.',
           step1: {
-            title: 'Application Logged',
-            text: 'Your course and mode preferences are securely registered.',
+            title: '1. Profile Processing',
+            text: 'Your subject specialization and mode preference are mapped immediately.',
           },
           step2: {
-            title: 'Counsellor Connect',
-            text: 'Our academic counsellor connects with you to explain curriculum and schedule.',
+            title: '2. Academic Guidance Call',
+            text: 'A senior counselor contacts you within 24 hours to review batches and syllabi.',
           },
           step3: {
-            title: 'Batch Confirmation',
-            text: 'Lock your seat, collect starter material, and begin your preparation.',
+            title: '3. Seat Lock & Onboarding',
+            text: 'Finalize your seat, receive comprehensive modules, and enter the cohort.',
           },
         },
       }
 
   /* =========================================================
-      DATA
+      DATA CONFIGURATION
   ========================================================= */
-
   const courses = [
     {
       id: 'UPSC',
-      title: 'UPSC',
+      title: 'UPSC CSE',
       subtitle: isMarathi ? 'नागरी सेवा परीक्षा' : 'Civil Services Examination',
+      badge: 'IAS / IPS / IFS',
+      icon: Landmark,
       description: isMarathi
-        ? 'केंद्रीय लोकसेवा आयोग (UPSC) परीक्षेची पूर्व, मुख्य व मुलाखतीची परिपूर्ण तयारी.'
-        : 'Structured Foundation, Prelims, Mains & Interview guidance for CSE.',
+        ? 'पूर्व, मुख्य व मुलाखतीची संपूर्ण इंटिग्रेटेड तयारी, टेस्ट सीरिज आणि उत्तरलेखन सराव.'
+        : 'Holistic Prelims, Mains answer writing, test series, and personalized interview mentorship.',
     },
     {
       id: 'MPSC',
-      title: 'MPSC',
-      subtitle: isMarathi ? 'राज्यसेवा व गट-ब/क' : 'Rajyaseva & Combined',
+      title: 'MPSC Rajyaseva',
+      subtitle: isMarathi ? 'राज्यसेवा व संयुक्त परीक्षा' : 'State Services & Combined',
+      badge: 'Group A / B / C',
+      icon: Building2,
       description: isMarathi
-        ? 'महाराष्ट्र लोकसेवा आयोग (MPSC) अभ्यासक्रमाची परीक्षाभिमुख तयारी.'
-        : 'Targeted preparation for Maharashtra state civil services.',
+        ? 'नवीन अभ्यासक्रमानुसार संपूर्ण मार्गदर्शन, संदर्भ साहित्य आणि पीवायक्यू (PYQ) विश्लेषण.'
+        : 'Up-to-date pattern coverage, standard reference material, and comprehensive PYQ breakdown.',
     },
     {
       id: 'Banking',
-      title: 'Banking',
-      subtitle: isMarathi ? 'IBPS / SBI / RRB' : 'IBPS / SBI / RRB',
+      title: 'Banking & Insurance',
+      subtitle: isMarathi ? 'IBPS / SBI / RBI' : 'IBPS / SBI / RBI Officer',
+      badge: 'PO / Clerk',
+      icon: Award,
       description: isMarathi
-        ? 'बँकिंग, विमा आणि वित्तीय क्षेत्रातील विविध पदांसाठी जलद व अचूक तयारी.'
-        : 'Comprehensive quantitative, reasoning, and GA preparation for bank exams.',
+        ? 'स्पीड मॅथ्स, लॉजिकल रिझनिंग, बँकिंग अवेअरनेस आणि लाइव्ह स्पीड टेस्ट प्रॅक्टिस.'
+        : 'High-speed quant shortcuts, analytical reasoning mastery, and intensive sectional mock drills.',
     },
   ]
 
   const modes = [
     {
       id: 'Offline',
-      title: isMarathi ? 'ऑफलाइन वर्ग' : 'Offline Classroom',
+      title: isMarathi ? 'ऑफलाइन क्लासरूम' : 'Offline Campus',
+      badge: 'Kolhapur Center',
       icon: MapPin,
+      perks: isMarathi ? 'वाचनालय + थेट संवाद' : 'Study Hall + In-person Doubts',
       description: isMarathi
-        ? 'विद्याप्रबोधिनी केंद्र, कोल्हापूर येथे थेट मार्गदर्शनासह क्लासरूम बॅच.'
-        : 'In-person classroom guidance with library and study hall access at Kolhapur.',
+        ? 'विद्याप्रबोधिनी कोल्हापूर कॅम्पस येथे प्रत्यक्ष लेक्चर्स, वाचनालय आणि रोजच्या चर्चा सत्रांचा समावेश.'
+        : 'Direct faculty contact, on-campus study rooms, library privileges, and group discussions.',
     },
     {
       id: 'Online',
-      title: isMarathi ? 'ऑनलाइन लाइव्ह' : 'Online Live',
+      title: isMarathi ? 'ऑनलाइन लाइव्ह हायब्रिड' : 'Live Interactive',
+      badge: 'Digital Access',
       icon: Monitor,
+      perks: isMarathi ? 'अमर्यादित रेकॉर्डिंग्स' : 'Unlimited Backups',
       description: isMarathi
-        ? 'लाइव्ह इंटरअॅक्टिव्ह लेक्चर्स, डिजिटल नोट्स आणि रेकॉर्डेड बॅकअप.'
-        : 'Interactive live sessions, digital study notes, and lecture recordings.',
+        ? 'टू-वे इंटरअॅक्टिव्ह लेक्चर्स, डिजिटल नोट्स, प्रश्नोत्तरे आणि संपूर्ण रेकॉर्डेड बॅकअप.'
+        : 'Real-time two-way audio/video, daily study PDFs, doubt portal, and 24/7 archive access.',
     },
   ]
 
@@ -215,45 +251,59 @@ export default function Admission() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (!course || !mode || !formData.name || !formData.mobile) return
 
-    if (!course || !mode || !formData.name || !formData.mobile) {
-      return
-    }
-
-    setSubmitted(true)
-
-    const payload = {
-      course,
-      mode,
-      ...formData,
-      submittedAt: new Date().toISOString(),
-    }
-
-    console.log('Admission Enquiry Submitted:', payload)
+    setIsSubmitting(true)
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setSubmitted(true)
+      const payload = {
+        course,
+        mode,
+        ...formData,
+        submittedAt: new Date().toISOString(),
+      }
+      console.log('Admission Enquiry Submitted:', payload)
+    }, 800)
   }
 
   return (
     <main className="admission-page">
       {/* =====================================================
-          HERO
+          HERO & LIVE PROGRESS BAR
       ===================================================== */}
       <section className="admission-hero">
-        <div className="container admission-hero-grid">
-          <div>
-            <h1 className="course-hero-title">
-              {text.hero.title1}
-              <br />
-              {text.hero.title2}
-            </h1>
+        <div className="container">
+          <div className="hero-top-badge">
+            <Sparkles size={14} />
+            <span>{text.badge}</span>
           </div>
-          <div className="admission-hero-copy">
+
+          <div className="admission-hero-grid">
+            <h1 className="course-hero-title">
+              {text.hero.title1} <span>{text.hero.title2}</span>
+            </h1>
             <p className="course-hero-description">{text.hero.description}</p>
+          </div>
+
+          {/* Form Completion Progress Indicator */}
+          <div className="form-progress-wrapper">
+            <div className="progress-label-bar">
+              <span>Application Completeness</span>
+              <span>{progress}%</span>
+            </div>
+            <div className="progress-track">
+              <div
+                className="progress-fill"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* =====================================================
-          UNIFIED APPLICATION FORM
+          UNIFIED APPLICATION FLOW
       ===================================================== */}
       <section className="admission-form-section">
         <div className="container">
@@ -271,6 +321,7 @@ export default function Admission() {
 
               <div className="admission-cards-grid">
                 {courses.map((item) => {
+                  const Icon = item.icon
                   const isSelected = course === item.id
                   return (
                     <button
@@ -280,8 +331,11 @@ export default function Admission() {
                       onClick={() => handleCourseSelect(item.id)}
                     >
                       <div className="selectable-card-top">
-                        <span className="card-tag">{item.id}</span>
-                        {isSelected && <CheckCircle2 className="check-icon" size={20} />}
+                        <div className="icon-wrapper">
+                          <Icon size={20} />
+                        </div>
+                        <span className="card-badge-pill">{item.badge}</span>
+                        {isSelected && <CheckCircle2 className="check-icon" size={22} />}
                       </div>
                       <div className="selectable-card-body">
                         <h3>{item.title}</h3>
@@ -295,7 +349,7 @@ export default function Admission() {
             </div>
 
             {/* STEP 2: MODE SELECTION */}
-            <div className="admission-step-card" ref={step2Ref} style={{ scrollMarginTop: '100px' }}>
+            <div className="admission-step-card" ref={step2Ref} style={{ scrollMarginTop: '80px' }}>
               <div className="admission-step-header">
                 <div className="step-badge-pill">
                   <span>{text.step2.label}</span>
@@ -312,17 +366,21 @@ export default function Admission() {
                     <button
                       type="button"
                       key={item.id}
-                      className={`admission-selectable-card ${isSelected ? 'active' : ''}`}
+                      className={`admission-selectable-card mode-card ${isSelected ? 'active' : ''}`}
                       onClick={() => handleModeSelect(item.id)}
                     >
                       <div className="selectable-card-top">
                         <div className="icon-wrapper">
                           <Icon size={20} />
                         </div>
-                        {isSelected && <CheckCircle2 className="check-icon" size={20} />}
+                        <span className="card-badge-pill">{item.perks}</span>
+                        {isSelected && <CheckCircle2 className="check-icon" size={22} />}
                       </div>
                       <div className="selectable-card-body">
-                        <h3>{item.title}</h3>
+                        <div className="card-title-group">
+                          <h3>{item.title}</h3>
+                          <span className="badge-location">{item.badge}</span>
+                        </div>
                         <p>{item.description}</p>
                       </div>
                     </button>
@@ -331,8 +389,8 @@ export default function Admission() {
               </div>
             </div>
 
-            {/* STEP 3: CONTACT INFORMATION & SUBMIT */}
-            <div className="admission-step-card" ref={step3Ref} style={{ scrollMarginTop: '100px' }}>
+            {/* STEP 3: CONTACT FORM & SUMMARY BAR */}
+            <div className="admission-step-card" ref={step3Ref} style={{ scrollMarginTop: '80px' }}>
               <div className="admission-step-header">
                 <div className="step-badge-pill">
                   <span>{text.step3.label}</span>
@@ -341,9 +399,29 @@ export default function Admission() {
                 <p>{text.step3.description}</p>
               </div>
 
+              {/* Dynamic Selection Summary Strip */}
+              <div className="selection-summary-strip">
+                <div className="summary-item">
+                  <span className="label">{text.summary.course}</span>
+                  <span className={`val ${course ? 'filled' : ''}`}>
+                    {course || text.summary.notSelected}
+                  </span>
+                </div>
+                <div className="summary-divider" />
+                <div className="summary-item">
+                  <span className="label">{text.summary.mode}</span>
+                  <span className={`val ${mode ? 'filled' : ''}`}>
+                    {mode || text.summary.notSelected}
+                  </span>
+                </div>
+              </div>
+
               <div className="admission-form-grid">
                 <div className="form-field-group">
-                  <label htmlFor="name">{text.step3.fullName} *</label>
+                  <label htmlFor="name">
+                    <User size={15} />
+                    <span>{text.step3.fullName} *</span>
+                  </label>
                   <input
                     id="name"
                     name="name"
@@ -356,12 +434,16 @@ export default function Admission() {
                 </div>
 
                 <div className="form-field-group">
-                  <label htmlFor="mobile">{text.step3.mobile} *</label>
+                  <label htmlFor="mobile">
+                    <Phone size={15} />
+                    <span>{text.step3.mobile} *</span>
+                  </label>
                   <input
                     id="mobile"
                     name="mobile"
                     type="tel"
                     required
+                    maxLength={10}
                     value={formData.mobile}
                     onChange={handleInputChange}
                     placeholder={text.step3.mobilePlaceholder}
@@ -369,7 +451,10 @@ export default function Admission() {
                 </div>
 
                 <div className="form-field-group full-span">
-                  <label htmlFor="email">{text.step3.email}</label>
+                  <label htmlFor="email">
+                    <BookOpen size={15} />
+                    <span>{text.step3.email}</span>
+                  </label>
                   <input
                     id="email"
                     name="email"
@@ -381,7 +466,7 @@ export default function Admission() {
                 </div>
               </div>
 
-              {/* Status Notice */}
+              {/* Status Warning */}
               {(!course || !mode) && (
                 <div className="selection-notice-warning">
                   <span>!</span>
@@ -393,10 +478,17 @@ export default function Admission() {
               <div className="admission-action-area">
                 <button
                   type="submit"
-                  disabled={!course || !mode || submitted}
-                  className={`button button-primary admission-submit-btn ${submitted ? 'submitted' : ''}`}
+                  disabled={!course || !mode || submitted || isSubmitting}
+                  className={`button button-primary admission-submit-btn ${
+                    submitted ? 'submitted' : ''
+                  }`}
                 >
-                  {submitted ? (
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="animate-spin" size={18} />
+                      {text.step3.submitting}
+                    </>
+                  ) : submitted ? (
                     <>
                       <CheckCircle2 size={18} />
                       {text.step3.submitted}
@@ -405,11 +497,14 @@ export default function Admission() {
                     <>
                       <Sparkles size={18} />
                       {text.step3.submit}
-                      <ArrowUpRight size={18} />
+                      <ArrowRight size={18} />
                     </>
                   )}
                 </button>
-                <p className="admission-form-disclaimer">{text.step3.disclaimer}</p>
+                <div className="admission-privacy-note">
+                  <Lock size={13} />
+                  <span>{text.step3.disclaimer}</span>
+                </div>
               </div>
             </div>
 
@@ -418,32 +513,31 @@ export default function Admission() {
       </section>
 
       {/* =====================================================
-          WHAT HAPPENS NEXT
+          ROADMAP / WHAT HAPPENS NEXT
       ===================================================== */}
       <section className="admission-next-section">
         <div className="container">
           <div className="section-heading">
-            <div>
-              <span className="section-label">{text.nextSteps.label}</span>
-              <h2>
-                {text.nextSteps.title1}
-                <br />
-                {text.nextSteps.title2}
-              </h2>
-            </div>
+            <span className="section-label">{text.nextSteps.label}</span>
+            <h2>
+              {text.nextSteps.title1} <span>{text.nextSteps.title2}</span>
+            </h2>
             <p>{text.nextSteps.description}</p>
           </div>
 
           <div className="next-steps-grid">
             <div className="next-step-card">
+              <div className="step-number">01</div>
               <h3>{text.nextSteps.step1.title}</h3>
               <p>{text.nextSteps.step1.text}</p>
             </div>
             <div className="next-step-card">
+              <div className="step-number">02</div>
               <h3>{text.nextSteps.step2.title}</h3>
               <p>{text.nextSteps.step2.text}</p>
             </div>
             <div className="next-step-card">
+              <div className="step-number">03</div>
               <h3>{text.nextSteps.step3.title}</h3>
               <p>{text.nextSteps.step3.text}</p>
             </div>
