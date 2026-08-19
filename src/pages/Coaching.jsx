@@ -9,19 +9,14 @@ import {
   Monitor,
   Smartphone,
 } from 'lucide-react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../components/LanguageContext.jsx'
+import EnquiryModal from '../components/EnquiryModal.jsx'
 
 /* =========================================================
-   APP
+   APP URL
 ========================================================= */
-
-const APP_URL =
-  'https://play.google.com/store/apps/details?id=co.alexis.xgvti'
-
-/* =========================================================
-   COACHING
-========================================================= */
+const APP_URL = 'https://play.google.com/store/apps/details?id=co.alexis.xgvti'
 
 export default function Coaching() {
   const { language } = useLanguage()
@@ -33,15 +28,22 @@ export default function Coaching() {
   const [courseFilter, setCourseFilter] = useState(initialCourse)
   const [modeFilter, setModeFilter] = useState('All')
 
-  /* =========================================================
-     AUTO-ACTIVATE FILTER & SCROLL TO BATCHES ON PARAM CHANGE
-  ========================================================= */
+  // Modal State
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedBatchData, setSelectedBatchData] = useState({ course: '', mode: '' })
+
+  const handleOpenEnquiry = (batch) => {
+    setSelectedBatchData({
+      course: batch.course,
+      mode: batch.mode,
+    })
+    setIsModalOpen(true)
+  }
+
   useEffect(() => {
     const courseParam = searchParams.get('course')
     if (courseParam && ['UPSC', 'MPSC', 'Banking'].includes(courseParam)) {
       setCourseFilter(courseParam)
-
-      // Smooth scroll to batches section
       const batchesElem = document.getElementById('batches')
       if (batchesElem) {
         setTimeout(() => {
@@ -54,11 +56,9 @@ export default function Coaching() {
   /* =========================================================
      TRANSLATIONS
   ========================================================= */
-
   const text = isMarathi
     ? {
         hero: {
-          eyebrow: 'विद्याप्रबोधिनी कोचिंग',
           title1: 'तयारी.',
           title2: 'सराव.',
           title3: 'यश.',
@@ -170,7 +170,6 @@ export default function Coaching() {
       }
     : {
         hero: {
-          eyebrow: 'VIDYAPRABODHINI COACHING',
           title1: 'Prepare.',
           title2: 'Practice.',
           title3: 'Perform.',
@@ -212,18 +211,22 @@ export default function Coaching() {
             'Test series are accessed through the Vidyaprabodhini mobile application.',
           steps: [
             {
+              number: '01',
               title: 'Download the app',
               text: 'Download the official Vidyaprabodhini mobile application and sign in to access the test section.',
             },
             {
+              number: '02',
               title: 'Choose your test',
               text: 'For free tests, open the Free Test section directly from the home screen of the application.',
             },
             {
+              number: '03',
               title: 'Enter your batch code',
               text: 'For exclusive tests, contact your counsellor to receive the batch code and enter it through the Batches section.',
             },
             {
+              number: '04',
               title: 'Start your test',
               text: 'Select the available test and begin your examination-focused practice.',
             },
@@ -280,7 +283,6 @@ export default function Coaching() {
   /* =========================================================
      BATCHES DATA
   ========================================================= */
-
   const batches = [
     {
       id: 1,
@@ -360,289 +362,149 @@ export default function Coaching() {
   const stepIcons = [Download, Smartphone, KeyRound, CheckCircle2]
 
   const filteredBatches = batches.filter((batch) => {
-    const courseMatch =
-      courseFilter === 'All' || batch.course === courseFilter
-
-    const modeMatch =
-      modeFilter === 'All' || batch.mode === modeFilter
-
+    const courseMatch = courseFilter === 'All' || batch.course === courseFilter
+    const modeMatch = modeFilter === 'All' || batch.mode === modeFilter
     return courseMatch && modeMatch
   })
 
   return (
     <main className="coaching-page">
-
-      {/* =====================================================
-          HERO
-      ===================================================== */}
-
+      {/* HERO */}
       <section className="coaching-hero">
-
         <div className="container coaching-hero-grid">
-
           <div>
-
-            <div className="eyebrow">
-              <span className="" />
-              {text.hero.eyebrow}
-            </div>
-
-            <h1>
+            <h1 style={{ margin: '0 0 20px', fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: '1.08', letterSpacing: '-0.035em', fontWeight: '750', color: 'var(--coaching-ink)' }}>
               {text.hero.title1}
               <br />
               {text.hero.title2}
               <br />
               {text.hero.title3}
             </h1>
-
           </div>
 
-          <div className="coaching-hero-copy">
-
-            <p>
+          <div className="coaching-hero-copy" style={{ maxWidth: '440px' }}>
+            <p style={{ margin: '0 0 24px', fontSize: '16px', lineHeight: '1.6', color: 'var(--coaching-muted)' }}>
               {text.hero.description}
             </p>
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =====================================================
-          BATCHES
-      ===================================================== */}
-
-      <section
-        className="coaching-batches"
-        id="batches"
-      >
-
+      {/* BATCHES */}
+      <section className="coaching-batches" id="batches">
         <div className="container">
-
           <div className="section-heading">
-
             <div>
-
-              <span className="section-label">
-                {text.batches.label}
-              </span>
-
+              <span className="section-label">{text.batches.label}</span>
               <h2>
                 {text.batches.title1}
                 <br />
                 {text.batches.title2}
               </h2>
-
             </div>
-
-            <p>
-              {text.batches.description}
-            </p>
-
+            <p>{text.batches.description}</p>
           </div>
 
           {/* FILTERS */}
-
           <div className="batch-filter-bar">
-
             <div className="batch-filter-group">
-
-              <span className="filter-label">
-                {text.batches.examFilter}
-              </span>
-
+              <span className="filter-label">{text.batches.examFilter}</span>
               <div className="filter-buttons">
-
                 {courses.map((course) => (
-
                   <button
                     key={course.key}
                     type="button"
-                    className={
-                      courseFilter === course.key
-                        ? 'active'
-                        : ''
-                    }
-                    onClick={() =>
-                      setCourseFilter(course.key)
-                    }
+                    className={courseFilter === course.key ? 'active' : ''}
+                    onClick={() => setCourseFilter(course.key)}
                   >
                     {course.label}
                   </button>
-
                 ))}
-
               </div>
-
             </div>
 
             <div className="batch-filter-group">
-
-              <span className="filter-label">
-                {text.batches.modeFilter}
-              </span>
-
+              <span className="filter-label">{text.batches.modeFilter}</span>
               <div className="filter-buttons">
-
                 {modes.map((mode) => (
-
                   <button
                     key={mode.key}
                     type="button"
-                    className={
-                      modeFilter === mode.key
-                        ? 'active'
-                        : ''
-                    }
-                    onClick={() =>
-                      setModeFilter(mode.key)
-                    }
+                    className={modeFilter === mode.key ? 'active' : ''}
+                    onClick={() => setModeFilter(mode.key)}
                   >
                     {mode.label}
                   </button>
-
                 ))}
-
               </div>
-
             </div>
-
           </div>
 
           {/* RESULT COUNT */}
-
           <div className="batch-results-header">
-
-            <span>
-              {filteredBatches.length
-                .toString()
-                .padStart(2, '0')}
-            </span>
-
+            <span>{filteredBatches.length.toString().padStart(2, '0')}</span>
             <span>
               {filteredBatches.length === 1
                 ? text.batches.availableSingle
                 : text.batches.availableMulti}
             </span>
-
           </div>
 
           {/* BATCH LIST */}
-
           <div className="batch-list">
-
             {filteredBatches.map((batch) => (
-
-              <article
-                className="batch-row"
-                key={batch.id}
-              >
-
+              <article className="batch-row" key={batch.id}>
                 <div className="batch-row-number">
                   {String(batch.id).padStart(2, '0')}
                 </div>
 
                 <div className="batch-main">
-
-                  <div className="batch-course">
-                    {batch.course}
-                  </div>
-
-                  <h3>
-                    {batch.title}
-                  </h3>
-
+                  <div className="batch-course">{batch.course}</div>
+                  <h3>{batch.title}</h3>
                   <div className="batch-meta">
-
                     <span>
-
-                      {batch.mode === 'Offline' ? (
-                        <MapPin size={13} />
-                      ) : (
-                        <Monitor size={13} />
-                      )}
-
+                      {batch.mode === 'Offline' ? <MapPin size={13} /> : <Monitor size={13} />}
                       {batch.location}
-
                     </span>
-
                     <span>
                       <CalendarDays size={13} />
                       {batch.schedule}
                     </span>
-
                   </div>
-
                 </div>
 
                 <div className="batch-mode">
-
-                  <span className="batch-mode-label">
-                    {text.batches.modeLabel}
-                  </span>
-
-                  <strong>
-                    {batch.displayMode}
-                  </strong>
-
+                  <span className="batch-mode-label">{text.batches.modeLabel}</span>
+                  <strong>{batch.displayMode}</strong>
                 </div>
 
                 <div className="batch-action">
-
-                  <span className="batch-status">
-                    {batch.status}
-                  </span>
-
-                  <Link
-                    to="/admission"
-                    className="batch-enquire"
+                  <span className="batch-status">{batch.status}</span>
+                  <button
+                    type="button"
+                    onClick={() => handleOpenEnquiry(batch)}
+                    className="batch-enquire-btn"
                   >
                     {text.batches.enquire}
                     <ArrowUpRight size={15} />
-                  </Link>
-
+                  </button>
                 </div>
-
               </article>
-
             ))}
-
           </div>
 
-          {/* EMPTY STATE */}
-
           {filteredBatches.length === 0 && (
-
-            <div className="batch-empty">
-              {text.batches.empty}
-            </div>
-
+            <div className="batch-empty">{text.batches.empty}</div>
           )}
-
         </div>
-
       </section>
 
-      {/* =====================================================
-          TEST SERIES
-      ===================================================== */}
-
-      <section
-        className="coaching-test-series"
-        id="test-series"
-      >
-
+      {/* TEST SERIES */}
+      <section className="coaching-test-series" id="test-series">
         <div className="container">
-
           <div className="section-heading">
-
             <div>
-
-              <span className="section-label">
-                {text.testSeries.label}
-              </span>
-
+              <span className="section-label">{text.testSeries.label}</span>
               <h2>
                 {text.testSeries.title1}
                 <br />
@@ -650,281 +512,143 @@ export default function Coaching() {
                 <br />
                 {text.testSeries.title3}
               </h2>
-
             </div>
-
             <div className="test-series-intro">
-
-              <p>
-                {text.testSeries.description}
-              </p>
-
-              <a
-                href={APP_URL}
-                className="button button-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <p>{text.testSeries.description}</p>
+              <a href={APP_URL} className="button button-primary" target="_blank" rel="noopener noreferrer">
                 {text.testSeries.downloadButton}
                 <ArrowUpRight size={16} />
               </a>
-
-              <span className="app-note">
-                {text.testSeries.appNote}
-              </span>
-
+              <span className="app-note">{text.testSeries.appNote}</span>
             </div>
-
           </div>
 
-          {/* HOW IT WORKS */}
-
           <div className="test-process-header">
-
             <div>
-
-              <span className="section-label">
-                {text.howItWorks.label}
-              </span>
-
+              <span className="section-label">{text.howItWorks.label}</span>
               <h2>
                 {text.howItWorks.title1}
                 <br />
                 {text.howItWorks.title2}
               </h2>
-
             </div>
-
-            <p>
-              {text.howItWorks.description}
-            </p>
-
+            <p>{text.howItWorks.description}</p>
           </div>
 
           <div className="test-process-grid">
-
             {text.howItWorks.steps.map((step, index) => {
-
               const Icon = stepIcons[index]
-
               return (
-                <article
-                  className="test-process-card"
-                  key={step.number}
-                >
-
+                <article className="test-process-card" key={step.number}>
                   <div className="test-process-top">
-
-                    <span>
-                      {step.number}
-                    </span>
-
+                    <span>{step.number}</span>
                     <Icon size={18} />
-
                   </div>
-
                   <div className="test-process-content">
-
-                    <h3>
-                      {step.title}
-                    </h3>
-
-                    <p>
-                      {step.text}
-                    </p>
-
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
                   </div>
-
                 </article>
               )
             })}
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =====================================================
-          TEST ACCESS
-      ===================================================== */}
-
+      {/* TEST ACCESS */}
       <section className="coaching-test-access">
-
         <div className="container">
-
           <div className="test-access-grid">
-
             <article className="test-access-card">
-
-              <span className="section-label">
-                {text.access.free.label}
-              </span>
-
+              <span className="section-label">{text.access.free.label}</span>
               <h2>
                 {text.access.free.title1}
                 <br />
                 {text.access.free.title2}
               </h2>
-
-              <p>
-                {text.access.free.description}
-              </p>
-
+              <p>{text.access.free.description}</p>
               <div className="test-access-line">
-
                 <CheckCircle2 size={15} />
-
                 {text.access.free.tag}
-
               </div>
-
             </article>
 
             <article className="test-access-card dark">
-
-              <span className="section-label">
-                {text.access.exclusive.label}
-              </span>
-
+              <span className="section-label">{text.access.exclusive.label}</span>
               <h2>
                 {text.access.exclusive.title1}
                 <br />
                 {text.access.exclusive.title2}
               </h2>
-
-              <p>
-                {text.access.exclusive.description}
-              </p>
-
+              <p>{text.access.exclusive.description}</p>
               <div className="test-access-line">
-
                 <KeyRound size={15} />
-
                 {text.access.exclusive.tag}
-
               </div>
-
             </article>
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =====================================================
-          COUNSELLORS
-      ===================================================== */}
-
+      {/* COUNSELLORS */}
       <section className="coaching-support">
-
         <div className="container">
-
           <div className="test-support-header">
-
             <div>
-
-              <span className="section-label">
-                {text.support.label}
-              </span>
-
+              <span className="section-label">{text.support.label}</span>
               <h2>
                 {text.support.title1}
                 <br />
                 {text.support.title2}
               </h2>
-
             </div>
-
-            <p>
-              {text.support.description}
-            </p>
-
+            <p>{text.support.description}</p>
           </div>
 
           <div className="counsellor-list">
-
             {text.support.counsellors.map((counsellor) => (
-
-              <div
-                className="counsellor-row"
-                key={counsellor.phone}
-              >
-
-                <div className="counsellor-exam">
-                  {counsellor.exam}
-                </div>
-
-                <div className="counsellor-name">
-                  {counsellor.name}
-                </div>
-
-                <a
-                  href={`tel:${counsellor.phone}`}
-                  className="counsellor-phone"
-                >
+              <div className="counsellor-row" key={counsellor.phone}>
+                <div className="counsellor-exam">{counsellor.exam}</div>
+                <div className="counsellor-name">{counsellor.name}</div>
+                <a href={`tel:${counsellor.phone}`} className="counsellor-phone">
                   {counsellor.phone}
                 </a>
-
-                <a
-                  href={`tel:${counsellor.phone}`}
-                  className="counsellor-call"
-                >
+                <a href={`tel:${counsellor.phone}`} className="counsellor-call">
                   {text.support.call}
                   <ArrowUpRight size={15} />
                 </a>
-
               </div>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =====================================================
-          APP CTA
-      ===================================================== */}
-
+      {/* APP CTA */}
       <section className="coaching-app-cta">
-
         <div className="container coaching-app-cta-inner">
-
           <div>
-
-            <span className="section-label">
-              {text.appCta.label}
-            </span>
-
+            <span className="section-label">{text.appCta.label}</span>
             <h2>
               {text.appCta.title1}
               <br />
               {text.appCta.title2}
             </h2>
-
-            <p>
-              {text.appCta.description}
-            </p>
-
+            <p>{text.appCta.description}</p>
           </div>
 
-          <a
-            href={APP_URL}
-            className="button button-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={APP_URL} className="button button-primary" target="_blank" rel="noopener noreferrer">
             {text.appCta.download}
             <Download size={16} />
           </a>
-
         </div>
-
       </section>
 
+      {/* DYNAMIC ENQUIRY MODAL */}
+      <EnquiryModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        initialData={selectedBatchData}
+      />
     </main>
   )
 }
