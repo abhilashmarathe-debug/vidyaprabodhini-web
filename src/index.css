@@ -6627,13 +6627,17 @@ a {
 ========================================== */
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 999;
+  left: 0;
   width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.05);
+  z-index: 1000; /* Keeps the navbar above other page content */
+  background-color: #ffffff; /* Prevent content scrolling underneath from showing through */
+}
+
+/* Add top padding to the main content container to prevent it from hiding under the fixed header */
+body {
+  padding-top: 70px; /* Adjust this value to match your navbar's actual height */
 }
 
 .navbar {
@@ -15158,5 +15162,96 @@ img, iframe, svg {
 
   .enquiry-modal {
     padding: 24px 18px;
+  }
+}
+
+/* =========================================================
+   STICKY PROGRESS BAR (EXACT NAVBAR ALIGNMENT)
+========================================================= */
+
+.sticky-progress-container {
+  position: sticky;
+  top: 108px; /* Locks directly under the 108px desktop navbar */
+  z-index: 990; /* Right below navbar (999) and above cards */
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0 14px;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+}
+
+.progress-content-inner {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.progress-label-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.progress-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.progress-pct {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--brand);
+}
+
+.progress-track {
+  width: 100%;
+  height: 6px;
+  background: var(--surface-raised, #f1f5f9);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand) 0%, #38bdf8 100%);
+  border-radius: 999px;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scroll Offset for Steps so they land below the sticky bar */
+.admission-step-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  box-shadow: var(--shadow-sm);
+  scroll-margin-top: 190px; /* Accounts for navbar + sticky progress bar */
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Tablet Offset */
+@media (max-width: 1100px) {
+  .sticky-progress-container {
+    top: 96px;
+  }
+
+  .admission-step-card {
+    scroll-margin-top: 175px;
+  }
+}
+
+/* Mobile Offset */
+@media (max-width: 850px) {
+  .sticky-progress-container {
+    top: 82px;
+  }
+
+  .admission-step-card {
+    scroll-margin-top: 160px;
+    padding: 22px 16px;
   }
 }

@@ -4,16 +4,12 @@ import {
   BookOpen,
   Building2,
   CheckCircle2,
-  ChevronRight,
-  Clock,
-  GraduationCap,
   Landmark,
   Loader2,
   Lock,
   MapPin,
   Monitor,
   Phone,
-  ShieldCheck,
   Sparkles,
   User,
 } from 'lucide-react'
@@ -50,14 +46,14 @@ export default function Admission() {
   const handleCourseSelect = (selectedId) => {
     setCourse(selectedId)
     setTimeout(() => {
-      step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 150)
   }
 
   const handleModeSelect = (selectedId) => {
     setMode(selectedId)
     setTimeout(() => {
-      step3Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      step3Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 150)
   }
 
@@ -270,7 +266,7 @@ export default function Admission() {
   return (
     <main className="admission-page">
       {/* =====================================================
-          HERO & LIVE PROGRESS BAR
+          HERO
       ===================================================== */}
       <section className="admission-hero">
         <div className="container">
@@ -285,22 +281,27 @@ export default function Admission() {
             </h1>
             <p className="course-hero-description">{text.hero.description}</p>
           </div>
+        </div>
+      </section>
 
-          {/* Form Completion Progress Indicator */}
-          <div className="form-progress-wrapper">
+      {/* =====================================================
+          STICKY LIVE PROGRESS BAR
+      ===================================================== */}
+      <div className="sticky-progress-container">
+        <div className="container">
+          <div className="progress-content-inner">
             <div className="progress-label-bar">
-              <span>Application Completeness</span>
-              <span>{progress}%</span>
+              <span className="progress-title">
+                {isMarathi ? 'अर्ज पूर्णता' : 'Application Progress'}
+              </span>
+              <span className="progress-pct">{progress}%</span>
             </div>
             <div className="progress-track">
-              <div
-                className="progress-fill"
-                style={{ width: `${progress}%` }}
-              />
+              <div className="progress-fill" style={{ width: `${progress}%` }} />
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* =====================================================
           UNIFIED APPLICATION FLOW
@@ -349,7 +350,7 @@ export default function Admission() {
             </div>
 
             {/* STEP 2: MODE SELECTION */}
-            <div className="admission-step-card" ref={step2Ref} style={{ scrollMarginTop: '80px' }}>
+            <div className="admission-step-card" ref={step2Ref}>
               <div className="admission-step-header">
                 <div className="step-badge-pill">
                   <span>{text.step2.label}</span>
@@ -390,7 +391,7 @@ export default function Admission() {
             </div>
 
             {/* STEP 3: CONTACT FORM & SUMMARY BAR */}
-            <div className="admission-step-card" ref={step3Ref} style={{ scrollMarginTop: '80px' }}>
+            <div className="admission-step-card" ref={step3Ref}>
               <div className="admission-step-header">
                 <div className="step-badge-pill">
                   <span>{text.step3.label}</span>
