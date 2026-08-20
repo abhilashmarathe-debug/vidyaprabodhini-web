@@ -11,7 +11,6 @@ export default function CookieBanner() {
   useEffect(() => {
     const consent = localStorage.getItem('vidya_cookie_consent')
     if (!consent) {
-      // Small delay for smooth pop-in appearance
       const timer = setTimeout(() => setVisible(true), 800)
       return () => clearTimeout(timer)
     }
@@ -28,7 +27,6 @@ export default function CookieBanner() {
   }
 
   const handleIgnore = () => {
-    // Just hide for this session without saving long-term refusal
     setVisible(false)
   }
 
@@ -36,7 +34,7 @@ export default function CookieBanner() {
 
   return (
     <aside className="cookie-banner" aria-label="Cookie Consent">
-      <div className="container cookie-banner-inner">
+      <div className="cookie-banner-inner">
         <div className="cookie-text">
           <h3>{isMarathi ? '🍪 कुकीज वापर' : '🍪 We value your privacy'}</h3>
           <p>
@@ -49,7 +47,7 @@ export default function CookieBanner() {
 
         <div className="cookie-actions">
           <button type="button" className="cookie-btn decline" onClick={handleDecline}>
-            {isMarathi ? 'नाकार ०' : 'Decline'}
+            {isMarathi ? 'नाकारा' : 'Decline'}
           </button>
           <button type="button" className="cookie-btn ignore" onClick={handleIgnore}>
             {isMarathi ? 'दुर्लक्ष करा' : 'Ignore'}
