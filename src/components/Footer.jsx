@@ -56,7 +56,7 @@ export default function Footer() {
           cookies: 'कुकी धोरण',
 
           copyright: 'सर्व हक्क राखीव.',
-          designed: 'SkewX Technologies कडून डिझाइन',
+          designedBy: 'डिझाइन आणि विकसित: ',
 
           modal: {
             label: 'प्रवेश चौकशी',
@@ -122,7 +122,7 @@ export default function Footer() {
           cookies: 'Cookie Policy',
 
           copyright: 'All rights reserved.',
-          designed: 'Designed by SkewX Technologies',
+          designedBy: 'Designed by ',
 
           modal: {
             label: 'ADMISSION ENQUIRY',
@@ -497,7 +497,20 @@ export default function Footer() {
           </p>
 
           <p className="footer-credit">
-            {text.footer.designed}
+            {text.footer.designedBy}
+            <a
+              href="https://skewx.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: 'inherit',
+                textDecoration: 'underline',
+                textUnderlineOffset: '3px',
+                fontWeight: 500,
+              }}
+            >
+              SkewX Technologies
+            </a>
           </p>
         </div>
       </div>
